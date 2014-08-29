@@ -1,0 +1,43 @@
+<script type="text/javascript">
+	/*
+		Aaron C. Salcido
+		August 29th, 2014
+		Purpose: Asignment 1 CIS 14A Due August 31st
+				To create a joke using variables and bools
+	*/
+</script>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+
+<!--- Test for jokes --->
+
+<script>
+var joke = "Javascript walked into a bar....";
+<!--- toldJoke stays false...how do we allow it to change its Bool value to true? --->
+var toldJoke = "false";
+var $punchLine =
+	"Better watch out for those semi-colons.";
+<!--- I removed the "%" from var entage because DW was returning an error because of it. This might be causing an error, see below comment. --->
+ var entage = 20;
+ var result
+ 
+ 
+ if (toldJoke == true) <!--- How do we prove this...? --->
+ 	{
+    	Alert($punchLine) ;
+	} else  {
+ 	alert(joke);
+ }
+ </script>
+ <!--- I Added the "{" after Else because dreamweaver was telling me that the code was broken there, which fixed it for the most part but the prompt doesn't finish the punchline because there is no way to make prove (toldJoke == true) 
+ --->
+</head>
+
+<body>
+	There should be a joke on this page...
+</body>
+</html>
