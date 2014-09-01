@@ -1,4 +1,3 @@
-	<script>
 	var word = "bottles";
 	var count = 99;
 	
@@ -16,4 +15,3 @@
 //When number of bottles reaches zero, console.log log will display this text
 		}
 	}
-	</script>
