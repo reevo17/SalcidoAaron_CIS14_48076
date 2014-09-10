@@ -24,8 +24,9 @@
 		document.write("<h3>Over time start = "+ovt+"</h3>");
 		
 		//Determine our paycheck
-		if (hours<ovt) payChk=hours*payRate;//Added double time hours
-		else(hours>ovt) payChk=hours*payRate+(hours-ovt)*payRate;
+		 (hours<ovt)?payChk=hours*payRate:
+							hours*payRate+(hours-ovt)*payRate;
+									
 		//Chop off some of the decimal places
 		payChk=payChk.toFixed(2);
 		//Output our Pay Check
