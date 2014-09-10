@@ -1,7 +1,7 @@
 <script type="text/javascript">
 /*	Author: Aaron C Salcido
 	September 10th,2014
-	Purpose: To Use IF statement to create a program for Paycheck
+	Purpose: To Use Ternary checking to create a program for Paycheck
 */
 </script>
 <!doctype html>
@@ -24,8 +24,8 @@
 		document.write("<h3>Over time start = "+ovt+"</h3>");
 		
 		//Determine our paycheck
-		 payChk=(hours<ovt)?payChk=hours*payRate: //True Satement
-							hours*payRate+(hours-ovt)*payRate; //False Statement
+		 payChk=(hours<ovt)?payChk=hours*payRate: 				//True Satement
+							hours*payRate+(hours-ovt)*payRate;  //False Statement
 									
 		//Chop off some of the decimal places
 		payChk=payChk.toFixed(2);
