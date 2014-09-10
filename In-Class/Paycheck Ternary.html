@@ -24,8 +24,8 @@
 		document.write("<h3>Over time start = "+ovt+"</h3>");
 		
 		//Determine our paycheck
-		 (hours<ovt)?payChk=hours*payRate:
-							hours*payRate+(hours-ovt)*payRate;
+		 payChk=(hours<ovt)?payChk=hours*payRate: //True Satement
+							hours*payRate+(hours-ovt)*payRate; //False Statement
 									
 		//Chop off some of the decimal places
 		payChk=payChk.toFixed(2);
