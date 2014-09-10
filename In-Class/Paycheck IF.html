@@ -25,7 +25,7 @@
 		
 		//Determine our paycheck
 		if (hours<ovt) payChk=hours*payRate;//Added double time hours
-		if(hours>ovt) payChk=hours*payRate+(hours-ovt)*payRate;
+		if(hours>ovt)  payChk=hours*payRate+(hours-ovt)*payRate;
 		//Chop off some of the decimal places
 		payChk=payChk.toFixed(2);
 		//Output our Pay Check
