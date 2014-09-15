@@ -1,0 +1,35 @@
+<script type="text/javascript">
+/*	Author: Aaron C Salcido
+	September 10th,2014
+	Purpose: To Use IF statement to create a program for Paycheck
+*/
+</script>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Flow Chart: Paycheck</title>
+</head>
+
+<body>
+	<script>
+    	var hours = parseInt(Math.random()*20+30); //hours worked
+        var payRate = 10; //Dollars per hour
+        var ovt = 40; //Amount of overtime
+		var payChk;
+		
+		//Ourput the inputs!
+		document.write("<h2>Hours worked    = "+hours+"<h2>");
+		document.write("<h2> Pay Rate       = $" +payRate+" per hour</h2>");
+		document.write("<h3>Over time start = "+ovt+"</h3>");
+		
+		//Determine our paycheck
+		if (hours<ovt) payChk=hours*payRate;//Added double time hours
+		if(hours>ovt)  payChk=hours*payRate+(hours-ovt)*payRate;
+		//Chop off some of the decimal places
+		payChk=payChk.toFixed(2);
+		//Output our Pay Check
+		document.write("<h1> Our Paycheck = $"+payChk+"</h1>");
+    </script>
+</body>
+</html>
