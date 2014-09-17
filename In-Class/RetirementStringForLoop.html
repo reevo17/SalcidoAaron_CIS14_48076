@@ -1,0 +1,70 @@
+<script type="text/java">
+	/*
+		Author: Aaron C Salcido
+		September 15th, 2014
+		Purpose: Loop construct for Savings
+				 
+	*/
+</script>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Savings account</title>
+</head>
+
+<body>
+
+		<table width="200" border="1">
+        <thead>
+        	<tr>
+            	<th style="font-family: Verdana ;font-size:20px"  colspan="3">Savings Table</th>
+            </tr>
+        </thead>
+ 
+        <tr>
+        	<th style="font-family: Verdana">Year</th>
+             <th style="font-family: Verdana"> Savings @5%</th>
+            <th style="font-family: Verdana">Savings@6%</th>
+            
+         </tr>
+         
+         
+        
+<script type="text/javascript">
+		//Set up savings table
+		
+		var balance1 = 0; 	//Unit = $'s
+		var balance2 = 0;	//Unit = $'s
+		var intRate1 = 5;   //Unit = % rate per annual
+		var intRate2 = 6;	//Unit = % rate per annual
+		var deposit = 12000;
+		var str = "";
+		//Output initial conditions
+		document.write("<p>Initial Blance = $"+balance+"</p>");
+		document.write("<p>Interest Rate  = "+intRate+"%</p>");
+		//Generate a table
+		//++year= year++= year+1 = (year+=1) ALL THE SAME
+		for(var year=1;year<=50;++year){
+			
+			//TABLE ROW 
+				str+=("<tr>") ;
+				str+=("<th>" +year+"</th>");
+				//Calculate the balance
+				
+				//balance=balance*(1+intRate/100);
+				balance1*= (1+intRate/100);
+				//Removes uneeded decimal places
+				balance1=balance1.toFixed(2);
+				str+=("<td>" +balance1+"</td>");								 				balance2*= (1+intRate/100);
+				//Removes uneeded decimal places
+				balance2=balance2.toFixed(2);
+				str+=("<td>" +balance2+"</td>");
+				str+=("</tr>");
+		}
+		document.write(str);
+	</script>
+</table
+></body>
+</html>
