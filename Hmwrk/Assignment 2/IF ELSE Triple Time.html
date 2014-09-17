@@ -15,21 +15,22 @@
 	<script>
     	var hours = parseInt(Math.random()*20+30); //hours worked
         var payRate = 10; //Dollars per hour
-        var ovt = 20; //Amount of overtime
-		var trit = 40.001;
+        var ovt = 20; //Overtime Start
+		var trit = 40;//Triple Time Start
 		var payChk;
 		
 		//Ourput the inputs!
 		document.write("<h2>Hours worked    = "+hours+"<h2>");
 		document.write("<h2> Pay Rate       = $" +payRate+" per hour</h2>");
-		document.write("<h3>Over time start = "+ovt+"</h3>");
+		document.write("<h3>Over time start = "+ovt+" hours</h3>");
+		document.write("<h4>Triple time start="+trit+" hours</h4>");
 		
 		//Determine our paycheck
 		if (hours<ovt){
 			 payChk=hours*payRate;//Added double time hours
 		} else if(hours>ovt&&hours<trit){
 			payChk=hours*payRate+(hours-ovt)*payRate;
-		}else{(hours>trit)
+		}else{(hours>=trit)
 			payChk=hours*payRate+(hours-ovt)*payRate+(hours-ovt)*payRate;
 		}
 		//Chop off some of the decimal places

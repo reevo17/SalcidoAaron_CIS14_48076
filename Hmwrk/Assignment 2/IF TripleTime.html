@@ -16,17 +16,19 @@
     	var hours = parseInt(Math.random()*20+30); //hours worked
         var payRate = 10; //Dollars per hour
         var ovt = 20; //Amount of overtime START
+		var trit = 40;//Triple Time Start
 		var payChk;
 		
 		//Ourput the inputs!
 		document.write("<h2>Hours worked    = "+hours+"<h2>");
 		document.write("<h2> Pay Rate       = $" +payRate+" per hour</h2>");
-		document.write("<h3>Over time start = "+ovt+"</h3>");
+		document.write("<h3>Over time start = "+ovt+" hours</h3>");
+		document.write("<h2>Triple time start="+trit+" hours</h2>");
 		
 		//Determine our paycheck
 		if (hours<ovt) payChk=hours*payRate;//Straight time
-		if(hours>ovt&&hours<=40)  payChk=hours*payRate+(hours-ovt)*payRate;//Overtime Between 20-40hours
-		if(hours>=41) payChk=hours*payRate+(hours-ovt)*payRate+(hours-ovt)*payRate;//TRIPLE TIME
+		if(hours>ovt&&hours<trit)  payChk=hours*payRate+(hours-ovt)*payRate;//Overtime Between 20-40hours
+		if(hours>=40) payChk=hours*payRate+(hours-ovt)*payRate+(hours-ovt)*payRate;//TRIPLE TIME
 		//Chop off some of the decimal places
 		payChk=payChk.toFixed(2);
 		//Output our Pay Check
