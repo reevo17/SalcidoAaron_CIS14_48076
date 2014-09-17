@@ -16,7 +16,7 @@
     	var hours = parseInt(Math.random()*20+30); //hours worked
         var payRate = 10; //Dollars per hour
         var ovt = 20; //Amount of overtime
-		var trit = 41;
+		var trit = 40.001;
 		var payChk;
 		
 		//Ourput the inputs!
@@ -27,8 +27,10 @@
 		//Determine our paycheck
 		if (hours<ovt){
 			 payChk=hours*payRate;//Added double time hours
-		} else{(hours>ovt&&hours<trit)
+		} else if(hours>ovt&&hours<trit){
 			payChk=hours*payRate+(hours-ovt)*payRate;
+		}else{(hours>trit)
+			payChk=hours*payRate+(hours-ovt)*payRate+(hours-ovt)*payRate;
 		}
 		//Chop off some of the decimal places
 		payChk=payChk.toFixed(2);
