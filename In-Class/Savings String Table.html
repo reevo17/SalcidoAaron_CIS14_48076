@@ -1,0 +1,62 @@
+<script type="text/java">
+	/*
+		Author: Aaron C Salcido
+		September 15th, 2014
+		Purpose: Loop construct for Savings
+				 
+	*/
+</script>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Savings account</title>
+</head>
+
+<body>
+
+		<table width="200" border="1">
+        <thead>
+        	<tr>
+            	<th style="font-family: Verdana ;font-size:20px"  colspan="2">Savings Table</th>
+            </tr>
+        </thead>
+ 
+        <tr>
+        	<th style="font-family: Verdana">Year</th>
+            <th style="font-family: Verdana">Savings</th>
+         </tr>
+         
+         
+        
+<script type="text/javascript">
+		//Set up savings table
+		
+		var balance = 100; //Unit = $'s
+		var intRate = 5;   //Unit = % rate per annual
+		var str;
+		//Output initial conditions
+		document.write("<p>Initial Blance = $"+balance+"</p>");
+		document.write("<p>Interest Rate  = "+intRate+"%</p>");
+		//Generate a table
+		//++year= year++= year+1 = (year+=1) ALL THE SAME
+		for(var year=1;year<=50;++year){
+			
+			//TABLE ROW 
+			str+=("<tr>") ;
+				str+=("<th>" +year+"</th>");
+				//Calculate the balance
+				
+				//balance=balance*(1+intRate/100);
+				balance*= (1+intRate/100);
+				//Removes uneeded decimal places
+				balance=balance.toFixed(2);
+				str+=("<td>" +balance+"</td>");
+			str+=("</tr>") ;
+		}
+		document.write(str);
+	</script>
+</table
+></body>
+</html>
