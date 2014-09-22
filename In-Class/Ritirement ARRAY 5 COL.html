@@ -43,7 +43,7 @@
 		var str="";//STORES THE DOCUMENT.WRITE
 		var tax = 10;//UNITS IN %
 		var hour = [];
-		var dep = [];
+		var dep =  [];
 		
 		//FILL ARRAYS
 		var hour = [1];
@@ -57,17 +57,17 @@
 		document.write("<p>Yearly Deposit =  $"+deposit+"</p>")
 		//Generate a table
 		//++year= year++= year+1 = (year+=1) ALL THE SAME
-		for(var year=1;year<=50;++year){
+		for(var hour=1;hour<=50;++hour){
 			
 			//TABLE ROW 
 			str+=("<tr>") ;
-			str+=("<th>" +year+"</th>");
+			str+=("<th>" +hour+"</th>");
 				//Calculate the balance
 				
 				//balance=balance*(1+intRate/100);
 			(1+intRate/100);
 				//Removes uneeded decimal places
-			b.toFixed(2);
+			.toFixed(2);
 			str+=("<td>" +balance+"</td>");
 			str+=("</tr>") ;
 		}
