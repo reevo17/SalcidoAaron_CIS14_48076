@@ -53,7 +53,7 @@
 		balance[0]=0;
 		savings[0]=balance;
 		interest[0]=0;
-		yearDep=[0]=0;
+		yearlyDep=[0]=0;
 		// Populate Arrays
 		
 		
@@ -68,14 +68,18 @@
 				//Calculate the balance
 				
 				//balance=balance*(1+intRate/100);
-				interest[year]=savings[year-1]*(intRate/100)
+				interest[year]=savings[year-1]*(intRate/100);
+				interest[year]=interest[year].toFixed(2);
 				savings[year]=savings[year-1]+interest[year];
 				deposit[year]=deposit;
-				savings[year]+=yearDep;
+				savings[year]+=yearlyDep;
 				//Removes uneeded decimal places
 				savings[year]=savings[year].toFiexed(2);
+				savings[year]=parseInt(savings[year]);
 				
 				str+=("<td>" +balance+"</td>");
+				str+=("<td>" +interest+"</td>");
+				str+=("<td>" +deposit+"</td>");
 				str+=("</tr>") ;
 		}
 		document.write(str);
