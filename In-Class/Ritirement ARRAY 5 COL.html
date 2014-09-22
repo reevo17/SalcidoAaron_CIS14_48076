@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Savings account</title>
+<title>Array Table</title>
 </head>
 
 <body>
@@ -36,13 +36,17 @@
         
 <script type="text/javascript">
 		//Set up savings table
+		var ovt = 20; //OVERTIME
+		var dbt = 40; //DOUBLE TIME
 		
 		
-		var str="";
+		var str="";//STORES THE DOCUMENT.WRITE
 		var tax = 10;//UNITS IN %
 		var hour = [];
 		var dep = [];
-		var 
+		
+		//FILL ARRAYS
+		var hour = [1];
 		
 		
 		
@@ -61,9 +65,9 @@
 				//Calculate the balance
 				
 				//balance=balance*(1+intRate/100);
-			balance*= (1+intRate/100);
+			(1+intRate/100);
 				//Removes uneeded decimal places
-			balance=balance.toFixed(2);
+			b.toFixed(2);
 			str+=("<td>" +balance+"</td>");
 			str+=("</tr>") ;
 		}
