@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>1 D Array Creation</title>
+</head>
+
+<body>
+<script type="text/javascript">
+	//Declare a 1 dimensional array
+	var column = new Array();
+	var ROWS=12;//Constant number of rows
+	//Filling this array
+	for(var row=0;row<ROWS;row++){
+		column[row]=row;
+	}
+	//Display the column
+	document.write("<ol>");
+	for(var row in column){
+		document.write("<li>");
+		document.write(column[row]);
+		document.write("</li>");
+	}
+	document.write("</ol>");
+</script>
+</body>
+</html>

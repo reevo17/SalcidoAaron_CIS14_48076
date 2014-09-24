@@ -1,7 +1,7 @@
 <script type="text/java">
 	/*
 		Author: Aaron C Salcido
-		September 22nd, 2014
+		September 24th, 2014
 		Purpose: Assignement 4.0
 				Using arrays to create a table that calculates Hours, Gross Pay, $/hour, Net Pay.
 				 
@@ -20,7 +20,7 @@
 		<table width="200" border="1">
         <thead>
         	<tr>
-            	<th style="font-family: Verdana ;font-size:20px"  colspan="5">Savings Table</th>
+            	<th style="font-family: Verdana ;font-size:20px"  colspan="5">Pay Check Table</th>
             </tr>
         </thead>
  
@@ -41,19 +41,24 @@
 		
 		
 		var str="";//STORES THE DOCUMENT.WRITE
-		var tax = 10;//UNITS IN %
-		var hour = [];
-		var dep =  [];
+		var tax     = 10;//UNITS IN %
+		var hour    = [];
+		var dep     = [];
+		var netpay  = [];
+		var payrate = [];
 		
 		//FILL ARRAYS
-		var hour = [1];
-		
+		hour[0] =0;
+		pay[0]  =0;
+		interest[0]=0;
+		netpay[0]  =0;
+		payrate[0]=pay/hour;
 		
 		
 		
 		//Output initial conditions
-		document.write("<p>Initial Blance =  $"+balance+"</p>");
-		document.write("<p>Interest Rate  =  "+intRate+"%</p>");
+		document.write("<p>Overtime Start =  "+ovt+" hours</p>");
+		document.write("<p>Double Time Start  =  "+dbt+" hours</p>");
 		document.write("<p>Yearly Deposit =  $"+deposit+"</p>")
 		//Generate a table
 		//++year= year++= year+1 = (year+=1) ALL THE SAME
@@ -63,12 +68,8 @@
 			str+=("<tr>") ;
 			str+=("<th>" +hour+"</th>");
 				//Calculate the balance
-				
-				//balance=balance*(1+intRate/100);
-			(1+intRate/100);
-				//Removes uneeded decimal places
-			.toFixed(2);
-			str+=("<td>" +balance+"</td>");
+			tax = tax*
+			str+=("<td>" +hour+"</td>");
 			str+=("</tr>") ;
 		}
 		document.write(str);

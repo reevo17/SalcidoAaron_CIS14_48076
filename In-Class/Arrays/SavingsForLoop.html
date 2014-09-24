@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Savings For Loop Construct</title>
+</head>
+
+<body>
+<script type="text/javascript">
+	//Initialize Variables
+	var balance = new Array();
+	balance[0]=100;//$
+	var interest=5;//interest rate %
+	document.write("<h2>Balance = $"+balance[0]+"</h2>");
+	document.write("<h2>Interest Rate = "+interest+"%</h2>");
+	//Calculate the new balance every year
+	//Loop using the for-loop
+	for(var years=1;years<=50;++years){
+		balance[years]=balance[years-1]*(1+interest/100);
+		balance[years]=Math.floor(balance[years]*100)/100;
+	}
+	//Display the results
+	for(var years=1;years<=50;++years){
+		document.write(years+" $"+balance[years]+"<br>");
+	}
+</script>
+</body>
+</html>
