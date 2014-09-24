@@ -17,6 +17,7 @@
 
 <body>
 
+
 		<table width="200" border="1">
         <thead>
         	<tr>
@@ -40,7 +41,7 @@
 		var dbt = 40; //DOUBLE TIME
 		
 		
-		var str="";//STORES THE DOCUMENT.WRITE
+		var str="";       //STORES THE DOCUMENT.WRITE
 		var tax     = 0.1;//UNITS IN %
 		var hour    = [];
 		var dep     = [];
@@ -49,12 +50,13 @@
 		var gross   = [];
 		
 		//FILL ARRAYS
-		hour[0] =0;
-		pay[0]  =10;       //AMOUNT PER HOUR
-		pay[1]  =pay*hour; //GROSS PAY
-		netpay[0]  =0;
-		payrate[0]=pay/hour;
-		gross[0]    =pay*hour;
+		hour[0]     = 0;
+		pay[0]      = 10;       //AMOUNT PER HOUR
+		pay[1]      = pay*hour; //GROSS PAY
+		pay[2]      = pay/hour; 
+		netpay[0]   = 0;
+		gross[0]    = pay*hour;
+		
 		
 		
 		
@@ -63,15 +65,14 @@
 		document.write("<p>Double Time Start  =  "+dbt+" hours</p>");
 		document.write("<p>Yearly Deposit =  $"+deposit+"</p>")
 		//Generate a table
-		//++year= year++= year+1 = (year+=1) ALL THE SAME
+		
 		for(var hour=1;hour<=50;++hour){
 			
 			//TABLE ROW 
 			str+=("<tr>") ;
-			str+=("<td>" +hour[0]+"</th>");
-				//Calculate the balance
-			tax = tax*
+			str+=("<td>" +hour[0]+"</th>");			
 			str+=("<td>" +gross[0]+"</td>");
+			str+=("<td>" +pay[2]+"</td>");
 			str+=("</tr>") ;
 		}
 		document.write(str);
