@@ -42,9 +42,8 @@
 		var dbt  = 40; //DOUBLE TIME
 		
 		
-		var str="";       //STORES THE DOCUMENT.WRITE
+		var str=" ";       //STORES THE DOCUMENT.WRITE
 		var tax     = 0.1;//UNITS IN %
-		var dep     = [];
 		var netpay  = [];
 		var payrate = [];
 		var gross   = [];
@@ -60,19 +59,21 @@
 		
 		
 		//Output initial conditions
-		document.write("<p>Dollars Per Hour Straight Time =  $"+pay[0]+"</p>")
-		document.write("<p>Dollars Per Hour Earned =  $"+pay[1]+"</p>")
+		
+		document.write("<p>"+"Dollars Per Hour Straight Time =  $"+pay[0]+"</p>");
+		document.write("<p>Dollars Per Hour Earned =  $"+pay[1]+"</p>");
 		document.write("<p>Overtime Start =  "+ovt+" hours</p>");
 		document.write("<p>Double Time Start  =  "+dbt+" hours</p>");
+		
 		
 		//Generate a table
 		
 			
 			//TABLE ROW 
 			str+=("<tr>") ;
-			str+=("<td>" +hour+"</th>");			
-			str+=("<td>" +gross[0]+"</td>");
-			str+=("<td>" +pay[2]+"</td>");
+			str+=("<td>" +hour+ "</td>");			
+			str+=("<td>" +gross[0]+ "</td>");
+			str+=("<td>" +pay[2]+ "</td>");
 			str+=("</tr>") ;
 		
 		document.write(str);
