@@ -37,20 +37,19 @@
         
 <script type="text/javascript">
 		//Set up savings table
-		var ovt = 20; //OVERTIME
-		var dbt = 40; //DOUBLE TIME
+		var hour = parseInt(Math.random()*50+10);
+		var ovt  = 20; //OVERTIME
+		var dbt  = 40; //DOUBLE TIME
 		
 		
 		var str="";       //STORES THE DOCUMENT.WRITE
 		var tax     = 0.1;//UNITS IN %
-		var hour    = [];
 		var dep     = [];
 		var netpay  = [];
 		var payrate = [];
 		var gross   = [];
 		
 		//FILL ARRAYS
-		hour[0]     = 0;
 		pay[0]      = 10;       //AMOUNT PER HOUR
 		pay[1]      = pay*hour; //GROSS PAY
 		pay[2]      = pay/hour; 
@@ -61,20 +60,21 @@
 		
 		
 		//Output initial conditions
+		document.write("<p>Dollars Per Hour Straight Time =  $"+pay[0]+"</p>")
+		document.write("<p>Dollars Per Hour Earned =  $"+pay[1]+"</p>")
 		document.write("<p>Overtime Start =  "+ovt+" hours</p>");
 		document.write("<p>Double Time Start  =  "+dbt+" hours</p>");
-		document.write("<p>Yearly Deposit =  $"+deposit+"</p>")
+		
 		//Generate a table
 		
-		for(var hour=1;hour<=50;++hour){
 			
 			//TABLE ROW 
 			str+=("<tr>") ;
-			str+=("<td>" +hour[0]+"</th>");			
+			str+=("<td>" +hour+"</th>");			
 			str+=("<td>" +gross[0]+"</td>");
 			str+=("<td>" +pay[2]+"</td>");
 			str+=("</tr>") ;
-		}
+		
 		document.write(str);
 	</script>
 </table
