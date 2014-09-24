@@ -41,18 +41,20 @@
 		
 		
 		var str="";//STORES THE DOCUMENT.WRITE
-		var tax     = 10;//UNITS IN %
+		var tax     = 0.1;//UNITS IN %
 		var hour    = [];
 		var dep     = [];
 		var netpay  = [];
 		var payrate = [];
+		var gross   = [];
 		
 		//FILL ARRAYS
 		hour[0] =0;
-		pay[0]  =0;
-		interest[0]=0;
+		pay[0]  =10;       //AMOUNT PER HOUR
+		pay[1]  =pay*hour; //GROSS PAY
 		netpay[0]  =0;
 		payrate[0]=pay/hour;
+		gross[0]    =pay*hour;
 		
 		
 		
@@ -66,10 +68,10 @@
 			
 			//TABLE ROW 
 			str+=("<tr>") ;
-			str+=("<th>" +hour+"</th>");
+			str+=("<td>" +hour[0]+"</th>");
 				//Calculate the balance
 			tax = tax*
-			str+=("<td>" +hour+"</td>");
+			str+=("<td>" +gross[0]+"</td>");
 			str+=("</tr>") ;
 		}
 		document.write(str);
