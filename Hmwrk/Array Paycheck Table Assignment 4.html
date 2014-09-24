@@ -44,7 +44,6 @@
 		var str=" ";       //STORES THE DOCUMENT.WRITE
 		
 		var netpay  = [];
-		var payrate = [];
 		var gross   = [];
 		var pay     = [];
 		
@@ -52,8 +51,8 @@
 		pay[0]      = 10;       //AMOUNT PER HOUR
 		pay[1]      = pay[0]*hour; //GROSS PAY
 		pay[2]      = pay[0]/hour; 
-		netpay[0]   = 0;
-		var tax     = pay[0]-(0.1*pay[0]);//UNITS IN %
+		var tax     = 0.1*pay[0];//UNITS IN %
+		netpay[0]   = pay[0]-tax;
 		
 		
 		
@@ -66,12 +65,12 @@
 		document.write("<p>Overtime Start =  "+ovt+" hours</p>");
 		document.write("<p>Double Time Start  =  "+dbt+" hours</p>");
 		
-		<p>This is the content for Layout P Tag</p>
+		
 		//Generate a table
 		for(var hour = 1; hour <73; hour++){
 			if(hour<ovt){
 				pay[0]=pay[0]*hour;
-			}else if (hour>20&&hour<40){
+			}else if (hour>ovt&&hour<dbt){
 				pay[0]=2*pay[0]*hour;	
 			}else{
 				pay[0]=3*pay[0]*hour;
