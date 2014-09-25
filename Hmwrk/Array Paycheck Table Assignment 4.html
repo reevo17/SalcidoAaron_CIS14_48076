@@ -39,6 +39,7 @@
 		//Set up savings table
 		var ovt  = 20; //OVERTIME
 		var dbt  = 40; //TRIPLE TIME
+		var hour = 1;
 		
 		
 		var str=" ";       //STORES THE DOCUMENT.WRITE
@@ -50,7 +51,7 @@
 		//FILL ARRAYS
 		pay[0]      = 10;       //AMOUNT PER HOUR
 		pay[1]      = pay[0]*hour; //GROSS PAY
-		pay[2]      = pay[0]/hour; 
+		pay[2]      = pay[0]/hour; //DOLLARS PER HOUR
 		netpay[0]   = pay[0]-tax;
 		var tax     = 0.1*pay[0];//UNITS IN %
 		
@@ -66,7 +67,8 @@
 		
 		
 		//Generate a table
-		for(var hour = 1; hour <73; hour++){
+		for(hour = 1; hour<73; ++hour){
+			
 			if(hour<ovt){
 				pay[0]=pay[0]*hour;      //GIVES STRAIGHT TIME
 			}else if (hour>ovt&&hour<dbt){
@@ -80,9 +82,8 @@
 			str+=("<td>" + pay[0] + "</td>");
 			pay[2]=pay[2].toFixed(2);
 			str+=("<td>" + pay[2] + "</td>");
-			
 			str+=("<td>" + tax + "</td>");
-			str+=("<td>" + netpay + "</td>");
+			str+=("<td>" + netpay[0] + "</td>");
 			str+=("</tr>") ;
 			
 			
