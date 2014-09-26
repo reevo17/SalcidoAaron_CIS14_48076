@@ -1,0 +1,95 @@
+<script type="text/java">
+	/*
+		Author: Aaron C Salcido
+		September 25th, 2014
+		Purpose: Assignement 4.0
+				Using arrays to create a table that calculates Hours, Gross Pay, $/hour, Net Pay.
+				 
+	*/
+</script>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Array Table</title>
+</head>
+
+<body>
+
+
+		<table width="200" border="1">
+        <thead>
+        	<tr>
+            	<th style="font-family: Verdana ;font-size:20px"  colspan="5">Pay Check Table</th>
+            </tr>
+        </thead>
+ 
+        <tr>
+        	<th style="font-family: Verdana">Hours</th>
+            <th style="font-family: Verdana">Gross Pay</th>
+            <th style="font-family: Verdana">Pay Rate$/hour</th>
+            <th style="font-family: Verdana">Taxes at 10%</th>
+            <th style="font-family: Verdana">Net Pay $'s</th>
+         </tr>
+         
+         
+        
+<script type="text/javascript">
+		//Set up savings table
+		var ovt  = 20; //OVERTIME
+		var dbt  = 40; //TRIPLE TIME
+		var hour = 1;
+		
+		
+		var str=" ";       //STORES THE DOCUMENT.WRITE
+		
+		var netpay  = [];
+		var gross   = [];
+		var pay     = [];
+		
+		//FILL ARRAYS
+		pay[0]      = 10;       //AMOUNT PER HOUR
+		pay[1]      = pay[0]*hour; //GROSS PAY
+		pay[2]      = pay[0]/hour; //DOLLARS PER HOUR
+		netpay[0]   = pay[0]-tax;
+		var tax     = 0.1*pay[0];//UNITS IN %
+		
+
+		
+		
+		//Output initial conditions
+		
+		document.write("<p>"+"Dollars Per Hour Straight Time =  $"+pay[0]+"</p>");
+		document.write("<p>Dollars Per Hour Earned =  $"+pay[1]+"</p>");
+		document.write("<p>Overtime Start =  "+ovt+" hours</p>");
+		document.write("<p>Double Time Start  =  "+dbt+" hours</p>");
+		
+		
+		//Generate a table
+		for(hour = 1; hour<73; ++hour){
+			
+			if(hour<ovt){
+				pay[0]=pay[0]*hour;      //GIVES STRAIGHT TIME
+			}else if (hour>ovt&&hour<dbt){
+				pay[0]=2*pay[0]*hour;	//GIVES DOUBLE TIME
+			}else{
+				pay[0]=3*pay[0]*hour;   //GIVE TRIPLE TIME
+						}
+			//TABLE ROW 
+			str+=("<tr>") ;
+			str+=("<td>" + hour + "</td>");			
+			str+=("<td>" + pay[0] + "</td>");
+			pay[2]=pay[2].toFixed(2);
+			str+=("<td>" + pay[2] + "</td>");
+			str+=("<td>" + tax + "</td>");
+			str+=("<td>" + netpay[0] + "</td>");
+			str+=("</tr>") ;
+			
+			
+		}
+		document.write(str);
+	</script>
+</table
+></body>
+</html>
