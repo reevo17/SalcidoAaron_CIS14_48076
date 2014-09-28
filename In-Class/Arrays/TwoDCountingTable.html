@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2 Dimensional Array</title>
+</head>
+
+<body>
+<script type="text/javascript">
+	//Declare a 2 dimensional array
+	var table=new Array();
+	var ROWS=12;
+	for(var row=0;row<ROWS;row++){
+		table[row]=new Array();
+	}
+	var COLS=20;
+	//Fill the array with values
+	for(var row=0;row<ROWS;row++){
+		for(var col=0;col<COLS;col++){
+			table[row][col]=row*COLS+col;
+		}
+	}
+	//Display the content of the above table
+	document.write("<table>");
+	for(var row=0;row<ROWS;row++){
+		document.write("<tr>");
+		for(var col=0;col<COLS;col++){
+			document.write("<td>");
+			document.write(table[row][col]);
+			document.write("</td>");
+		}
+		document.write("</tr>");
+	}
+	document.write("</table>");
+</script>
+</body>
+</html>
