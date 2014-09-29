@@ -16,8 +16,6 @@
 </head>
 
 <body>
-
-
 		<table border="1">
         <thead>
         	<tr>
@@ -67,7 +65,7 @@
 			taxes[h] = gross[h] * .10; 
 			//Fill netpay double time
 			netpay[h] = gross[h] - taxes[h];
-			}//End if double time
+			}
 			
 		//Triple time fills
 			if(h > 40){
@@ -78,28 +76,26 @@
 			taxes[h] = gross[h] * .10; 
 			//Fill netpay triple time
 			netpay[h] = gross[h] - taxes[h];
-			}//End if triple time
-		}//End for loop
+			}
+		}
 		
 		
 		//Output initial conditions
 		
 		document.write("<p>Dollars Per Hour Straight Time =  $"+10+"</p>");
-		document.write("<p>Double Time Start =  "+20+" hours</p>");
-		document.write("<p>Triple Time Start  =  "+40+" hours</p>");
-		
-		
+		document.write("<p>Double Time Start =  "+ dbt +" hours</p>");
+		document.write("<p>Triple Time Start  =  "+ tri+" hours</p>");
+
 		//Generate a table
 		
-			
 			//Table print statement
 			for(var h = 0; h <= 72; h ++){
 			str+=("<tr>") ;
 			str+=("<td><strong>" + hours[h] + "</strong></td>");			
 			str+=("<td>" +payrate[h]+ "</td>");
-			str+=("<td>" +gross[h]+ "</td>");
-			str+=("<td>" +taxes[h]+ "</td>");
-			str+=("<td>" +netpay[h]+ "</td>");
+			str+=("<td> $" +gross[h]+ "</td>");
+			str+=("<td> <em>$" +taxes[h]+ "</em></td>");
+			str+=("<td> $" +netpay[h]+ "</td>");
 			str+=("</tr>") ;
 			}
 		
