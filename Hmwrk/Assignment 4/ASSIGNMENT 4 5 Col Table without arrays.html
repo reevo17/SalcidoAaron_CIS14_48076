@@ -1,0 +1,106 @@
+<script type="text/java">
+	/*
+		Author: Aaron C Salcido
+		September 26th, 2014
+		Purpose: Assignement 4.0
+				Using arrays to create a table that calculates Hours, Gross Pay, $/hour, Net Pay.
+				 
+	*/
+</script>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Array Table</title>
+</head>
+
+<body>
+		<table border="1">
+        <thead>
+        	<tr>
+            	<th style="font-family: Verdana ;font-size:20px"  colspan="5">Pay Check Table</th>
+            </tr>
+        </thead>
+ 
+        <tr>
+        	<th style="font-family: Verdana">Hours</th>
+            <th style="font-family: Verdana">Gross Pay</th>
+            <th style="font-family: Verdana">Pay Rate $'s/hour</th>
+            <th style="font-family: Verdana">Taxes at 10%</th>
+            <th style="font-family: Verdana">Net Pay $'s</th>
+         </tr>
+         
+         
+        
+<script type="text/javascript">
+		//Define Variables
+		
+		var reg =  10; //UNITS Hours, Straight Time
+		var dbt  = 20; //UNITS Hours, Double Time
+		var tri  = 30; //UNITS Hours, Triple Time
+		var str=" ";   //Stores output, used as String
+		
+		var payrate = [];
+		var gross   = [];
+		var taxes = [];
+		var hours = [];
+		var netpay  = [];
+		
+		//Filling Arrays
+		for(var h = 0; h <= 72; h ++){
+		//Basic Fills
+			hours[h] = h;
+			payrate[h] = reg; //payrate array
+			gross[h] = hours[h] * reg; //gross pay array	
+			taxes[h] = gross[h] * .10; //Taxes	
+			netpay[h] = gross[h] - taxes[h];//Netetpay
+			
+		//Double time fills
+			if(h > 20){
+			payrate[h] = dbt;
+			//Fill gross pay array double time
+			gross[h] = 200 + (h - 20) * dbt ;
+			//Fill taxes double time
+			taxes[h] = gross[h] * .10; 
+			//Fill netpay double time
+			netpay[h] = gross[h] - taxes[h];
+			}
+			
+		//Triple time fills
+			if(h > 40){
+			payrate[h] = tri;
+			//Fill gross pay array triple time
+			gross[h] = 600 + (h - 40) * tri ;
+			//Fill taxes triple time
+			taxes[h] = gross[h] * .10; 
+			//Fill netpay triple time
+			netpay[h] = gross[h] - taxes[h];
+			}
+		}
+		
+		
+		//Output initial conditions
+		
+		document.write("<p>Dollars Per Hour Straight Time =  $"+10+"</p>");
+		document.write("<p>Double Time Start =  "+ dbt +" hours</p>");
+		document.write("<p>Triple Time Start  =  "+ tri+" hours</p>");
+
+		//Generate a table
+		
+			//Table print statement
+			for(var h = 0; h <= 72; h ++){
+			str+=("<tr>") ;
+			str+=("<td><strong>" + hours[h] + "</strong></td>");			
+			str+=("<td>" +payrate[h]+ "</td>");
+			str+=("<td> $" +gross[h]+ "</td>");
+			str+=("<td> <em>$" +taxes[h]+ "</em></td>");
+			str+=("<td> $" +netpay[h]+ "</td>");
+			str+=("</tr>") ;
+			}
+		
+		document.write(str);
+	</script>
+</table
+></body>
+</html>
