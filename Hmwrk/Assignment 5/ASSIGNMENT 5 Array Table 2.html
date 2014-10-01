@@ -41,30 +41,31 @@
 		var tri  = 30; //UNITS Hours, Triple Time
 		var str=" ";   //Stores output, used as String
 		
-		var pay = [];
+		var pay = new Array([]);
 		//pay[0][i] = payrate
 		//pay[1][i] = netpay
 		var gross   = [];
 		var taxes = [];
 		var hours = [];
-		
+		pay[0][0] = [];
+		pay[1][0] = "";
 		
 		//Filling Arrays
 		for(var h = 0; h <= 72; h ++){
 		//Basic Fills
-			hours[h] = h;
-			pay[0][h] = reg; //payrate array
-			gross[h] = hours[h] * reg; //gross pay array	
-			taxes[h] = gross[h] * .10; //Taxes	
-			pay[1][h] = gross[h] - taxes[h];//Netetpay
+			hours[h]  = h;
+			pay[0][h] = reg;           //payrate array
+			gross[h]  = hours[h] * reg; //gross pay array	
+			taxes[h]  = gross[h] * .10; //Taxes	
+			pay[1][h] = gross[h] - taxes[h];//Net Pay
 			
 		//Double time fills
 			if(h > 20){
 			pay[0][h] = dbt;
 			//Fill gross pay array double time
-			gross[h] = 200 + (h - 20) * dbt ;
+			gross[h]  = 200 + (h - 20) * dbt ;
 			//Fill taxes double time
-			taxes[h] = gross[h] * .10; 
+			taxes[h]  = gross[h] * .10; 
 			//Fill netpay double time
 			pay[1][h] = gross[h] - taxes[h];
 			}
@@ -73,9 +74,9 @@
 			if(h > 40){
 			pay[0][h] = tri;
 			//Fill gross pay array triple time
-			gross[h] = 600 + (h - 40) * tri ;
+			gross[h]  = 600 + (h - 40) * tri ;
 			//Fill taxes triple time
-			taxes[h] = gross[h] * .10; 
+			taxes[h]  = gross[h] * .10; 
 			//Fill netpay triple time
 			pay[1][h] = gross[h] - taxes[h];
 			}
@@ -93,11 +94,11 @@
 			//Table print statement
 			for(var h = 0; h <= 72; h ++){
 			str+=("<tr>") ;
-			str+=("<td><strong>" + hours[h] + "</strong></td>");			
-			str+=("<td>" +pay[0][h]+ "</td>");
-			str+=("<td> $" +gross[h]+ "</td>");
-			str+=("<td> <em>$" +taxes[h]+ "</em></td>");
-			str+=("<td> $" +pay[1][h]+ "</td>");
+			str+=("<td><strong>" + hours[h] + "</strong></td>");	//Hours Data		
+			str+=("<td>" +         pay[0][h]+ "</td>");				//Gross Pay Data
+			str+=("<td> $" +       gross[h]+ "</td>");				//Pay Rate Data
+			str+=("<td> <em>$"+    taxes[h]+ "</em></td>");			//Taxes Data
+			str+=("<td> $" +       pay[1][h]+ "</td>");				//Net Pay Data
 			str+=("</tr>") ;
 			}
 		
