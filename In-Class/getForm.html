@@ -6,25 +6,18 @@
 </head>
 
 <body>
+<script type="text/javascript" src="getFormFunction.js">
+
+</script>
 
 <script>
 	var url=location.href;
-	document.write(url);
-	var info=url.split("?");
+	$_GET=getForm(url);
+	for(name in $_GET){
+		document.write(name+"="+"<br>");	
+	}
 	
-	for(vari=0;i<info.length;i++){
-		document.write("<h2>"+info[i]+"</h2>");
-	}
-		
-	var nameValuePairs=info[1].split("&");
-	var object = new Object;
-	for(var i=0;i<nameValuePairs.length-1;i++){
-		document.write("<h2>"+nameValuePairs[i]+"</h2>");
-		var map=nameValuePairs[i].split("=");
-		var name=map[0]
-		var value=map[1]
-		obj[name]=value
-	}
+	
 </script>
 	
 </body>
