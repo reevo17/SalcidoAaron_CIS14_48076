@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Untitled Document</title>
+<script src="formFunc.js"></script>
 </head>
 
 <body>
@@ -25,38 +26,16 @@
         
 <script type="text/javascript">
 //RETREIVE INFORMATION FROM FORM
-function getFormInfo(){
-    var obj=new Object();
-    var url=location.href;
-    var argumentList=url.split('?');
-    var nameValuePairs=argumentList[1].split('&');
-    for(var i=0;i<nameValuePairs.length-1;i++){
-            var map=nameValuePairs[i].split('=');
-			var property=map[0];
-			var value=map[1];
-		obj[property]=value;
-    }
-    return obj;
-}
-function putFormInfo(obj,pageOn,pageTo){
-    var url=location.href;
-    var page=url.split('?');
-    var sendto=page[0].replace(pageOn,pageTo);
-    sendto+="?";
-    for(var i in obj){
-        document.write(i+"="+obj[i]+"</br>");
-	sendto+=(i+"="+obj[i]+"&");
-    }
-    sendto+="Submit=Submit+Query";
-    return sendto;
-}
+		var url=document.location.href;
+		
+		var formGet = getForm(url);
 
 
 		//Define Variables
 		
-		var reg =  10; //UNITS Hours, Straight Time
-		var dbt  = 20; //UNITS Hours, Double Time
-		var tri  = 30; //UNITS Hours, Triple Time
+		var reg =  formGet["Hours"]; //UNITS Hours, Straight Time
+		var dbt  = formGet["doubleTimeStart]; //UNITS Hours, Double Time
+		var tri  = formGet["tripleTimeStart"]; //UNITS Hours, Triple Time
 		var str=" ";   //Stores output, used as String
 		
 		var payrate = [];
