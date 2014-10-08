@@ -35,7 +35,9 @@
 		
 		var reg =  formGet["Hours"]; //UNITS Hours, Straight Time
 		var dbt  = formGet["doubleTimeStart]; //UNITS Hours, Double Time
+		
 		var tri  = formGet["tripleTimeStart"]; //UNITS Hours, Triple Time
+		var tax = formGet["Taxes"];//TAXES
 		var str=" ";   //Stores output, used as String
 		
 		var payrate = [];
@@ -50,7 +52,7 @@
 			hours[h] = h;
 			payrate[h] = reg; //payrate array
 			gross[h] = hours[h] * reg; //gross pay array	
-			taxes[h] = gross[h] * .10; //Taxes	
+			taxes[h] = gross[h] * tax; //Taxes	
 			netpay[h] = gross[h] - taxes[h];//Netetpay
 			
 		//Double time fills
@@ -59,7 +61,7 @@
 			//Fill gross pay array double time
 			gross[h] = 200 + (h - 20) * dbt ;
 			//Fill taxes double time
-			taxes[h] = gross[h] * .10; 
+			taxes[h] = gross[h] * tax; 
 			//Fill netpay double time
 			netpay[h] = gross[h] - taxes[h];
 			}
@@ -70,7 +72,7 @@
 			//Fill gross pay array triple time
 			gross[h] = 600 + (h - 40) * tri ;
 			//Fill taxes triple time
-			taxes[h] = gross[h] * .10; 
+			taxes[h] = gross[h] * tax; 
 			//Fill netpay triple time
 			netpay[h] = gross[h] - taxes[h];
 			}
@@ -79,7 +81,7 @@
 		
 		//Output initial conditions
 		
-		document.write("<p>Dollars Per Hour Straight Time =  $"+10+"</p>");
+		document.write("<p>Dollars Per Hour Straight Time =  $"+reg+"</p>");
 		document.write("<p>Double Time Start =  "+ dbt +" hours</p>");
 		document.write("<p>Triple Time Start  =  "+ tri+" hours</p>");
 
