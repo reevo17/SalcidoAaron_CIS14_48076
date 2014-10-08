@@ -34,10 +34,11 @@
 		//Define Variables
 		
 		var reg =  formGet["Hours"]; //UNITS Hours, Straight Time
-		var dbt  = formGet["doubleTimeStart]; //UNITS Hours, Double Time
+		var dbt  = formGet["doubleTimeStart"]; //UNITS Hours, Double Time
 		
 		var tri  = formGet["tripleTimeStart"]; //UNITS Hours, Triple Time
 		var tax = formGet["Taxes"];//TAXES
+			//tax/=100;
 		var str=" ";   //Stores output, used as String
 		
 		var payrate = [];
@@ -52,7 +53,7 @@
 			hours[h] = h;
 			payrate[h] = reg; //payrate array
 			gross[h] = hours[h] * reg; //gross pay array	
-			taxes[h] = gross[h] * tax; //Taxes	
+			taxes[h] = gross[h] * tax/100; //Taxes	
 			netpay[h] = gross[h] - taxes[h];//Netetpay
 			
 		//Double time fills
@@ -61,7 +62,7 @@
 			//Fill gross pay array double time
 			gross[h] = 200 + (h - 20) * dbt ;
 			//Fill taxes double time
-			taxes[h] = gross[h] * tax; 
+			taxes[h] = gross[h] * tax/100; 
 			//Fill netpay double time
 			netpay[h] = gross[h] - taxes[h];
 			}
@@ -72,7 +73,7 @@
 			//Fill gross pay array triple time
 			gross[h] = 600 + (h - 40) * tri ;
 			//Fill taxes triple time
-			taxes[h] = gross[h] * tax; 
+			taxes[h] = gross[h] * tax/100; 
 			//Fill netpay triple time
 			netpay[h] = gross[h] - taxes[h];
 			}
