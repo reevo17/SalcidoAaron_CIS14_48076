@@ -6,93 +6,91 @@
 </head>
 
 <body>
-<script type="text/javascript">
-		//Setting up savings table
-		
-		var reg  = ;	// dollars per hour straight time
-		var dbt  = ; 	//Doubletime
-		var tri  = ; 	//Triple time
-		var str	 =" ";  //Stores output
-		
-		//Output initial conditions
-		
-		document.write("<p>Dollars Per Hour Straight Time =  $"+reg+"</p>");
-		document.write("<p>Double Time Start =   "+dbt+" hours</p>");
-		document.write("<p>Triple Time Start  =  "+tri+" hours</p>");
-		
-	</script>
-
-<table border="1" align="center">
-        
+		<table border="1">
+        <thead>
         	<tr>
-            <th style="font-family: Verdana ;font-size:20px"  colspan="5">Pay Check Table</th>
+            	<th style="font-family: Verdana ;font-size:20px"  colspan="5">Pay Check Table</th>
             </tr>
+        </thead>
  
         <tr>
         	<th style="font-family: Verdana">Hours</th>
-            <th style="font-family: Verdana">Pay Rate $/hour</th>
             <th style="font-family: Verdana">Gross Pay</th>
+            <th style="font-family: Verdana">Pay Rate $'s/hour</th>
             <th style="font-family: Verdana">Taxes at 10%</th>
-            <th style="font-family: Verdana">Net Pay</th>
+            <th style="font-family: Verdana">Net Pay $'s</th>
          </tr>
          
-         <script type="text/javascript">
          
-         var row  = 73;
-         var col  = 5;
-         var str2 = " " ;
-         var fill = 0;
-         
-         //Declare two-dimensional array
-         var table = new Array(row); 	// 72 rows of the table
-         for(var i = 0; i < table.length; i++)
-         	table[i] = new Array(col);  // Each row has 5 columns
-         	
-         // Fill the array
-         for(var row = 0; row < table.length; row++) {
-         	for(col = 0; col < table[row].length; col++) {
-         		//Basic Fills
-         		//Fill Hours
-         		table[row][0] = row;  				 //Fill the pay rate
-         		table[row][1] = reg;				 //Fill the gross pay
-         		table[row][2] = table[row][0]* reg;  //Fill the taxes
-         		table[row][3] = table[row][2] * .10; //Fill the Net Pay
-         		table[row][4] = table[row][2] - table[row][3];
-         		
-         		//Fill Double Time
-         		if(row > 20){
-         			table[row][1] = dbt; 				   //Fill gross pay array double time
-         			table[row][2] = 200 + (row - 20) * dbt;//Fill taxes double time
-         			table[row][3] = table[row][2] * .10;   //Fill netpay double time
-         			table[row][4] = table[row][2] - table[row][3];
-         			}//End if double time
-         			
-         		//Fill Triple Time
-         		if(row > 40){
-         			table[row][1] = tri;					//Fill gross pay array triple time
-         			table[row][2] = 600 + (row - 40) * tri; //Fill taxes triple time
-         			table[row][3] = table[row][2] * .10;	//Fill netpay triple time
-         			table[row][4] = table[row][2] - table[row][3];
-         			}
-					
-         	}//End fill for
+        
+<script type="text/javascript">
+		//Define Variables
+		
+		var reg =  10; //UNITS Hours, Straight Time
+		var dbt  = 20; //UNITS Hours, Double Time
+		var tri  = 30; //UNITS Hours, Triple Time
+		var str=" ";   //Stores output, used as String
+		
+		var payrate = [];
+		var gross   = [];
+		var taxes = [];
+		var hours = [];
+		var netpay  = [];
+		
+		//Filling Arrays
+		for(var h = 0; h <= 72; h ++){
+		//Basic Fills
+			hours[h] = h;
+			payrate[h] = reg; //payrate array
+			gross[h] = hours[h] * reg; //gross pay array	
+			taxes[h] = gross[h] * .10; //Taxes	
+			netpay[h] = gross[h] - taxes[h];//Netetpay
 			
-         }//End fill for
-		 
-         	//PRINT ARRAY
-         for(var i = 0; i < 73; i++) {
-            
-            str+= ("<tr>");
-            str+= ("<td>"+table[i][0]+"</td>");
-            str+= ("<td>"+table[i][1]+"</td>");
-            str+= ("<td>"+table[i][2]+"</td>");
-            str+= ("<td>"+table[i][3]+"</td>");
-            str+= ("<td>"+table[i][4]+"</td>");
-            str+= ("</tr>");
-         		
-         	}//End for loop
-         	
-         document.write(str);
-         </script>
+		//Double time fills
+			if(h > 20){
+			payrate[h] = dbt;
+			//Fill gross pay array double time
+			gross[h] = 200 + (h - 20) * dbt ;
+			//Fill taxes double time
+			taxes[h] = gross[h] * .10; 
+			//Fill netpay double time
+			netpay[h] = gross[h] - taxes[h];
+			}
+			
+		//Triple time fills
+			if(h > 40){
+			payrate[h] = tri;
+			//Fill gross pay array triple time
+			gross[h] = 600 + (h - 40) * tri ;
+			//Fill taxes triple time
+			taxes[h] = gross[h] * .10; 
+			//Fill netpay triple time
+			netpay[h] = gross[h] - taxes[h];
+			}
+		}
+		
+		
+		//Output initial conditions
+		
+		document.write("<p>Dollars Per Hour Straight Time =  $"+10+"</p>");
+		document.write("<p>Double Time Start =  "+ dbt +" hours</p>");
+		document.write("<p>Triple Time Start  =  "+ tri+" hours</p>");
+
+		//Generate a table
+		
+			//Table print statement
+			for(var h = 0; h <= 72; h ++){
+			str+=("<tr>") ;
+			str+=("<td><strong>" + hours[h] + "</strong></td>");			
+			str+=("<td>" +payrate[h]+ "</td>");
+			str+=("<td> $" +gross[h]+ "</td>");
+			str+=("<td> <em>$" +taxes[h]+ "</em></td>");
+			str+=("<td> $" +netpay[h]+ "</td>");
+			str+=("</tr>") ;
+			}
+		
+		document.write(str);
+	</script>
+</table>
 </body>
 </html>
