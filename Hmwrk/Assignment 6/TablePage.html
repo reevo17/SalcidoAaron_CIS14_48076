@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<script type="text/javascript">
+		//Setting up savings table
+		
+		var reg  = ;	// dollars per hour straight time
+		var dbt  = ; 	//Doubletime
+		var tri  = ; 	//Triple time
+		var str	 =" ";  //Stores output
+		
+		//Output initial conditions
+		
+		document.write("<p>Dollars Per Hour Straight Time =  $"+reg+"</p>");
+		document.write("<p>Double Time Start =   "+dbt+" hours</p>");
+		document.write("<p>Triple Time Start  =  "+tri+" hours</p>");
+		
+	</script>
+
+<table border="1" align="center">
+        
+        	<tr>
+            <th style="font-family: Verdana ;font-size:20px"  colspan="5">Pay Check Table</th>
+            </tr>
+ 
+        <tr>
+        	<th style="font-family: Verdana">Hours</th>
+            <th style="font-family: Verdana">Pay Rate $/hour</th>
+            <th style="font-family: Verdana">Gross Pay</th>
+            <th style="font-family: Verdana">Taxes at 10%</th>
+            <th style="font-family: Verdana">Net Pay</th>
+         </tr>
+         
+         <script type="text/javascript">
+         
+         var row  = 73;
+         var col  = 5;
+         var str2	 ;
+         var fill = 0;
+         
+         //Declare two-dimensional array
+         var table = new Array(row); 	// 72 rows of the table
+         for(var i = 0; i < table.length; i++)
+         	table[i] = new Array(col);  // Each row has 5 columns
+         	
+         // Fill the array
+         for(var row = 0; row < table.length; row++) {
+         	for(col = 0; col < table[row].length; col++) {
+         		//Basic Fills
+         		//Fill Hours
+         		table[row][0] = row;  				 //Fill the pay rate
+         		table[row][1] = reg;				 //Fill the gross pay
+         		table[row][2] = table[row][0]* reg;  //Fill the taxes
+         		table[row][3] = table[row][2] * .10; //Fill the Net Pay
+         		table[row][4] = table[row][2] - table[row][3];
+         		
+         		//Fill Double Time
+         		if(row > 20){
+         			table[row][1] = dbt; 				   //Fill gross pay array double time
+         			table[row][2] = 200 + (row - 20) * dbt;//Fill taxes double time
+         			table[row][3] = table[row][2] * .10;   //Fill netpay double time
+         			table[row][4] = table[row][2] - table[row][3];
+         			}//End if double time
+         			
+         		//Fill Triple Time
+         		if(row > 40){
+         			table[row][1] = tri;					//Fill gross pay array triple time
+         			table[row][2] = 600 + (row - 40) * tri; //Fill taxes triple time
+         			table[row][3] = table[row][2] * .10;	//Fill netpay triple time
+         			table[row][4] = table[row][2] - table[row][3];
+         			}
+					
+         	}//End fill for
+			
+         }//End fill for
+		 
+         	//PRINT ARRAY
+         for(var i = 0; i < 73; i++) {
+            
+            str+= ("<tr>");
+            str+= ("<td>"+table[i][0]+"</td>");
+            str+= ("<td>"+table[i][1]+"</td>");
+            str+= ("<td>"+table[i][2]+"</td>");
+            str+= ("<td>"+table[i][3]+"</td>");
+            str+= ("<td>"+table[i][4]+"</td>");
+            str+= ("</tr>");
+         		
+         	}//End for loop
+         	
+         document.write(str);
+         </script>
+</body>
+</html>
