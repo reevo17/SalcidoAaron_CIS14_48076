@@ -3,4 +3,19 @@
 	Aaron C Salcido, October 10th, 2014 */
 	
 
+body{
+	
+}
 
+.header{
+	position:fixed;
+	width:100%;
+}
+.navbar{
+	
+}
+.navbar  li{
+	display:inline;
+}
+.navbar a{
+}
