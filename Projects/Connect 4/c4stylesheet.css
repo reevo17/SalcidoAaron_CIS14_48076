@@ -2,20 +2,27 @@
 /* Stylesheet for Connect 4 Project
 	Aaron C Salcido, October 10th, 2014 */
 	
-
-body{
+.play-area{
+	background-image:url(http://i.imgur.com/e0DYcam.jpg);
+	background-repeat:no-repeat;
+	background-size:1920px 1080px;
+}
 	
-}
-
-.header{
-	position:fixed;
-	width:100%;
-}
 .navbar{
-	
-}
-.navbar  li{
 	display:inline;
+	position:fixed;
+}
+.navbar li{
+	display:inline;
+	text-decoration:none;
+	padding:5px;
+	background-color:black;
+	border-color: white;
+	border-radius:4px;
+	padding: 5px 10px;
 }
 .navbar a{
+	color:white;	
+	margin-left:auto;
+	margin-right:auto;
 }
