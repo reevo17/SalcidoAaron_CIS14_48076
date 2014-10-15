@@ -14,12 +14,15 @@
 		user(name);
 		
 		
-		var Val = new Object;
-		Val = {"name=val":"name=Aaron"};
-		var obj = JSON.parse(Val);
+		var Val = {name:"Aaron",age:23,height:"5 foot 7"};
+		var str = JSON.stringify(Val);
 		
-		for(prop in obj){
-			document.write(prop+"="+obj[prop]);
+		document.write("<h1>"+str+"</h1>");
+		
+		var Obj = JSON.parse(str);
+		
+		for(prop in Obj){
+			document.write("<h1>"+prop+"="+Obj[prop]+"</br>");
 		}
 		
 	</script>
