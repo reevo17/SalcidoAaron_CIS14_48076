@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+<head>
+<title>JSON</title>
+<meta charset="utf-8">
+</head>
+
+<body>
+	<script>
+		var Student = {
+			name:"Aaron",
+			age:19,
+			id:2541717
+		};
+		
+		var str = JSON.stringify(Student);
+		document.write("<h1>"+str+"</h1>");
+		
+		var obj = JSON.parse(str);
+		for(property in obj){
+			document.write("<h1>"+ property+"="+obj[property]+"</<h1>");
+		}
+	</script>
+</body>
+
+</html>
