@@ -1,0 +1,37 @@
+/* STYLE SHEET INDEX BUSINESS WEBSITE
+Aaron C Salcido, 18th October, 2014
+-Reevo */
+
+body{
+	background-image:;
+	background-color:gray;
+}
+.header{
+width: 100%;
+position: fixed;
+padding-top:-15px;
+}
+.nav{
+	background-color:black;
+	padding-top:5px;
+	padding-bottom:10px
+	
+}
+.nav li{
+	display: inline;
+	padding:5px;
+}
+.nav a{
+	border: black 2px solid;
+	allign: center;
+	color:white;
+	font-family:Arial;
+	font-size:28px;
+	padding-top:15px;
+	padding-bottom:10px;
+	
+}
+.nav a:hover{
+	border-left:white 2px solid;
+	border-right:white 2px solid;
+}
