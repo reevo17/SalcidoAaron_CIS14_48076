@@ -14,28 +14,39 @@ aside div{
 }
 #headerlogin{
 	display:inline;	
+	
 }
 .games{
 	width:auto;
-	allign:center;	
+	text-align:center;	
 }
 #games{
-	allign: center;
-	border: 2px solid #7ACCA3;
-	width: 250px;
-	height: 250px;
-	position: relative;
+	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
+	border: 2px solid #0099FF;
+	width: 450px;
+	height: 450px;
+
 	text-align: center;
 	border-radius: 20px;
 	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
-	color: #006DF0;
+	color: #0099FF;
 	font-style: normal;
 	text-decoration: none;
-}
+	background-image:url( http://chessonline.eu/wp-content/uploads/2011/12/chess.jpg );
+	background-size:100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color:black;
+	
+	
+}	
 #games a{
-	text-allign: center;
+	text-align: center;
 	margin: auto;
 	vertical-align: text-bottom;
+	
 }
 
 header ul li{
@@ -46,6 +57,9 @@ header ul li{
 }
 
 .nav{
+	text-align:center;
+	margin-left: auto;
+	margin-right:auto;
 	display:inline;	
 	padding:5px;
 	text-decoration:none;
@@ -57,3 +71,25 @@ button{
 #indexmain{
 	margin-left:120px;
 }	
+#aboutdiv{
+	margin-left:auto;
+	margin-right:auto;
+	color: white;
+	text-align: center;
+	border: 2px solid #0099FF;
+	width: 450px;
+	height: 400px;
+	position: relative;
+	text-align: center;
+	border-radius: 20px;
+	font-family: "Franklin Gothic Bold", "Arial Black", sans-serif;
+	font-style: normal;
+	text-decoration: none;
+	background-size:100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color:black;
+}
+#aboutdiv p{
+	color:white;
+}
