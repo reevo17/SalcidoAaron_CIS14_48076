@@ -1,3 +1,18 @@
 @charset "utf-8";
 /* CSS Document */
+aside div{
+	position:absolute;
+	display:block;
+	allign:left;
+	size:40px;	
+	float:left;
+}
 
+#indexmain{
+	float:right;	
+}
+
+header li{
+	display:inline;	
+	padding:50px;
+}
