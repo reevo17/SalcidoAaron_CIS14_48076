@@ -11,28 +11,34 @@
 
 <header>
     	<ul class="nav">
-        	<li><a href="index.html"</a>Home</li>
-            <li><a href="games.html"></a>Products</li>
-            <li><a href="about.html"></a>About</li>
-			<form>
-				<input name="username" type="text" />Login
-				<input name="password" type="password" />Password
+        	<li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+			<form name="loginform" action="login.html" method="get" id="loginform">
+				<input name="username" type="text" /><div id="headerlogin">Username</div>
+				<input name="password" type="password" /><div id="headerlogin">Password</div>
 				<input type="submit" text="Submit" value="Submit"/>
 			</form>
-        </ul>
+            <button type="button" onClick="register.html">Register</button>
+            
+  </ul>
 </header>
 
 <aside>
-    	<div>
+
+  <div>
         	About Us:
             	Reevo Games Inc. is a website dedicated to supplying you with the highest quality Digital Games that run smooth on almost any computer build! 
         </div>
 </aside>
 
 <div id="indexmain">
+
     <div id="games">
-    	Buy Computer Games Here!
+    <a href="games.html">Buy Computer Games Here!</a>
     </div>
+    
+
     <div id="aboutdiv">
     	Updates!
         
