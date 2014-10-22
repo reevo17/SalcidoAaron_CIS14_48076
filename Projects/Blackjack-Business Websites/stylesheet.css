@@ -31,7 +31,6 @@ aside div{
 	color: #006DF0;
 	font-style: normal;
 	text-decoration: none;
-	background-image: url(;
 }
 #games a{
 	text-allign: center;
@@ -39,7 +38,7 @@ aside div{
 	vertical-align: text-bottom;
 }
 
-header li{
+header ul li{
 	display:inline;	
 	padding:5px;
 	text-decoration:none;
