@@ -4,15 +4,18 @@ aside div{
 	position:absolute;
 	display:block;
 	allign:left;
-	size:40px;	
 	float:left;
+	width:100px;
+	border:2px solid black;
 }
 
 #indexmain{
-	float:right;	
+	allign:center;	
+	display:block;
+	float:right;
 }
 
 header li{
 	display:inline;	
-	padding:50px;
+	padding:5px;
 }
