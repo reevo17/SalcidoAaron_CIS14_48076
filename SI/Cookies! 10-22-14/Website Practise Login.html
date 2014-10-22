@@ -5,6 +5,7 @@
 <title>Reevo Game Store Home</title>
 <link type="text/css" rel="stylesheet" href="stylesheet.css">
 <link type="text/javascript" href="login.js">
+<script src="getForm.js"></script>
 </head>
 
 <body>
@@ -15,19 +16,14 @@
             <li><a href="games.html"></a>Products</li>
             <li><a href="about.html"></a>About</li>
 			<form>
-				<input name="username" type="text" />Login
-				<input name="password" type="password" />Password
-				<input type="submit" text="Submit" value="Submit"/>
+            <input name="username" type="text" />Login
+            <input name="password" type="password" />Password
+			<input type="submit" text="Submit" value="Submit"/>
 			</form>
         </ul>
 </header>
 
-<aside>
-    	<div>
-        	About Us:
-            	Reevo Games Inc. is a website dedicated to supplying you with the highest quality Digital Games that run smooth on almost any computer build! 
-        </div>
-</aside>
+
 
 <div id="indexmain">
     <div id="games">
@@ -38,12 +34,15 @@
         
     </div>
 </div>
+</aside>
 
-<script>
-	<form name="input" action="newpage.html">
+
+	<form name="input" action="newpage.html" method="get">
 		
-		<input />
+		<input name="user" type="text"  	/>Username<br>
+		<input name="pass" type="password"  />Password<br>
+		<input type="submit" text="submit" /><br>
 	</form>
-</script>
+
 </body>
 </html>
