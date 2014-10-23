@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+<title>JSON</title>
+<meta charset="utf-8">
+</head>
+
+<body>
+	<script>
+		var Book = {
+			author:"Erin Hunter",
+			title:"Hunters",
+			protagonist:"Fire Paw",
+			cool:true,
+			pagenum:340
+		};
+		
+		var str = JSON.stringify(Book);
+		document.write(str);
+		
+		Book = JSON.parse(str);
+		for(i in Book){
+			document.write("<h1>"+i+" = " +Book[i]+"</h1>");
+		}
+		
+		document.write("My favorite character is "+Book.protagonist+" from the book <u>"+Book.title+"</u>."+"<br>"+"There are "+Book.pagenum+" pages in the book, and the author is "+Book.author+".");
+		
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head>
+<title>Nill</title>
+<script src="functions.js"></script>
+</head>
+
+<body>
+	<script>
+		var num = ranNum();
+		var name = prompt("What is your name?");
+		document.write("<h1>"+num+"</h1>");
+		user(name);
+		
+		
+		var Val = {name:"Aaron",age:23,height:"5 foot 7"};
+		var str = JSON.stringify(Val);
+		
+		document.write("<h1>"+str+"</h1>");
+		
+		var Obj = JSON.parse(str);
+		
+		for(prop in Obj){
+			document.write("<h1>"+prop+"="+Obj[prop]+"</br>");
+		}
+		
+	</script>
+</body>
+
+</html>

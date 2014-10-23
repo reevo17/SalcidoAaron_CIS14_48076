@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Reevo Game Store Home</title>
+<link type="text/css" rel="stylesheet" href="stylesheet.css">
+<link type="text/javascript" href="login.js">
+<script src="getForm.js"></script>
+</head>
+
+<body>
+	<script>
+		var url = document.location.href;
+		var $_GET = getForm(url);
+			for(property in $_GET){
+				document.write(property + "=" + $_GET[property] +"<br>");
+			}
+		
+		var val = $_GET.user;
+		document.write(val);
+		
+	</script>
+</body>
+</html>

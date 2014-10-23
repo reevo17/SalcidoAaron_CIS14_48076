@@ -1,0 +1,38 @@
+<script type="text/javascript">
+	/*
+		Author: Aaron C Salcido
+		August 31st, 2014
+		Purpose: Assignement 1 Due August 31st
+				To use while and if to create a series of console.logs that match the popular song "99 Bottles of Beer on the Wall"
+	*/
+</script>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>99 Bottles</title>
+</head>
+<script>
+	var word = "bottles";
+	var count = 99;
+	
+	while (count >0) {
+		console.log(count + " " + word + " of beer on the wall,");
+		console.log(count + " " + word + " of beer,");
+		//Spaces added into the string to ensure that the words do not stick to eache other, that is what the " " parts are for.
+		console.log("Take one  down, pass it around,");
+		count = count -1
+// Each time the script loops, the number of bottles decreases by 1
+		if (count > 0) {
+			console.log(count + " " + word + " of beer on the wall.");
+		} else {
+			console.log("No more" + word + " of beer on the wall."); 
+//When number of bottles reaches zero, console.log log will display this text
+		}
+	}
+</script>
+
+<body>
+</body>
+</html>
