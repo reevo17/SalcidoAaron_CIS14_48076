@@ -123,4 +123,17 @@ button{
 .formdiv{
 	margin-top: 20px;
 	padding-top: 8px;
+	margin-left:220px;
+}
+.regesterdiv{
+	position:relative;
+	margin:130px;
+	margin-left:150px;
+}
+.registerimg{
+	size:portrait;
+	width:650px;
+	height:300px;
+	position:static;
+	
 }
