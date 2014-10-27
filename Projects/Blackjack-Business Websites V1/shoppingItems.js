@@ -1,4 +1,4 @@
-
+var connectFour = "";
 
 var chess = "";
 
