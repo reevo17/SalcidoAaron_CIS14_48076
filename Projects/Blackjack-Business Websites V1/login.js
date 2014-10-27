@@ -1,14 +1,17 @@
-loggedin = false;
+var loggedin = true;
 
 
 
 
-if(loggedin = false)	{
-	document.getElementsById("ln").style.display="none";
-	document.getElementsById("ln1").style.visibility="visable";	
+if(loggedin == false)	{
+	var tagID = document.getElementsById("ln");
+		tagID.style.display='none';
+		tagID.document.getElementsById("ln1");
+		tagID.style.display='inline';	
 	
 } else {
-	document.getElementsById("ln").style.display="inline";
-	document.getElementsById("ln1").style.visibility="hidden";	
+	var tagID = document.getElementsById("ln");
+		tagID.style.display='inline';
+		tagID = document.getElementsById("ln1");
+		tagID.style.display='none';
 }
-
