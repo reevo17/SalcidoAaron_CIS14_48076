@@ -15,7 +15,7 @@ var loggedin = true;
 		
 
 		function validate_Password(){
-			var Arr = document.forms["registerform"]["password"].value.match(/^[A-Za-z]+$/)
+			var Arr = document.forms["registerform"]["password"].value.match(/^[A-Za-z]+{5,15}$/)
 			if(Arr != null){
 				for (i=0; i<Arr.length;i++){
 					var result ="Arr=["+i+"]="+Arr[i];

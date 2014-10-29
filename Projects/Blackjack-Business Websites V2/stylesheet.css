@@ -127,9 +127,9 @@ button{
 	margin-left:220px;
 }
 .regesterdiv{
-	position:relative;
-	margin:130px;
-	margin-left:150px;
+	display: table;
+	position: center;
+	margin: auto;
 }
 .registerimg{
 	size:portrait;
@@ -137,4 +137,6 @@ button{
 	height:300px;
 	position:static;
 	
+}
+.regesterdiv #loginform input {
 }
