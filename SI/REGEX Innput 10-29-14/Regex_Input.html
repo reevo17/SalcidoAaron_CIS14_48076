@@ -61,23 +61,23 @@
 		
 		
 	function validate_Form(){
-		if(!value.firstname()){
+		if(!validate_Firstname){
 			return false;
 		}
-		if(!value.lastname()){
+		if(!validate_Lastname()){
 			return false;
 		}
-		if(!value.birthday()){
+		if(!validate_Birthday()){
 			return false;
 			}
-		if(!value.email()){
+		if(!validate_Email()){
 			return false;
 			}
-		if(!value.password()){
+		if(!validate_Password()){
 			return false;
 			}
-			return true;
-		}
+		return true;
+	}
 		
 	
 	</script>
