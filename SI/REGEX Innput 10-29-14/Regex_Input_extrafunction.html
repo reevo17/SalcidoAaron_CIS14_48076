@@ -1,25 +1,24 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Reevo Game Store Home</title>
-<link type="text/css" rel="stylesheet" href="stylesheet.css">
-<link type="text/javascript" href="login.js">
-<script src="getForm.js"></script>
 	<script>
-	
-		function validate_Firstname(){
-			document.Forms["input"]["firstname"].value;
-			var re = new RegExp(/^[A-Za-z]*$/)
-			var myArr = re.exec(x);
-			if(m == null){
-				alert("Invalid Input");
-				return false;
-			} else{
-			return true;
+		function validate_Form(){
+			var Arr = document.forms["input"]["firstname"].value.match(/^[A-Za-z]+$/g);
+			if(Arr != null){
+				for (i=0; i<Arr.length;i++){
+					var result ="Arr=["+i+"]="+Arr[i];
+					console.log(result);
+				}
+			}else{
+				alert("Invalid");
+			}
 		}
 		
-				function validate_Lastname(){
+		
+/*
+		function validate_Lastname(){
 			var x = document.Forms["input"]["lastname"].value;
 			var re = new RegExp(/^[A-Za-z]*$/)
 			var m = re.exec(x);
@@ -60,12 +59,12 @@
 			return true;
 		}
 		
-		
-	function validate_Form(){
-		if(!validate_Firstname){
-			return false;
-		}
-		if(!validate_Lastname()){
+		*/
+	//function validate_Form(){
+	//	if(!validate_Firstname()){
+	//		console.log("return false");
+	//	} else {
+	/*	if(!validate_Lastname()){
 			return false;
 		}
 		if(!validate_Birthday()){
@@ -76,10 +75,10 @@
 			}
 		if(!validate_Password()){
 			return false;
-			}
-		return true;
-	}
-		
+			}*/
+	//console.log("return true");
+	//}
+	//}	
 	
 	</script>
 
@@ -90,7 +89,7 @@
 
 
 
-	<form name="input" action="Regex_Input.html" method="get">
+	<form name="input" action="Regex_Input_extrafunction.html" onsubmit="return validate_Form()" method="get">
 		
 		<input name="firstname" type="text"/>First Name<br>
 		<input name="lastname" type="text"/>Last Name<br>
@@ -99,10 +98,5 @@
 		<input name="lastname" type="password"/>Password<br>
 		<input type="submit" value="submit"/><br>
 	</form>
-
-	
-	<script>
-		
-	</script>
 </body>
 </html>
