@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Reevo Game Store Home</title>
+<link type="text/css" rel="stylesheet" href="stylesheet.css">
+<link type="text/javascript" href="login.js">
+<script src="getForm.js"></script>
+	<script>
+	
+		function validate_Firstname(){
+			var x = document.Forms["input"]["firstname"].value;
+			var re = new RegExp(/^[A-Za-z]*$/)
+			var m = re.exec(x);
+			if(m == null){
+				alert("Invalid Input");
+				return false;
+			} else{
+			return true;
+		}
+				function validate_Lastname(){
+			var x = document.Forms["input"]["lastname"].value;
+			var re = new RegExp(/^[A-Za-z]*$/)
+			var m = re.exec(x);
+			if(m == null){
+				alert("Invalid Input");
+				return false;
+			} else{
+			return true;
+		}
+				function validate_Birthday(){
+			var x = document.Forms["input"]["birthday"].value;
+			var re = new RegExp(/^[0-9]{2}[-][0-9]{2}[-][0-9]{4}$/)
+			var m = re.exec(x);
+			if(m == null){
+				alert("Invalid Input");
+				return false;
+			} else{
+			return true;
+		}
+				function validate_Email(){
+			var x = document.Forms["input"]["email"].value;
+			var re = new RegExp(/^[A-Za-z]*[@][a-z]*[.][A-Za-z]*$/)
+			var m = re.exec(x);
+			if(m == null){
+				alert("Invalid Input");
+				return false;
+			} else{
+			return true;
+		}
+				function validate_Password(){
+			var x = document.Forms["input"]["password"].value;
+			var re = new RegExp(/^[A-Za-z0-9_!$%&]*{5,20}$/)
+			var m = re.exec(x);
+			if(m == null){
+				alert("Invalid Input");
+				return false;
+			} else{
+			return true;
+		}
+		
+		
+	function validate_Form(){
+		if(!value.firstname()){
+			return false;
+		}
+		if(!value.lastname()){
+			return false;
+		}
+		if(!value.birthday()){
+			return false;
+			}
+		if(!value.email()){
+			return false;
+			}
+		if(!value.password()){
+			return false;
+			}
+			return true;
+		}
+		
+	
+	</script>
+
+</head>
+
+<body>
+
+<header>
+    	<ul class="nav">
+        	<li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+			<form>
+            <input name="username" type="text" />Login
+            <input name="password" type="password" />Password
+			<input type="submit" text="Submit" value="Submit"/>
+			</form>
+        </ul>
+</header>
+
+
+
+<div id="indexmain">
+    <div id="games">
+    	Buy Computer Games Here!
+    </div>
+    <div id="aboutdiv">
+    	Updates!
+        
+    </div>
+</div>
+</aside>
+
+
+	<form name="input" action="newpage.html" method="get">
+		
+		<input name="firstname" type="text"/>First Name<br>
+		<input name="lastname" type="text"/>Last Name<br>
+		<input name="birthday" type="text"/>Birthday<br>
+		<input name="email" type="text"/>Email Address<br>
+		<input name="lastname" type="password"/>Password<br>
+		<input type="submit" value="submit"/><br>
+	</form>
+
+	
+	<script>
+		
+	</script>
+</body>
+</html>
