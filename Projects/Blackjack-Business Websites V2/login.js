@@ -1,5 +1,7 @@
-var loggedin = true;
+var loggedin = false;
 
+
+//VALIDATE USERNAME!
 	function validate_Username(){
 			var Arr = document.forms["registerform"]["username"].value.match(/^[A-Za-z]+$/g);
 			if(Arr != null){
@@ -13,9 +15,9 @@ var loggedin = true;
 		}
 		
 		
-
+//VALIDATE PASSWORD
 		function validate_Password(){
-			var Arr=document.forms["registerform"]["password"].value.match(/^[:allnum:]{5,15}$/);
+			var Arr=document.forms["registerform"]["password"].value.match(/^[:allnum:*&%$#@!]{5,15}$/);
 			if(Arr1 != null){
 				for (i=0; i<Arr.length;i++){
 					var result ="Arr=["+i+"]="+Arr[i];
@@ -25,8 +27,7 @@ var loggedin = true;
 				alert("Invalid Password Field");
 			}
 		}
-
-
+//VALIDATE EMAIL ADDRESS
 		function validate_Email(){
 			var Arr = document.forms["registerform"]["email"].value.match(/^[A-Za-z]+[@][A-Z-a-z][.][A-Za-z]$/);
 			if(Arr != null){
@@ -35,7 +36,7 @@ var loggedin = true;
 					console.log(result);
 				}
 			}else{
-				alert("Invalid Password Field");
+				alert("Invalid Email Field");
 			}
 		}
 
@@ -44,33 +45,31 @@ var loggedin = true;
 //VALIDATE ENTIRE FORM!
 	function validate_Form(){
 		if(!validate_Firstname()){
-			console.log("return false");
-		} else {
-		if(!validate_Lastname()){
+			console.log("return false"); 
+		} else if(!validate_Lastname()){
 			return false;
-		}
-		if(!validate_Birthday()){
+		}else if(!validate_Birthday()){
 			return false;
-			}
-		if(!validate_Email()){
+			}else if(!validate_Email()){
 			return false;
-			}
-		if(!validate_Password()){
+			}else if(!validate_Password()){
 			return false;
-			}
+			}else{
 	console.log("return true");
+			var loggedin = true;
+			
 	}
 }	
+
+
 	
-if(loggedin == false)	{
+if(loggedin = false)	{
 	var tagID = document.getElementsById("ln");
 		tagID.style.display='none';
-		tagID.document.getElementsById("ln1");
-		tagID.style.display='inline';	
+		document.getElementById('ln1').style.visibility = 'visible';
 	
 } else {
-	var tagID = document.getElementsById("ln");
-		tagID.style.display='inline';
+	document.getElementById('ln').style.visibility = 'visible';
 		tagID = document.getElementsById("ln1");
 		tagID.style.display='none';
 }
