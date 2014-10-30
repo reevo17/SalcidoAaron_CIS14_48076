@@ -15,7 +15,20 @@ var loggedin = true;
 		
 
 		function validate_Password(){
-			var Arr = document.forms["registerform"]["password"].value.match(/^[A-Za-z]+{5,15}$/)
+			var Arr=document.forms["registerform"]["password"].value.match(/^[:allnum:]{5,15}$/);
+			if(Arr1 != null){
+				for (i=0; i<Arr.length;i++){
+					var result ="Arr=["+i+"]="+Arr[i];
+					console.log(result);
+				}
+			}else{
+				alert("Invalid Password Field");
+			}
+		}
+
+
+		function validate_Email(){
+			var Arr = document.forms["registerform"]["email"].value.match(/^[A-Za-z]+[@][A-Z-a-z][.][A-Za-z]$/);
 			if(Arr != null){
 				for (i=0; i<Arr.length;i++){
 					var result ="Arr=["+i+"]="+Arr[i];
@@ -26,6 +39,7 @@ var loggedin = true;
 			}
 		}
 
+		
 		
 //VALIDATE ENTIRE FORM!
 	function validate_Form(){
