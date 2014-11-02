@@ -44,18 +44,12 @@ var loggedin = false;
 		
 //VALIDATE ENTIRE FORM!
 	function validate_Form(){
-		if(!validate_Firstname()){
-			console.log("return false"); 
-		} else if(!validate_Lastname()){
+		if(!validate_Firstname()&& if(!validate_Lastname()&& if(!validate_Birthday()&& !validate_Email()&& if(!validate_Password()){
+			console.log("false"); 
 			return false;
-		}else if(!validate_Birthday()){
-			return false;
-			}else if(!validate_Email()){
-			return false;
-			}else if(!validate_Password()){
-			return false;
-			}else{
-	console.log("return true");
+				}else{
+			console.log("true");
+			return true;
 			var loggedin = true;
 			
 	}
