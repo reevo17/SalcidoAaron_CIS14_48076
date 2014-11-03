@@ -124,7 +124,7 @@ button{
 .formdiv{
 	margin-top: 20px;
 	padding-top: 8px;
-	margin-left:220px;
+	margin-left: 220px;
 }
 .regesterdiv{
 	display: table;
@@ -141,8 +141,11 @@ button{
 .regesterdiv #loginform input {
 }
 #ln{
-	
+	display:none;
 }
 #ln1{
-	
+	display:inline;
+}
+#registerSubmit{
+		
 }

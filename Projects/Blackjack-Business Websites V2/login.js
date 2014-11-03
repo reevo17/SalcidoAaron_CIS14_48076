@@ -44,7 +44,7 @@ var loggedin = false;
 		
 //VALIDATE ENTIRE FORM!
 	function validate_Form(){
-		if(!validate_Firstname()&& if(!validate_Lastname()&& if(!validate_Birthday()&& !validate_Email()&& if(!validate_Password()){
+		if(!validate_Firstname()&& !validate_Lastname()&& !validate_Birthday()&& !validate_Email()&& !validate_Password()){
 			console.log("false"); 
 			return false;
 				}else{
@@ -58,14 +58,12 @@ var loggedin = false;
 
 	
 if(loggedin = false)	{
-	var tagID = document.getElementsById("ln");
-		tagID.style.display='none';
-		document.getElementById('ln1').style.visibility = 'visible';
+	document.getElementsById("ln").style.display='none';
+	document.getElementById('ln1').style.display ='inline';
 	
 } else {
-	document.getElementById('ln').style.visibility = 'visible';
-		tagID = document.getElementsById("ln1");
-		tagID.style.display='none';
+	document.getElementsById("ln").style.display='inline';
+	document.getElementById('ln1').style.display ='none';
 }
 
 
