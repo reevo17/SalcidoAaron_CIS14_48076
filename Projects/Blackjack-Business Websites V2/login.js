@@ -11,6 +11,7 @@ var loggedin = false;
 				}
 			}else{
 				alert("Invalid Username Field");
+				return true;
 			}
 		}
 		
@@ -25,6 +26,7 @@ var loggedin = false;
 				}
 			}else{
 				alert("Invalid Password Field");
+				return true;
 			}
 		}
 //VALIDATE EMAIL ADDRESS
@@ -37,6 +39,7 @@ var loggedin = false;
 				}
 			}else{
 				alert("Invalid Email Field");
+				return true;
 			}
 		}
 
