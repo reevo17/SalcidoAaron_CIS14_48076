@@ -5,6 +5,64 @@
 <title>Untitled Document</title>
 <link type="text/css" rel="stylesheet" href="stylesheet.css">
 <link type="text/javascript" href="login.js">
+<script>
+//VALIDATE USERNAME!
+	function validate_Username(){
+			var Arr = document.forms["input"]["username"].value.match(/^[A-Za-z]+$/g);
+			if(Arr != null){
+				
+				return true;
+			}else{
+				alert("Invalid Username Field");
+				return false;
+			}
+	
+		}
+		
+		
+//VALIDATE EMAIL ADDRESS
+		function validate_Email(){
+			var Arr = document.forms["input"]["email"].value.match(/^[A-Za-z0-9]+[@]([A-Za-z0-9]+[\.]?)+$/);
+			if(Arr != null){
+					return true;
+			}else{
+				alert("Invalid Email Field");
+			return false;
+			}
+		}
+//VALIDATE PASSWORD
+		function validate_Password(){
+			var Arr=document.forms["input"]["password"].value.match(/^[A-Za-z0-9]{5,15}$/g);
+			if(Arr1 != null){
+				return true;
+			}else{
+				alert("Invalid Password Field");
+				return false;
+			}
+		}
+//VALIDATE PASSWORD2
+		function validate_Password2(){
+			var pass1=document.forms["input"]["password"].value;
+			var pass2=document.forms["input"]["password2"].value;
+	if(pass1 == pass2){
+				
+				return true;
+			}else{
+				alert("Passwords do not match");
+				return false;
+			}
+		}
+
+		
+		
+//VALIDATE ENTIRE FORM!
+	function validate_Form(){
+		if(!validate_Username())return false;
+		if(!validate_Email())return false;
+		if(!validate_Password()) return false;
+		if(!validate_Password2())return false;
+	}	
+</script>
 </head>
 
 <body>
@@ -34,7 +92,7 @@
 				<input name="username" type="text" /><div class="regesterdiv">Enter a Username</div><br>
                 <input name="email" type="text" /><div class="regesterdiv">Enter a valid email adress <br>(email@host.com)<br></div>
 				<input name="password" type="password" /><div class="regesterdiv">Type Your Password<br></div><br>
-                <input name="password2" type="password2" /><div class="regesterdiv">(Retype)Password</div><br>
+                <input name="password2" type="password" /><div class="regesterdiv">(Retype)Password</div><br>
 				<input id="registerSubmit" type="submit" value="submit"/><br>
 			</form>
             
