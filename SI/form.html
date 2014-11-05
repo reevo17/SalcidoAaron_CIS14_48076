@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Simple Form</title>
+		<meta charset="utf-8">
+		<script src=""></script>
+		<script>
+			//	Get Form Info from URL Query String
+			function getFormInfo(url){
+				//split info at the "?"
+				var info=url.split("?");//creates 'info' array
+				//split the name value pairs at the second part of the 'info' array
+				var nameValuePairs=info[1].split("&");
+				//map info for object
+				var obj=new Object();
+				for(var i=0;i<nameValuePairs.length;i++){
+					var map=nameValuePairs[i].split("=");
+					name=map[0].replace("_"," ");	// Removes the underscore "_" from the 'name'
+					value=map[1];
+					obj[name]=value;
+				}
+				return obj;
+			}	
+			//	Set Cookie
+			function setCookie(cname, cvalue, exdays) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				var expires = "expires="+d.toUTCString();
+				document.cookie = cname + "=" + cvalue + "; " + expires;
+			}
+			//	Get Cookie
+			function getCookie(cname) {
+				var name = cname + "=";
+				var ca = document.cookie.split(';');
+				for(var i=0; i<ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0)==' ') c = c.substring(1);
+					if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+				}
+				return "";
+			}
+			// Check Cookie - modify for specific field
+			function checkCookie() {
+				var username=getCookie("username");
+				if (username!="") {
+					alert("Welcome again " + username);
+				}else{
+					username = prompt("Please enter your name:", "");
+					if (username != "" && username != null) {
+						setCookie("username", username, 365);
+					}
+				}
+			}
+			
+			
+		</script>
+		
+	</head>
+	<body>
+		<form name="form" action="form.html" method="get">
+			First Name: <br>
+			<input type="text" name="First_Name" /><br>
+			Last Name: <br>
+			<input type="text" name="Last_Name" /><br>
+			<input type="submit" value="submit" />
+		</form>
+		<script>
+			var $_GET=getFormInfo(location.href);
+		//	document.write('<br><h1>INFORMATION SUBMITTED</h1><br/><br>');
+		//	for(var name in $_GET){
+		//		document.write(name+': '+$_GET[name]+'<br>');	
+		//	}
+			
+			var str = JSON.stringify($_GET);
+		//	document.write(str+"<br>");
+			
+			var cookieName = $_GET["First Name"];
+			cookieName+=$_GET["Last Name"];
+		//	document.write(cookieName+"<br>");
+			var ttl = 7;
+			setCookie(cookieName,str,ttl);
+			var cook = getCookie(cookieName);
+			var obj2 = JSON.parse(cook);
+			for(var value in obj2){
+				document.write(value+': '+obj2[value]+'<br>');	
+			}
+			
+		</script>
+		
+		
+	</body>
+</html>
