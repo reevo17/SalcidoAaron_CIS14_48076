@@ -20,7 +20,7 @@ function loaded() {
 }
  
  function dealCards(){
-	
+	playerCards[1] = 
  }
 
 window.onload = loaded();
