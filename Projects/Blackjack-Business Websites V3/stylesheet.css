@@ -1,0 +1,164 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-image: -webkit-linear-gradient(253deg,rgba(127,119,119,1.00) 4.66%,rgba(255,255,255,1.00) 27.47%,rgba(215,215,215,1.00) 53.89%,rgba(144,144,144,1.00) 84.45%,rgba(0,0,0,1.00) 99.48%);
+	background-image: -moz-linear-gradient(253deg,rgba(127,119,119,1.00) 4.66%,rgba(255,255,255,1.00) 27.47%,rgba(215,215,215,1.00) 53.89%,rgba(144,144,144,1.00) 84.45%,rgba(0,0,0,1.00) 99.48%);
+	background-image: -o-linear-gradient(253deg,rgba(127,119,119,1.00) 4.66%,rgba(255,255,255,1.00) 27.47%,rgba(215,215,215,1.00) 53.89%,rgba(144,144,144,1.00) 84.45%,rgba(0,0,0,1.00) 99.48%);
+	background-image: linear-gradient(197deg,rgba(127,119,119,1.00) 4.66%,rgba(255,255,255,1.00) 27.47%,rgba(215,215,215,1.00) 53.89%,rgba(144,144,144,1.00) 84.45%,rgba(0,0,0,1.00) 99.48%);
+	background-attachment: fixed;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	width: 95%;
+	min-width: 0px;
+	min-height: 0px;
+	opacity: 1;
+}
+a{
+	text-decoration:none;
+}
+aside div{
+	margin-top:10px;
+	font-family:Arial, Gotham, "Helvetica Neue", Helvetica, sans-serif;
+	font-size:10px;
+	float:left;
+	width:120px;
+	padding-left:8px;
+	border:2px solid black;
+}
+#headerlogin{
+	display:inline;	
+	
+}
+.games{
+	width:auto;
+	text-align:center;	
+}
+#games{
+	margin-top:10px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
+	border: 2px solid #0099FF;
+	width: 450px;
+	height: 450px;
+
+	text-align: center;
+	border-radius: 20px;
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+	color: #0099FF;
+	font-style: normal;
+	text-decoration: none;
+	background-image:url( http://chessonline.eu/wp-content/uploads/2011/12/chess.jpg );
+	background-size:100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color:black;
+	
+	
+}	
+#games a{
+	text-align: center;
+	margin: auto;
+	vertical-align: text-bottom;
+	
+}
+header{
+	background-image: -webkit-linear-gradient(270deg,rgba(255,255,255,1.00) 68.91%,rgba(191,180,180,1.00) 96.89%,rgba(88,88,88,1.00) 100%,rgba(0,0,0,1.00) 100%);
+	background-image: -moz-linear-gradient(270deg,rgba(255,255,255,1.00) 68.91%,rgba(191,180,180,1.00) 96.89%,rgba(88,88,88,1.00) 100%,rgba(0,0,0,1.00) 100%);
+	background-image: -o-linear-gradient(270deg,rgba(255,255,255,1.00) 68.91%,rgba(191,180,180,1.00) 96.89%,rgba(88,88,88,1.00) 100%,rgba(0,0,0,1.00) 100%);
+	background-image: linear-gradient(180deg,rgba(255,255,255,1.00) 68.91%,rgba(191,180,180,1.00) 96.89%,rgba(88,88,88,1.00) 100%,rgba(0,0,0,1.00) 100%);
+	text-align: center;
+	width: 100%;
+	border-radius:20px;
+		
+}
+header ul li{
+	display: inline;
+	padding: 5px;
+	text-decoration: none;
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+	min-width: 0px;
+}
+
+.nav{
+	text-align:center;
+	margin-left: auto;
+	margin-right:auto;
+	display:inline;	
+	padding:5px;
+	text-decoration:none;
+	font-family:Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+}
+button{
+	display:inline;	
+}
+#indexmain{
+	margin-left:135px;
+}	
+#aboutdiv{
+	margin-left:auto;
+	margin-right:auto;
+	color: white;
+	text-align: center;
+	border: 2px solid #0099FF;
+	width: 450px;
+	height: 400px;
+	position: relative;
+	text-align: center;
+	border-radius: 20px;
+	font-family: "Franklin Gothic Bold", "Arial Black", sans-serif;
+	font-style: normal;
+	text-decoration: none;
+	background-size:100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color:black;
+}
+#aboutdiv p{
+	color:white;
+}
+.formdiv{
+	margin-top: 20px;
+	padding-top: 8px;
+	margin-left: 220px;
+}
+.regesterdiv{
+	display: table;
+	position: center;
+	margin: auto;
+}
+.registerimg{
+	size:portrait;
+	width:650px;
+	height:300px;
+	position:static;
+	
+}
+.regesterdiv #loginform input {
+}
+#ln{
+	display:none;
+}
+#ln1{
+	display:inline;
+}
+#registerSubmit{
+		
+}
+.loginImg {
+	margin-left: auto;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	-webkit-box-shadow: -10px 3px 52px 2px #0024D0;
+	box-shadow: -10px 3px 52px 2px #0024D0;
+	width: 683px;
+	height: 314px;
+	display: block;
+	opacity: 0.62;
+}
