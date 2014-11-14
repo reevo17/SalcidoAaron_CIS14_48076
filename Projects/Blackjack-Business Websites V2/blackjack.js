@@ -16,7 +16,7 @@ function loaded() {
 }
  
  function dealCards(){
-	Math.random();
+	
  }
 
 window.onload = loaded();
