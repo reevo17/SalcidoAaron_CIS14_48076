@@ -32,7 +32,7 @@
 		}
 //VALIDATE PASSWORD
 		function validate_Password(){
-			var Arr=document.forms["input"]["password"].value.match(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!$%^&+@#$%]).{4,15})/);
+			var Arr=document.forms["input"]["password"].value.match(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9!$%^&+@#$%]).{4,15})/);
 			if(Arr != null){
 				return true;
 			}else{
@@ -91,7 +91,7 @@
 	<form name="input" action="registercomplete.html" onsubmit="return validate_Form()" method="get" id="loginform">
 				<input name="username" type="text" /><div class="regesterdiv">Enter a Username</div><br>
                 <input name="email" type="text" /><div class="regesterdiv">Enter a valid email adress <br>(email@host.com)<br></div>
-				<input name="password" type="password" /><div class="regesterdiv">Type Your Password<br>Requires at least one number, One lower case, One Uppercase, And one special Character(!@#$%^&*+) <br> Between 4-15 Characters Long<br></div><br>
+				<input name="password" type="password" /><div class="regesterdiv">Type Your Password<br>Requires at least one number, One lower case, One Uppercase, special Characters optional(!@#$%^&*+) <br> Between 4-15 Characters Long<br></div><br>
                 <input name="password2" type="password" /><div class="regesterdiv">(Retype)Password</div><br>
 				<input id="registerSubmit" type="submit" value="submit"/><br>
 			</form>
