@@ -1,5 +1,5 @@
 function checkLogin(){
-	if(loggedin = false)	{
+	if(loggedin == false)	{
 		document.getElementsById("ln").style.display='none';
 		document.getElementById('ln1').style.display ='inline';
 	
