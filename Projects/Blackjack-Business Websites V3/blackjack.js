@@ -11,7 +11,7 @@ var turn = 0;
 //THE PLAYER
 player = {
 	cards:{
-		[1],
+		deck:[],
 		Count:0,
 		Value:0
 	},
@@ -21,7 +21,7 @@ player = {
 //THE DEALER
 dealer = {
 	cards:{
-		[""],
+		deck:[],
 		Count:0,
 		Value:0
 	}
