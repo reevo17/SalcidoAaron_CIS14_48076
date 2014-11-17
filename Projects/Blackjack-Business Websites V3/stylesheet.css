@@ -193,3 +193,10 @@ tr{
 td{
 	border:solid 2px black;	
 }
+#admin{
+	opacity:0.3;
+	/*align:center;*/
+	margin-top:25px;
+	margin-left:auto;
+	margin-right:auto;
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head><title>SI Session OnClick Events</title>
+<script>
+function login(){
+	var id = document.getElementById("login");
+	var button = document.getElementById("li");
+	var button2 = document.getElementById("lo");
+	id.innerHTML="<p>You are logged in</p>";
+	li.style.display="none";
+	lo.style.display="block"
+}
+function logout(){
+	var id = document.getElementById("logout");
+	var button = document.getElementById("lo");
+	var button2 = document.getElementById("li");
+	id.innerHTML="<p>You have just logged out</p>";
+	button.style.display="none";
+	button2.style.display="block";
+	
+}
+</script>
+</head>
+<body>
+<div style="display:block;" id="login">
+
+</div>
+<div id="logout">
+
+</div>
+<button id="li" onClick="login()">LOGIN</button>
+<button id="lo" style="display:none" onClick="logout()">LOGOUT</button>
+
+</body>
+</html>
