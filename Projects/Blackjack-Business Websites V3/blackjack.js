@@ -6,34 +6,58 @@ var bet;
 var money;
 var moneyDisplay;
 var message;
-var turns = 0;
+var turn = 0;
 
-dealerCards.count = 0;
-playerCards.count = 0;
+//THE PLAYER
+player = {
+	cards:{
+		[1],
+		Count:0,
+		Value:0
+	},
+	Hit: dealCard();
+};
+
+//THE DEALER
+dealer = {
+	cards:{
+		[""],
+		Count:0,
+		Value:0
+	}
+	Hit: dealCard();
+};
+
 
 function newDeck(){
-	
+	Math.random();
 }
 
 function loaded() {
 	alert( "THIS IS A TRIAL!<br> Thank you trying out our BlackJack Deluks computer game!<br> This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. <br>" );
 }
  
- function dealCards(){
-	playerCards[1] = 
- }
+function dealCard(){
+	for(i in this.cards){
+		this.cards[i] = Math.random();
+		this.cards.Count++;
+	}
+}
 
 window.onload = loaded();
+$( document ).ready(function() {
+    alert("THIS IS A TRIAL!<br> Thank you trying out our BlackJack Deluks computer game!<br> This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. <br>");
+});
 
-while(turn<5){
-	dealCards();
-		if(playerCards.count>21){
-			//DEALER WINS
-	}
-		if(dealerCards.count>21){
-			//PLAYER WINS
-	}
-	onsole.log("Code for Blackjack goes here")
-	turn++;
-}
+//while(turn<6){
+//	dealCards();
+//		if(player.cards.Value>21){
+//			//DEALER WINS
+//	}
+//		if(dealer.cards.Value>21){
+//			//PLAYER WINS
+//	}
+//	console.log("Code for Blackjack goes here")
+//	turn++;
+//}
 

@@ -9,7 +9,11 @@
 </head>
 
 <body id="BlackJackBody">
-
+<script>
+	$( document ).ready(function() {
+    alert("THIS IS A TRIAL!<br> Thank you trying out our BlackJack Deluks computer game!<br> This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. <br>");
+	});
+</script>
 <header>
 		<img src="logo.png" width="134" height="54"/>
     	<ul class="nav">
@@ -29,8 +33,11 @@
    </div>
    <table>
 		<!--DEALER AREA-->
+        <tr>
+        	<td>DEALER CARDS</td>
+        </tr>
 		<tr>
-			<td id="DealerCard1">f</td>
+			<td id="DealerCard1"></td>
 			<td id="DealerCard2"></td>
 			<td id="DealerCard3"></td>
 			<td id="DealerCard4"></td>
@@ -38,17 +45,28 @@
 		</tr>
 		
 		<!--PLAYER AREA-->
+        <tr>
+        	<td>PLAYER CARDS</td>
+        </tr>
 		<tr>
-			<td id="PlayerCard1">f</td>
+			<td id="PlayerCard1"></td>
 			<td id="PlayerCard2"></td>
 			<td id="PlayerCard3"></td>
 			<td id="PlayerCard4"></td>
 			<td id="PlayerCard4"></td>
 		</tr>
+        
+        <!--CONTROL AREA-->
+        <tr>
+        	<td> <!--button--></td>
+        </tr>
+        
+        <!--MESSAGE AREA-->ss
 		<tr>
 			<td id="messageArea">
 			
 			</td>
+         
 		</tr>
    <table>
 </body>
