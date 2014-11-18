@@ -180,7 +180,7 @@ button{
 table{
 	border: solid 2px black;
 	width: 553px;
-	height: 602px;
+	height: 500px;
 	border-spacing: 17px 9px;
 	margin-top: 25px;
 	margin-left: auto;
@@ -245,4 +245,8 @@ td{
 }
 #Register header img {
 	width: 0%;
+}
+#gameimg{
+	width:250px;
+	height:250px;
 }

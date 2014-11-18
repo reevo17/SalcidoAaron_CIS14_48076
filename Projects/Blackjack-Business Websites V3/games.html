@@ -5,6 +5,12 @@
 <title>Reevo Inc Games</title>
 <link type="text/css" rel="stylesheet" href="stylesheet.css">
 <link type="text/javascript" href="login.js">
+<script>
+if(loggedIn == false){
+	var blackJackTrial = document.getElementById("bj");
+	blackJackTrial.innerHTML="<p><center>Only members who are logged in may play the Blackjack Game Trial!</center></p>";
+}
+</script>
 </head>
 
 <body>
@@ -22,25 +28,28 @@
 		</ul>
 </header>
 
-<aside>
-
-  <div>
-        	About Us:<br>
-            	Reevo Games Inc. is a website dedicated to supplying you with the highest quality Digital Games that run smooth on almost any computer build! <br><br> Our team of special programmers are trained with the highest level programming degrees in the highest level languages available for computers in this day and age! <br><br> Reevo Inc was started by our glorious leader and savior Aaron Salcido, whom will one day rise to power and conquor Tamriel.
-   </div>
-</aside>
-
-<table>
+<!--TABLE TO HOLD THE GAMES-->
+<table style="border-radius:5px;">
+<!--HEAD-->
 	<thead>
 	<tr>
-    	<td>GAMES</td>
+    	<td colspan="3"><center>GAMES</center></td>
     </tr>
     </thead>
+<!--GAMES GO HERE-->
     <tbody>
     	<tr>
-        	<td></td>
-            <td></td>
-			<td></td>
+        	<td>
+				<center>Connect 4<br><small>Price: <em>$45</em></small><br><img src="connect4.jpg"/></center>
+			</td>
+			<!--BLACKJACK CONTAINER-->
+            <td>
+				<center>Blackjack<br><small>Price: <em>$50</em></small><img id="gameimg" src="blackjack.jpg"/></center><br><div id="bj"></div>
+			</td>
+			<td>
+				<center>Battleship<br><small>Price: <em>$175</em></small><img src="battleship.jpg" id="gameimg"/></center>
+			</td>
+			
         </tr>
     </tbody>   
 </table>

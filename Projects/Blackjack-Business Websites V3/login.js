@@ -1,3 +1,5 @@
+var loggedIn = true;
+
 function checkLogin(){
 	if(loggedin == false)	{
 		document.getElementsById("ln").style.display='none';
