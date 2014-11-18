@@ -43,11 +43,11 @@ function displayItems(){
 		for(i in shoppingCart.items){
 			d.innerHTML="<center>"+shoppingCart.items[i]+"</center><br>";
 		}
-}
+};
 
 
 //SHOPPING CART
 var shoppingCart = {
-	items: [],
+	items: ["Connect Four"],
 	total: 0
 };
