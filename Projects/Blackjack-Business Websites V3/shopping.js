@@ -1,6 +1,6 @@
 //CONNECT FOUR
 var connectFour = {
-	name: "Connect Four";
+	name: "Connect Four",
 	price: 45
 };
 //BATTLESHIP
@@ -10,26 +10,31 @@ var battleShip = {
 };
 //BLACKJACK
 var blackJack = {
-	name: "Black Jack";
+	name: "Black Jack",
 	price: 50
 };
 
 //ADD ITEMS TO SHOPPING CART
+function addItem(item){
+	item = this;
+	shoppingCart.total += this.price;
+	shoppingCart.items += this.name;
+}
 //ADD BLACKJACK
-function addBlackjack(){
-	shoppingCart.total += blackJack.price;
-	shoppingCart.items += blackJack.name;
-}	
+//function addBlackjack(){
+//	shoppingCart.total += blackJack.price;
+//	shoppingCart.items += blackJack.name;
+//}	
 //ADD CONNECT FOUR
-function addConnectfour(){
-	shoppingCart.total += connectFour.price;
-	shoppingCart.items += connectFour.name;
-}
+//function addConnectfour(){
+//	shoppingCart.total += connectFour.price;
+//	shoppingCart.items += connectFour.name;
+//}
 //ADD BATTLESHIP
-function addBattleship(){
-	shoppingCart.total += battleShip.price;
-	shoppingCart.items += battleShip.name;
-}
+//function addBattleship(){
+//	shoppingCart.total += battleShip.price;
+//	shoppingCart.items += battleShip.name;
+//}
 //REMOVE ITEMS
 //ENTER CODE HERE
 //DISPLAY ITEMS IN SHOPPING CART
