@@ -50,20 +50,20 @@ function setItemCookie(cname, cvalue, exdays){
         	<td>
 				<center>Connect 4<br><small>Price: <em>$45</em></small><br>
 				<img src="connect4.jpg"/>
-				<button onClick=addItem(connectFour)>Add Item To Cart</button>
+				<button onClick=shoppingCart.add(connectFour)>Add Item To Cart</button>
 				</center>
 			</td>
 			<!--BLACKJACK CONTAINER-->
             <td>
 				<center>Blackjack<br><small>Price: <em>$50</em></small>
 				<img id="gameimg" src="blackjack.jpg"/>
-				<button onClick=addItem(blackJack)>Add Item To Cart</button>
+				<button onClick=shoppingCart.add("Black Jack")>Add Item To Cart</button>
 				<br><div id="bj"></div></center>
 			</td>
 			<td>
 				<center>Battleship<br><small>Price: <em>$175</em></small>
 				<img src="battleship.jpg" id="gameimg"/>
-				<button onClick=addItem(battleShip)>Add Item To Cart</button>
+				<button onClick=shoppingCart.add("Battle Ship")>Add Item To Cart</button>
 				</center>
 			</td>
 			
