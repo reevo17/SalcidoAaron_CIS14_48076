@@ -1,22 +1,18 @@
 //CONNECT FOUR
-var connectFour = {
-	name: "Connect Four",
-	price: 45
-};
+var game = {
+	name = this.name;
+	price = this.price;	
+} 
+
 //BATTLESHIP
-var battleShip = {
-	name: "Chess",
-	price: 175
-};
-//BLACKJACK
-var blackJack = {
-	name: "Black Jack",
-	price: 50
-};
+var battleShip = new game("Battle Ship", 175);
+var blackJack = new game("Black Jack", 50);
+var connectFour = new game("Connect Four", 45);
+
 
 //ADD ITEMS TO SHOPPING CART
 function addItem(item){
-	item = this;
+	var item = 
 	shoppingCart.total += this.price;
 	shoppingCart.items += this.name;
 }
@@ -50,4 +46,21 @@ function displayItems(){
 var shoppingCart = {
 	items: ["Connect Four"],
 	total: 0
+	scan: function(game){
+		switch(game){
+		case "Connect Four":
+			this.add(45);
+			break;
+		case "Black Jack":
+			this.add(50);
+			break;
+		case "Battle Ship":
+			this.add(175);
+			break;
+		}
+		return true;
+	},
+	add : function(gameCost){
+		this.total += gameCost;
+			}
 };
