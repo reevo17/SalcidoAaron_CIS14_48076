@@ -246,6 +246,10 @@ td{
 #Register header img {
 	width: 0%;
 }
+#RegisterCompleteDisplay{
+	text-align:center;
+	
+}
 #gameimg{
 	width:250px;
 	height:250px;

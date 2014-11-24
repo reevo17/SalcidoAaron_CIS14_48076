@@ -54,7 +54,7 @@ function getCookie(){
             
 		</ul>
 </header>
-<div>
+<div id="RegisterCompleteDisplay">
 <script>
 //DISPLAY LOG IN INFORMATION TO USER
 
@@ -62,24 +62,29 @@ function getCookie(){
 var url = document.location.href;
 var $_GET = getForm(url);
 // strigify object into string
-var str = JSON.stringify($_GET);
+var str = JSON.stringify($_GET).replace("%40", "@");
+
 //create a cookiename variable
 var email = $_GET.email.value;
 var ttl = 1;
 var exdays = 1;
 var cnameHolder = $_GET.email.split("@");
-cname = cnameHolder[0]+$_GET["firstname"];
+var cname = cnameHolder[0]+$_GET["firstname"];
 setCookie(cname, ttl, exdays);
 //pass string and other two variables into setcookie function
 getCookie();
 //getCookie
-//JSON.parse
-JSON.parse($_GET);
+//JSON.parse;
 //using a for/in loop, display cookie contents
 
 //call get cookie function
+var infoHolder1 = str.split(",");
 
-document.write($_GET);
+for(i in infoHolder1){
+	
+	document.write(infoHolder1[i]+"<br>");
+}
+
 
 
 </script>
