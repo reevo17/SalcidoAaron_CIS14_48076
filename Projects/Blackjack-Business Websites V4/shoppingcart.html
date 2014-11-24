@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Reevo Inc Games</title>
+<link type="text/css" rel="stylesheet" href="stylesheet.css">
+<link type="text/javascript" href="login.js">
+<link type="text/javascript" href="shopping.js">
+<link type="text/javascript" href="shopping.js">
+<script>
+if(loggedIn == false){
+	var blackJackTrial = document.getElementById("bj");
+	blackJackTrial.innerHTML="<p><center>Only members who are logged in may play the Blackjack Game Trial!</center></p>";
+}
+</script>
+</head>
+<body>
+
+<header>
+		<img src="logo.png" width="134" height="54"/>
+    	<ul class="nav">
+       	  <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li id="ln1"><a href="login.html">Login</a></li>
+            <li id="ln1"><a href="register.html">Register</a></li>
+            <li id="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
+            <li id="ln"><a href="logout.html">Log Out</a></li>
+            
+		</ul>
+</header>
+
+<div id="shoppingitems">
+
+</div>
+<script>
+	displayItems();
+	document.getElementById("shoppingitems").innerHTML=shoppingCart.items[0];
+</script>
+</body>
+</html>
+ 

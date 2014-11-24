@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Register Completed!</title>
+<link type="text/javascript" href="login.js">
+<link type="text/css" rel="stylesheet" href="stylesheet.css">
+<link type="text/javascript" href="shopping.js">
+<script>
+	function getForm(url){
+		var info=url.split("?");
+		var nameValuePairs=info[1].split("&");
+		var $_GET = new Object;
+		for(var i=0;i<nameValuePairs.length;i++){
+			var map=nameValuePairs[i].split("=");
+			var name=map[0];
+			var value=map[1];
+			$_GET[name]=value;
+		}
+		return $_GET;
+	}
+function setCookie(cname, cvalue, exdays){
+	var d = new Date();
+    d.setTime(d.getTime() + (1*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+function getCookie(){
+	var name = cname;
+	var ca = document.cookie.split(";");
+	for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+     return ;
+}
+
+
+</script>
+</head>
+
+<body id="registerComplete">
+<header>
+		<img src="logo.png" width="134" height="54"/>
+    	<ul class="nav">
+       	  <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li id="ln1"><a href="login.html">Login</a></li>
+            <li id="ln1"><a href="register.html">Register</a></li>
+            <li id="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
+            <li id="ln"><a href="logout.html">Log Out</a></li>
+            
+		</ul>
+</header>
+<div id="RegisterCompleteDisplay">
+<script>
+//DISPLAY LOG IN INFORMATION TO USER
+
+//	create variable to hold url object ($_GET)
+var url = document.location.href;
+var $_GET = getForm(url);
+// strigify object into string
+var str = JSON.stringify($_GET).replace("%40", "@");
+
+//create a cookiename variable
+var email = $_GET.email.value;
+var ttl = 1;
+var exdays = 1;
+var cnameHolder = $_GET.email.split("@");
+var cname = cnameHolder[0]+$_GET["firstname"];
+setCookie(cname, ttl, exdays);
+//pass string and other two variables into setcookie function
+getCookie();
+//getCookie
+//JSON.parse;
+//using a for/in loop, display cookie contents
+
+//call get cookie function
+var infoHolder1 = str.split(",");
+
+for(i in infoHolder1){
+	
+	document.write(infoHolder1[i]+"<br>");
+}
+
+
+
+</script>
+</div>
+</body>
+</html>
