@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <title>Register Completed!</title>
-<link type="text/javascript" href="login.js">
 <link type="text/css" rel="stylesheet" href="stylesheet.css">
 <link type="text/javascript" href="shopping.js">
 <script>
@@ -53,6 +52,21 @@ function checkCookie() {
 </head>
 
 <body id="registerComplete">
+<script>
+function checkLogin(){
+	var check = getCookie("loggedIn");
+	if(check == false)	{
+		document.getElementById("ln").style.display="none";
+		document.getElementById('ln1').style.display ="inline";
+	
+	} else {
+		document.getElementById("ln").style.display='inline';
+		document.getElementById('ln1').style.display ='none';
+	}
+}
+
+
+</script>
 <header>
 		<img src="logo.png" width="134" height="54"/>
     	<ul class="nav">
@@ -65,10 +79,10 @@ function checkCookie() {
             <li id="ln"><a href="logout.html">Log Out</a></li>
             
 		</ul>
-</header>
 <div id="RegisterCompleteDisplay">
 <script>
 //	create variable to hold url object ($_GET)
+
 var url = document.location.href;
 var $_GET = getForm(url);
 // STRINGIFY
@@ -78,8 +92,8 @@ var email = $_GET.email.value;
 var ttl = 1;
 var exdays = 1;
 //SET AND GET COOKIE
-setCookie("loggedIn", ttl, exdays);
-document.write(getCookie("loggedIn"));
+setCookie("loginInfo", ttl, exdays);
+document.write(getCookie("loginInfo"));
 //call get cookie function
 
 

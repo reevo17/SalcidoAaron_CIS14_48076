@@ -1,7 +1,7 @@
 //CONNECT FOUR
 var game = {
-	name = this.name;
-	price = this.price;	
+	name : this.name,
+	price : this.price
 } 
 
 //BATTLESHIP
@@ -45,19 +45,19 @@ function displayItems(){
 //SHOPPING CART
 var shoppingCart = {
 	items: ["Connect Four"],
-	total: 0
+	total: 0,
 	scan: function(game){
-		switch(game){
-		case "Connect Four":
-			this.add(45);
-			break;
-		case "Black Jack":
-			this.add(50);
-			break;
-		case "Battle Ship":
-			this.add(175);
-			break;
-		}
+				switch(game){
+				case "Connect Four":
+					this.add(45);
+					break;
+				case "Black Jack":
+					this.add(50);
+					break;
+				case "Battle Ship":
+					this.add(175);
+					break;
+			}	
 		return true;
 	},
 	add : function(gameCost){

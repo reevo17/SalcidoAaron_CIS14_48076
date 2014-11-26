@@ -8,7 +8,8 @@
 <link type="text/javascript" href="shopping.js">
 <link type="text/javascript" href="shopping.js">
 <script>
-if(loggedIn == false){
+var check = getCookie("loggedIn");
+if(check == false){
 	var blackJackTrial = document.getElementById("bj");
 	blackJackTrial.innerHTML="<p><center>Only members who are logged in may play the Blackjack Game Trial!</center></p>";
 }

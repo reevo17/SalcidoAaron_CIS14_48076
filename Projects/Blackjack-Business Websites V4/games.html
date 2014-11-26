@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <title>Reevo Inc Games</title>
 <link type="text/css" rel="stylesheet" href="stylesheet.css">
-<link type="text/javascript" href="login.js">
 <link type="text/javascript" href="shopping.js">
 <script>
 checkLogin();
@@ -38,8 +37,7 @@ function getCookie(cname){
        	  <li><a href="index.html">Home</a></li>
             <li><a href="games.html">Products</a></li>
             <li><a href="about.html">About</a></li>
-            <li id="ln1"><a href="login.html">Login</a></li>
-            <li id="ln1"><a href="register.html">Register</a></li>
+            <li id="ln1"><a href="login.html">Login</a></li><li id="ln1"><a href="register.html">Register</a></li>
             <li id="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
             <li id="ln"><a href="logout.html">Log Out</a></li>
             
@@ -67,19 +65,29 @@ function getCookie(cname){
             <td>
 				<center>Blackjack<br><small>Price: <em>$50</em></small>
 				<img id="gameimg" src="blackjack.jpg"/>
-				<button onClick=shoppingCart.add("Black Jack")>Add Item To Cart</button><br><button onClick="blackjack.html">Play Game Trial</button>
+				<button onClick=shoppingCart.add("Black Jack")>Add Item To Cart</button><br><button id="ln" onClick="blackjack.html">Play Game Trial</button>
 				<br><div id="bj"></div></center>
 			</td>
 			<td>
 				<center>Battleship<br><small>Price: <em>$175</em></small>
 				<img src="battleship.jpg" id="gameimg"/>
-				<button id="ln" onClick=shoppingCart.add("Battle Ship")>Add Item To Cart</button>
+				<button  onClick=shoppingCart.add("Battle Ship")>Add Item To Cart</button>
 				</center>
 			</td>
 			
         </tr>
     </tbody>   
 </table>
-
+<script>
+	var check = getCookie("loggedIn");
+	console.log(check);
+	if (check == null){
+		document.getElementById("ln").style.display="none";
+		document.getElementById('ln1').style.display ="inline";
+	} else {
+		document.getElementById("ln").style.display="inline";
+		document.getElementById('ln1').style.display ="none";
+	}
+</script>
 </body>
 </html>

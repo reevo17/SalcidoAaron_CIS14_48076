@@ -22,7 +22,8 @@ body{
 	opacity: 1;
 }
 a{
-	text-decoration:none;
+	text-decoration: none;
+	display: inline;
 }
 aside div{
 	margin-top:10px;
@@ -217,10 +218,10 @@ td{
 	background-image: -moz-linear-gradient(270deg,rgba(103,125,255,1.00) 0%,rgba(78,80,96,1.00) 58.03%,rgba(0,0,0,1.00) 100%);
 	background-image: -o-linear-gradient(270deg,rgba(103,125,255,1.00) 0%,rgba(78,80,96,1.00) 58.03%,rgba(0,0,0,1.00) 100%);
 	background-image: linear-gradient(180deg,rgba(103,125,255,1.00) 0%,rgba(78,80,96,1.00) 58.03%,rgba(0,0,0,1.00) 100%);
-	margin-top: -55px;
-	margin-right: -55px;
-	margin-bottom: -55px;
-	margin-left: -55px;
+	margin-top: -34px;
+	margin-right: auto;
+	margin-bottom: -54px;
+	margin-left: auto;
 	padding-top: 43px;
 	padding-right: 5px;
 	padding-bottom: 5px;
