@@ -1,7 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
 *{
-	color:white;	
+	color: white;
+	border-bottom-color: #6DCDFC;
 }
 #blackbjackbody{
 	background-color:black;	
@@ -151,9 +152,11 @@ button{
 	opacity: 0.62;
 }
 table{
-	border: solid 2px black;	
-	width:350px;
-	border-collapse: collapse; 
+	border: 2px solid #6DCDFC;
+	width: 650px;
+	border-collapse: collapse;
+	height: 650px;
+	text-align: center;
 	
 }
 tr{
@@ -161,4 +164,9 @@ tr{
 }
 #BlackJackBody {
 	background-color: #000000;
+}
+#blackJackArea tr #cardHeader {
+	border-color: #6DCDFC;
+	width: auto;
+	color: #BFECFF;
 }

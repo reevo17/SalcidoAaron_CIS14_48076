@@ -9,11 +9,6 @@
 </head>
 
 <body id="BlackJackBody">
-<script>
-	$( document ).ready(function() {
-    alert("THIS IS A TRIAL!<br> Thank you trying out our BlackJack Deluks computer game!<br> This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. <br>");
-	});
-</script>
 <header>
 		<img src="logo.png" width="134" height="54"/>
     	<ul class="nav">
@@ -26,27 +21,32 @@
             <li id="ln"><a href="logout.html">Log Out</a></li>
 		</ul>
 </header>
-
-    
+<script>
+	
+function loaded() {
+	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
+}
+	window.onload = loaded();
+</script>
    <div class="messageArea">
    		
    </div>
-   <table>
+   <table border="1px" align="center" id="blackJackArea">
 		<!--DEALER AREA-->
         <tr>
-        	<td>DEALER CARDS</td>
+        	<td colspan="5" width="255" id="cardHeader">DEALER CARDS</td>
         </tr>
 		<tr>
-			<td id="DealerCard1"></td>
-			<td id="DealerCard2"></td>
-			<td id="DealerCard3"></td>
-			<td id="DealerCard4"></td>
-			<td id="DealerCard5"></td>
+			<td  id="DealerCard1"></td>
+			<td  id="DealerCard2"></td>
+			<td  id="DealerCard3"></td>
+			<td  id="DealerCard4"></td>
+			<td  id="DealerCard5"></td>
 		</tr>
 		
 		<!--PLAYER AREA-->
         <tr>
-        	<td>PLAYER CARDS</td>
+        	<td colspan="5" id="cardHeader">PLAYER CARDS</td>
         </tr>
 		<tr>
 			<td id="PlayerCard1"></td>
@@ -58,16 +58,37 @@
         
         <!--CONTROL AREA-->
         <tr>
-        	<td> <!--button--></td>
+        	<td id="control"> <button id="hit" onClick=dealCard() type="button">Hit</button> <button id="hold" onClick=hold() type="button">Hold</button></td>
         </tr>
         
-        <!--MESSAGE AREA-->ss
+        <!--MESSAGE AREA-->
 		<tr>
 			<td id="messageArea">
-			
+				
 			</td>
          
 		</tr>
-   <table>
+   </table>
+	<script src="blackjack.js">
+ 
+		while(turn<6){
+		console.log(turn);
+		shuffle();
+		player.Hit();
+		dealer.Hit();
+		document.getElementById(messageArea).innerHTML="<br>Hit or Hold";
+			if(player.cards.Value>21){
+				//DEALER WINS
+				console.log("Dealer has won");
+				turn++;
+			}
+			if(dealer.cards.Value>21){
+				//PLAYER WINS
+				console.log("player has won");
+				turn++;
+			}
+		}
+
+   </script>
 </body>
 </html>

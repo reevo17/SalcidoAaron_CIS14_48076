@@ -1,27 +1,41 @@
 var playing = true;
 var dealerCards = []; //Dealers Cards
 var playerCards = []; //Players Cards
-var deck = new Deck();
 var bet;
 var money;
 var moneyDisplay;
 var message;
 var turn = 0;
+var deck = new Array;
 
 //CREATE A DECK
-function Deck(suit,number){
-	Math.random();
-}
+function shuffle(deck){
+	var currentIndex = deck.length, temporaryValue, randomIndex ;
 
-function loaded() {
-	alert( "THIS IS A TRIAL!<br> Thank you trying out our BlackJack Deluks computer game!<br> This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. <br>" );
+  	// While there remain elements to shuffle...
+  	while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = deck[currentIndex];
+    deck[currentIndex] = deck[randomIndex];
+    deck[randomIndex] = temporaryValue;
+ 	 }
+
+  return array;
+};
+//HOLD
+function hold(){
+		var playing = false;
+		document.getElementById(Hit).disabled;
+		document.getElementById(Hold).disabled;
 }
- 
+//HIT
 function dealCard(){
-	for(i in this.cards){
-		this.cards[i] = Math.random();
-		this.cards.Count++;
-	}
+	this.cards.Value += this.cards.deck[0]
 };
 //THE PLAYER
 player = {
@@ -30,7 +44,8 @@ player = {
 		Count:0,
 		Value:0
 	},
-	Hit: dealCard();
+	Hit: dealCard(),
+	Hold: hold()
 };
 
 //THE DEALER
@@ -39,24 +54,8 @@ dealer = {
 		deck:[],
 		Count:0,
 		Value:0
-	}
-	Hit: dealCard();
+	},
+	Hit: dealCard(),
+	Hold: hold()
 };
-
-window.onload = loaded();
-$( document ).ready(function() {
-    alert("THIS IS A TRIAL!<br> Thank you trying out our BlackJack Deluks computer game!<br> This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. <br>");
-});
-
-//while(turn<6){
-//	dealCards();
-//		if(player.cards.Value>21){
-//			//DEALER WINS
-//	}
-//		if(dealer.cards.Value>21){
-//			//PLAYER WINS
-//	}
-//	console.log("Code for Blackjack goes here")
-//	turn++;
-//}
 
