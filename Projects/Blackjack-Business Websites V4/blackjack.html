@@ -6,6 +6,18 @@
 <link type="text/css" rel="stylesheet" href="blackjackstylesheet.css">
 <link type="text/javascript" href="blackjack.js">
 <link type="text/javascript" href="login.js">
+<script>
+function getCookie(cname){
+	var name = cname;
+	var ca = document.cookie.split(";");
+	for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+</script>
 </head>
 
 <body id="BlackJackBody">
