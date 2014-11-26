@@ -7,6 +7,7 @@
 <link type="text/css" rel="stylesheet" href="stylesheet.css">
 <link type="text/javascript" href="shopping.js">
 <script>
+//FUNCTION GET FORM
 	function getForm(url){
 		var info=url.split("?");
 		var nameValuePairs=info[1].split("&");
@@ -19,6 +20,7 @@
 		}
 		return $_GET;
 	}
+//FUNCTION SET COOKIE
 function setCookie(cname, cvalue, exdays){
 	var d = new Date();
     d.setTime(d.getTime() + (1*24*60*60*1000));
@@ -35,8 +37,6 @@ function getCookie(){
     }
      return ;
 }
-
-
 </script>
 </head>
 
@@ -56,32 +56,32 @@ function getCookie(){
 </header>
 <div id="RegisterCompleteDisplay">
 <script>
-//DISPLAY LOG IN INFORMATION TO USER
-
 //	create variable to hold url object ($_GET)
 var url = document.location.href;
 var $_GET = getForm(url);
-// strigify object into string
+// STRINGIFY
 var str = JSON.stringify($_GET).replace("%40", "@");
-
 //create a cookiename variable
 var email = $_GET.email.value;
 var ttl = 1;
 var exdays = 1;
 var cnameHolder = $_GET.email.split("@");
 var cname = cnameHolder[0]+$_GET["firstname"];
+//SET AND GET COOKIE
 setCookie(cname, ttl, exdays);
-//pass string and other two variables into setcookie function
 getCookie();
-//getCookie
-//JSON.parse;
-//using a for/in loop, display cookie contents
-
 //call get cookie function
-var infoHolder1 = str.split(",");
 
+var infoHolder1 = str.split(",");
+var infoHolder1 = infoHolder1.split("=");
+//function splitInfo(){
+//	for(i in infoHolder1){
+//		infoHolder[i].split(":");
+//	}
+//}
+//var infoHolder2 = function splitInfo();
+//document.write(infHolder2);
 for(i in infoHolder1){
-	
 	document.write(infoHolder1[i]+"<br>");
 }
 
