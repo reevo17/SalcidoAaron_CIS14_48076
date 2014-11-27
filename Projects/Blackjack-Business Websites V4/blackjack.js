@@ -47,7 +47,7 @@ player = {
 		Count:0,
 		Value:0
 	},
-	Hit: dealCard(),
+	Hit: playerDealCard(),
 	Hold: hold()
 };
 

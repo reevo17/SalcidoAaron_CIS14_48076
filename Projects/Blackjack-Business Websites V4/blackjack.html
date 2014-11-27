@@ -18,7 +18,7 @@ function getCookie(cname){
 }
 </script>
 </head>
-<body id="BlackJackBody">
+<body id="BlackJackBody">-
 <header>
 		<img src="logo.png" width="134" height="54"/>
     	<ul class="nav">
@@ -38,10 +38,12 @@ function loaded() {
 //`````````````````CLUBS```````````````````````````
 	var c1 = {
 		img:"cards/c1.png",
-		value: if(player.cards.value>10){
-			this.value = 1;
-		}else{
-			this.value = 10;
+		value: function checkValue(){
+				if(player.cards.value>10){
+				this.value = 1;
+			}else{
+				this.value = 10;
+			 }
 		}
 	}
 	var	c2 = {
@@ -95,10 +97,12 @@ function loaded() {
 //```````````````DIAMONDS```````````````````````````
 	var d1 = {
 		img:"cards/1.png",
-		value: if(player.cards.value>10){
-			this.value = 1;
-		}else{
-			this.value = 10;
+		value: function checkValue(){
+				if(player.cards.value>10){
+				this.value = 1;
+			}else{
+				this.value = 10;
+			 }
 		}
 	}
 	var	d2 = {
@@ -129,7 +133,7 @@ function loaded() {
 		img:"cards/8.png",
 		value: 8	
 	}
-	var 9 = {
+	var d9 = {
 		img:"cards/d9.png",
 		value:9	
 	}
@@ -152,10 +156,12 @@ function loaded() {
 //``````````````````````````````SPADES``````````````````````````
 	var s1 = {
 		img:"cards/s1.png",
-		value: if(player.cards.value>10){
-			this.value = 1;
-		}else{
-			this.value = 10;
+		value: function checkValue(){
+				if(player.cards.value>10){
+				this.value = 1;
+			}else{
+				this.value = 10;
+			 }
 		}
 	}
 	var	s2 = {
@@ -209,10 +215,12 @@ function loaded() {
 //`````````````````````````````````````````````````HEARTS````````````````````````````
 	var h1 = {
 		img:"cards/1.png",
-		value: if(player.cards.value>10){
-			this.value = 1;
-		}else{
-			this.value = 10;
+		value: function checkValue(){
+				if(player.cards.value>10){
+				this.value = 1;
+			}else{
+				this.value = 10;
+			 }
 		}
 	}
 	var	h2 = {
@@ -274,11 +282,14 @@ function loaded() {
         	<td colspan="5" width="255" id="cardHeader">DEALER CARDS</td>
         </tr>
 		<tr>
-			<td  id="DealerCard1"></td>
-			<td  id="DealerCard2"></td>
-			<td  id="DealerCard3"></td>
-			<td  id="DealerCard4"></td>
-			<td  id="DealerCard5"></td>
+			<td id="DealerCard1"></td>
+			<td id="DealerCard2"></td>
+			<td id="DealerCard3"></td>
+			<td id="DealerCard4"></td>
+			<td id="DealerCard5"></td>
+            <td id="DealerCard6"></td>
+            <td id="DealerCard7"></td>
+            <td id="DealerCard8"></td>
 		</tr>
 		
 		<!--PLAYER AREA-->
@@ -290,7 +301,10 @@ function loaded() {
 			<td id="PlayerCard2"></td>
 			<td id="PlayerCard3"></td>
 			<td id="PlayerCard4"></td>
-			<td id="PlayerCard4"></td>
+			<td id="PlayerCard5"></td>
+            <td id="PlayerCard6"></td>
+            <td id="PlayerCard7"></td>
+            <td id="PlayerCard8"></td>
 		</tr>
         
         <!--CONTROL AREA-->
@@ -313,7 +327,8 @@ function loaded() {
 		shuffle();
 		player.Hit();
 		dealer.Hit();
-		document.getElementById(messageArea).innerHTML="<br>Hit or Hold";
+		document.getElementById("messageArea").innerHTML="'Your cards are worth ' +player.cards.Value";
+		document.getElementById("messageArea").innerHTML="<br>Hit or Hold";
 			if(player.cards.Value>21){
 				//DEALER WINS
 				console.log("Dealer has won");
