@@ -33,7 +33,7 @@ function hold(){
 		document.getElementById(Hit).disabled;
 		document.getElementById(Hold).disabled;
 }
-//HIT
+//HIT ~~~APPEND ATTEMPT~~~~~~
 function playerDealCard(card){
 	player.cards.Value += card.Value;
 	var cardArea = document.getElementById("PlayerCard"+turn);
