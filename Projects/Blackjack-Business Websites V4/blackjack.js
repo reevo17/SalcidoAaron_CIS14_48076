@@ -34,8 +34,11 @@ function hold(){
 		document.getElementById(Hold).disabled;
 }
 //HIT
-function dealCard(){
-	this.cards.Value += this.cards.deck[0]
+function playerDealCard(card){
+	player.cards.Value += card.Value;
+	var cardArea = document.getElementById("PlayerCard"+turn);
+	var cardImage = "<img src='cards.deck[0].png'/>";
+	cardArea.append(cardImage);
 };
 //THE PLAYER
 player = {
