@@ -6,6 +6,70 @@
 <link type="text/css" rel="stylesheet" href="blackjackstylesheet.css">
 <link type="text/javascript" href="scripts/blackjack.js">
 <script>
+var playing = true;
+var dealerCards = []; //Dealers Cards
+var playerCards = []; //Players Cards
+var bet;
+var money;
+var moneyDisplay;
+var message;
+var turn = 0;
+var deck = new Array;
+
+//CREATE A DECK
+function shuffle(deck){
+	var currentIndex = deck.length, temporaryValue, randomIndex ;
+
+  	// While there remain elements to shuffle...
+  	while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = deck[currentIndex];
+    deck[currentIndex] = deck[randomIndex];
+    deck[randomIndex] = temporaryValue;
+ 	 }
+
+  return deck;
+};
+
+//THE PLAYER
+player = {
+	cards:{
+		deck:[],
+		Count:0,
+		Value:0
+	},
+	Hit: playerDealCard(),
+	Hold: hold()
+};
+
+//THE DEALER
+dealer = {
+	cards:{
+		deck:[],
+		Count:0,
+		Value:0
+	},
+	Hit: dealCard(),
+	Hold: hold()
+};
+//HOLD
+function hold(){
+		var playing = false;
+		document.getElementById(Hit).disabled;
+		document.getElementById(Hold).disabled;
+}
+//HIT ~~~APPEND ATTEMPT~~~~~~
+function playerDealCard(card){
+	player.cards.Value += card.Value;
+	var cardArea = document.getElementById("PlayerCard"+turn);
+	var cardImage = "<img src='cards.deck[0].png'/>";
+	cardArea.append(cardImage);
+};
 function getCookie(cname){
 	var name = cname;
 	var ca = document.cookie.split(";");
@@ -311,24 +375,19 @@ function loaded() {
         <tr>
         	<td id="control"> <button id="hit" onClick=dealCard() type="button">Hit</button> <button id="hold" onClick=hold() type="button">Hold</button></td>
         </tr>
-        
-        <!--MESSAGE AREA-->
-		<tr>
-			<td id="messageArea">
-				
-			</td>
-         
-		</tr>
    </table>
-	<script src="blackjack.js">
- 	
-		while(turn<6){
+   <div id="messageArea">
+		Welcome to Blackjack!
+   </div>
+	<script>
+	while(turn<6){
+		var x = document.getElementById("messageArea");
 		console.log(turn);
-		shuffle();
+		shuffle(deck);
 		player.Hit();
 		dealer.Hit();
-		document.getElementById("messageArea").innerHTML="'Your cards are worth ' +player.cards.Value";
-		document.getElementById("messageArea").innerHTML="<br>Hit or Hold";
+		x.innerHTML="'Your cards are worth ' +player.cards.Value";
+		x.innerHTML="<br>Hit or Hold";
 			if(player.cards.Value>21){
 				//DEALER WINS
 				console.log("Dealer has won");
@@ -339,8 +398,7 @@ function loaded() {
 				console.log("player has won");
 				turn++;
 			}
-		}
-	
+	}
    </script>
 </body>
 </html>
