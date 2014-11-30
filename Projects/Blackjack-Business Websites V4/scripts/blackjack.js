@@ -40,19 +40,16 @@ function playerDealCard(card){
 	var cardImage = "<img src='cards.deck[0].png'/>";
 	cardArea.append(cardImage);
 };
+
 //THE PLAYER
-player = {
-	cards:{
-		deck:[],
-		Count:0,
-		Value:0
-	},
+var player = {
+
 	Hit: playerDealCard(),
 	Hold: hold()
-};
+}
 
 //THE DEALER
-dealer = {
+var dealer = {
 	cards:{
 		deck:[],
 		Count:0,
@@ -60,5 +57,5 @@ dealer = {
 	},
 	Hit: dealCard(),
 	Hold: hold()
-};
+}
 
