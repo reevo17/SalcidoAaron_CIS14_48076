@@ -130,18 +130,18 @@ function getCookie(cname){
 	//THE PLAYER
 var player = {
 	cards:{
-		deck:[],
+		deck:new Array,
 		Count:0,
 		Value:0
 	},
 	Hit: playerDealCard(),
 	Hold: playerHold()
-};
+}
 
 //THE DEALER
 var dealer = {
 	cards:{
-		deck:[],
+		deck:new Array,
 		Count:0,
 		Value:0
 	},
@@ -347,7 +347,7 @@ deck = [
 		shuffle(deck);
 		player.Hit();
 		dealer.Hit();
-		x.innerHTML="'Your cards are worth ' +player.cards.Value";
+		x.innerHTML="Your cards are worth "+player.cards.Value;
 		x.innerHTML="<br>Hit or Hold";
 			if(player.cards.Value>21){
 				//DEALER WINS

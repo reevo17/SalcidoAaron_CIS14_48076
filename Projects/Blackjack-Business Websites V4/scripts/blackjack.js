@@ -43,7 +43,11 @@ function playerDealCard(card){
 
 //THE PLAYER
 var player = {
-
+	cards : {
+		deck: new Array,
+		Count : 0,
+		Value:0
+	},
 	Hit: playerDealCard(),
 	Hold: hold()
 }
