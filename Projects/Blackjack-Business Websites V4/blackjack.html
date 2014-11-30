@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <title>Blackjack Trial</title>
 <link type="text/css" rel="stylesheet" href="blackjackstylesheet.css">
-<link type="text/javascript" href="scripts/blackjack.js">
 <script>
 var playing = true;
 var dealerCards = []; //Dealers Cards
@@ -93,11 +92,57 @@ function getCookie(cname){
 		</ul>
 </header>
 <script>
-	
+
+</script>
+   <div class="messageArea">
+   		
+   </div>
+   <table border="1px" align="center" id="blackJackArea">
+		<!--DEALER AREA-->
+        <tr>
+        	<td colspan="5" width="255" id="cardHeader">DEALER CARDS</td>
+        </tr>
+		<tr>
+			<td id="DealerCard1"></td>
+			<td id="DealerCard2"></td>
+			<td id="DealerCard3"></td>
+			<td id="DealerCard4"></td>
+			<td id="DealerCard5"></td>
+            <td id="DealerCard6"></td>
+            <td id="DealerCard7"></td>
+            <td id="DealerCard8"></td>
+		</tr>
+		
+		<!--PLAYER AREA-->
+        <tr>
+        	<td colspan="5" id="cardHeader">PLAYER CARDS</td>
+        </tr>
+		<tr>
+			<td id="PlayerCard1"></td>
+			<td id="PlayerCard2"></td>
+			<td id="PlayerCard3"></td>
+			<td id="PlayerCard4"></td>
+			<td id="PlayerCard5"></td>
+            <td id="PlayerCard6"></td>
+            <td id="PlayerCard7"></td>
+            <td id="PlayerCard8"></td>
+		</tr>
+        
+        <!--CONTROL AREA-->
+        <tr>
+        	<td id="control"> <button id="hit" onClick=dealCard() type="button">Hit</button> <button id="hold" onClick=hold() type="button">Hold</button></td>
+        </tr>
+   </table>
+   <div id="messageArea">
+		Welcome to Blackjack!
+   </div>
+	<script>
+		
 function loaded() {
 	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
 }
 	window.onload = loaded();
+deck = [
 // ~~~~~~~~~CARDS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //`````````````````CLUBS```````````````````````````
 	var c1 = {
@@ -112,52 +157,40 @@ function loaded() {
 	}
 	var	c2 = {
 		img:"cards/c2.png",
-		value: 2	
-	}
+		value: 2	}
 	 var c3 = {
 		img:"cards/c3.png",
-		value:3	
-	}
+		value:3	}
 	var c4 = {
 		img:"cards/c4.png",
-		value: 4
-	}
+		value: 4}
 	var c5 = {
 		img:"cards/c5.png",
-		value: 5	
-	}
+		value: 5	}
 	var c6 = {
 		img:"cards/c6.png",
-		value: 6	
-	}
+		value: 6	}
 	var c7 = {
 		img:"cards/c7.png",
-		value: 7	
-	}
+		value: 7	}
 	var c8 = {
 		img:"cards/c8.png",
-		value: 8	
-	}
+		value: 8	}
 	var c9 = {
 		img:"cards/c9.png",
-		value:9	
-	}
+		value:9	}
 	var c10 = {
 		img:"cards/c10.png",
-		value:10	
-	}
+		value:10	}
 	var c11 = {
 		img:"cards/c11.png",
-		value:10
-	}
+		value:10}
 	var c12 = {
 		img:"cards/c12.png",
-		value:10
-	}
+		value:10}
 	var c13 = {
 		img:"cards/c13.png",
-		value:10	
-	}
+		value:10	}
 //```````````````DIAMONDS```````````````````````````
 	var d1 = {
 		img:"cards/1.png",
@@ -171,52 +204,40 @@ function loaded() {
 	}
 	var	d2 = {
 		img:"cards/d2.png",
-		value: 2	
-	}
+		value: 2	}
 	 var d3 = {
 		img:"cards/d3.png",
-		value:3	
-	}
+		value:3	}
 	var d4 = {
 		img:"cards/d4.png",
-		value: 4
-	}
+		value: 4}
 	var d5 = {
 		img:"cards/d5.png",
-		value: 5	
-	}
+		value: 5	}
 	var d6 = {
 		img:"cards/d6.png",
-		value: 6	
-	}
+		value: 6	}
 	var d7 = {
 		img:"cards/d7.png",
-		value: 7	
-	}
+		value: 7	}
 	var d8 = {
 		img:"cards/8.png",
-		value: 8	
-	}
+		value: 8	}
 	var d9 = {
 		img:"cards/d9.png",
-		value:9	
-	}
+		value:9	}
 	var d10 = {
 		img:"cards/d10.png",
-		value:10	
-	}
+		value:10	}
 	var d11 = {
 		img:"cards/d11.png",
-		value:10
-	}
+		value:10}
 	var d12 = {
 		img:"cards/d12.png",
-		value:10
-	}
+		value:10}
 	var d13 = {
 		img:"cards/d13.png",
-		value:10	
-	}
+		value:10	}
 //``````````````````````````````SPADES``````````````````````````
 	var s1 = {
 		img:"cards/s1.png",
@@ -336,50 +357,7 @@ function loaded() {
 		value:10	
 	}
 //==============================END OF CARDS ===============================
-</script>
-   <div class="messageArea">
-   		
-   </div>
-   <table border="1px" align="center" id="blackJackArea">
-		<!--DEALER AREA-->
-        <tr>
-        	<td colspan="5" width="255" id="cardHeader">DEALER CARDS</td>
-        </tr>
-		<tr>
-			<td id="DealerCard1"></td>
-			<td id="DealerCard2"></td>
-			<td id="DealerCard3"></td>
-			<td id="DealerCard4"></td>
-			<td id="DealerCard5"></td>
-            <td id="DealerCard6"></td>
-            <td id="DealerCard7"></td>
-            <td id="DealerCard8"></td>
-		</tr>
-		
-		<!--PLAYER AREA-->
-        <tr>
-        	<td colspan="5" id="cardHeader">PLAYER CARDS</td>
-        </tr>
-		<tr>
-			<td id="PlayerCard1"></td>
-			<td id="PlayerCard2"></td>
-			<td id="PlayerCard3"></td>
-			<td id="PlayerCard4"></td>
-			<td id="PlayerCard5"></td>
-            <td id="PlayerCard6"></td>
-            <td id="PlayerCard7"></td>
-            <td id="PlayerCard8"></td>
-		</tr>
-        
-        <!--CONTROL AREA-->
-        <tr>
-        	<td id="control"> <button id="hit" onClick=dealCard() type="button">Hit</button> <button id="hold" onClick=hold() type="button">Hold</button></td>
-        </tr>
-   </table>
-   <div id="messageArea">
-		Welcome to Blackjack!
-   </div>
-	<script>
+]
 	while(turn<6){
 		var x = document.getElementById("messageArea");
 		console.log(turn);
