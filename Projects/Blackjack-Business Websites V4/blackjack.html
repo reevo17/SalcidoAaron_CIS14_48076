@@ -12,7 +12,6 @@ var bet;
 var money;
 var moneyDisplay;
 var message;
-var turn = 0;
 var deck = new Array;
 
 //CREATE A DECK
@@ -43,7 +42,7 @@ var player = {
 		Value:0
 	},
 	Hit: playerDealCard(),
-	Hold: hold()
+	Hold: playerHold()
 };
 
 //THE DEALER
@@ -53,19 +52,31 @@ var dealer = {
 		Count:0,
 		Value:0
 	},
-	Hit: dealCard(),
-	Hold: hold()
+	Hit: dealerDealCard(),
+	Hold: dealerHold()
 };
 //HOLD
-function hold(){
+function playerhold(){
 		var playing = false;
 		document.getElementById(Hit).disabled;
 		document.getElementById(Hold).disabled;
 }
+function dealerHold(){
+		console.log("Dealer is holding");
+}
 //HIT ~~~APPEND ATTEMPT~~~~~~
 function playerDealCard(card){
-	player.cards.Value += card.Value;
+	var x = player.cards;
+	x.Value += card.Value;
 	var cardArea = document.getElementById("PlayerCard"+turn);
+	var cardImage = "<img src='cards.deck[0].png'/>";
+	cardArea.append(cardImage);
+};
+//FOR WHEN THE DEALER HITS
+function dealerDealCard(card){
+	var x = dealer.cards;
+	x.Value += card.Value;
+	var cardArea = document.getElementById("DealerCard"+turn);
 	var cardImage = "<img src='cards.deck[0].png'/>";
 	cardArea.append(cardImage);
 };
@@ -137,7 +148,7 @@ function getCookie(cname){
 		Welcome to Blackjack!
    </div>
 	<script>
-		
+	var turn = 0;
 function loaded() {
 	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
 }
