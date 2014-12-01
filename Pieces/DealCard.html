@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+//HIT ~~~APPEND ATTEMPT~~~~~~
+function playerDealCard(deck){
+	var card = deck.slice(0,2);
+	player.cards.Value += card["Value"];
+	var cardArea = document.getElementById("PlayerCard"+turn);
+	var node = document.createElement("IMG");
+	var att = document.createAttribute("src");
+	var cardImage = card["img"]+"/>";
+	att.value=cardImage;
+	node.setAttribute(att);
+};
+//FOR WHEN THE DEALER HITS
+function dealerDealCard(card){
+	card = deck.slice(0,2);
+	dealer.cards.Value += card["Value"];
+	var cardArea = document.getElementById("DealerCard"+turn);
+	var cardImage = card["img"]+"/>";
+	var node = document.createElement("IMG");
+	var att = document.createAttribute("src");
+	var cardImage = player.cards.deck[0].img+"/>";
+	att.value=cardImage;
+	node.setAttribute(att);
+};
+//THE PLAYER
+var player = {
+	Hit: playerDealCard(),
+	Hold: function playerhold(){
+		var playing = false;
+		document.getElementById(Hit).disabled;
+		document.getElementById(Hold).disabled;
+},
+	cards:{
+		deck:new Array,
+		Count:0,
+		Value:0
+	}
+};
+//THE DEALER
+var dealer = {
+	cards:{
+		deck:new Array,
+		Count:0,
+		Value:0
+	},
+	Hit: dealerDealCard(),
+	Hold: dealerHold()
+};
+var turn = 1;
+var playing = true;
+var deck = new Array;
+
+//CREATE A DECK
+function shuffle(deck){
+	var currentIndex = deck.length, temporaryValue, randomIndex ;
+
+  	// While there remain elements to shuffle...
+  	while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = deck[currentIndex];
+    deck[currentIndex] = deck[randomIndex];
+    deck[randomIndex] = temporaryValue;
+ 	 }
+  return deck;
+};
+</script>
+</head>
+
+<body>
+
+
+   <script>
+
+
+   </script>
+</body>
+</html>
