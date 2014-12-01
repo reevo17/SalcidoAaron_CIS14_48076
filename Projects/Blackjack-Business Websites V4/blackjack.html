@@ -5,6 +5,31 @@
 <title>Blackjack Trial</title>
 <link type="text/css" rel="stylesheet" href="blackjackstylesheet.css">
 <script>
+	//THE PLAYER
+var player = {
+	Hit: playerDealCard(),
+	Hold: function playerhold(){
+		var playing = false;
+		document.getElementById(Hit).disabled;
+		document.getElementById(Hold).disabled;
+},
+	cards:{
+		deck:new Array,
+		Count:0,
+		Value:0
+	}
+};
+//THE DEALER
+var dealer = {
+	cards:{
+		deck:new Array,
+		Count:0,
+		Value:0
+	},
+	Hit: dealerDealCard(),
+	Hold: dealerHold()
+};
+var turn = 0;
 var playing = true;
 var dealerCards = []; //Dealers Cards
 var playerCards = []; //Players Cards
@@ -35,29 +60,33 @@ function shuffle(deck){
 };
 
 
-//HOLD
-function playerhold(){
-		var playing = false;
-		document.getElementById(Hit).disabled;
-		document.getElementById(Hold).disabled;
-}
+//HOLD 
 function dealerHold(){
 		console.log("Dealer is holding");
 }
 //HIT ~~~APPEND ATTEMPT~~~~~~
 function playerDealCard(card){
-	player.cards.Value += card.Value;
+	card = deck.slice(1,2);
+	player.cards.Value += card["Value"];
 	var cardArea = document.getElementById("PlayerCard"+turn);
-	var cardImage = "<img src='cards.deck[0].png'/>";
-	cardArea.append(cardImage);
+	var node = document.createElement("IMG");
+	var att = document.createAttribute("src");
+	var cardImage = card["img"]+"/>";
+	att.value=cardImage;
+	node.setAttribute(att);
+	
 };
 //FOR WHEN THE DEALER HITS
 function dealerDealCard(card){
-	var x = dealer.cards;
-	x.Value += card.Value;
+	card = deck.slice(1,2);
+	dealer.cards.Value += card["Value"];
 	var cardArea = document.getElementById("DealerCard"+turn);
-	var cardImage = "<img src='cards.deck[0].png'/>";
-	cardArea.append(cardImage);
+	var cardImage = card["img"]+"/>";
+	var node = document.createElement("IMG");
+	var att = document.createAttribute("src");
+	var cardImage = player.cards.deck[0].img+"/>";
+	att.value=cardImage;
+	node.setAttribute(att);
 };
 function getCookie(cname){
 	var name = cname;
@@ -127,32 +156,14 @@ function getCookie(cname){
 		Welcome to Blackjack!
    </div>
 	<script>
-	//THE PLAYER
-var player = {
-	cards:{
-		deck:new Array,
-		Count:0,
-		Value:0
-	},
-	Hit: playerDealCard(),
-	Hold: playerHold()
-}
 
-//THE DEALER
-var dealer = {
-	cards:{
-		deck:new Array,
-		Count:0,
-		Value:0
-	},
-	Hit: dealerDealCard(),
-	Hold: dealerHold()
-};
-	var turn = 0;
+
+//RUNS WHEN PAGE LOADS
 function loaded() {
 	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
 }
 	window.onload = loaded();
+//DEFINE THE DECK==================================
 deck = [
 // ~~~~~~~~~CARDS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //`````````````````CLUBS```````````````````````````
