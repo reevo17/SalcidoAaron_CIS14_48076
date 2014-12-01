@@ -29,7 +29,7 @@ var dealer = {
 	Hit: dealerDealCard(),
 	Hold: dealerHold()
 };
-var turn = 0;
+var turn = 1;
 var playing = true;
 var dealerCards = []; //Dealers Cards
 var playerCards = []; //Players Cards
@@ -66,7 +66,7 @@ function dealerHold(){
 }
 //HIT ~~~APPEND ATTEMPT~~~~~~
 function playerDealCard(card){
-	card = deck.slice(1,2);
+	card = deck.slice(0,2);
 	player.cards.Value += card["Value"];
 	var cardArea = document.getElementById("PlayerCard"+turn);
 	var node = document.createElement("IMG");
@@ -74,11 +74,10 @@ function playerDealCard(card){
 	var cardImage = card["img"]+"/>";
 	att.value=cardImage;
 	node.setAttribute(att);
-	
 };
 //FOR WHEN THE DEALER HITS
 function dealerDealCard(card){
-	card = deck.slice(1,2);
+	card = deck.slice(0,2);
 	dealer.cards.Value += card["Value"];
 	var cardArea = document.getElementById("DealerCard"+turn);
 	var cardImage = card["img"]+"/>";
