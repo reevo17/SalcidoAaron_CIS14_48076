@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Blackjack Trial</title>
-<link type="text/css" rel="stylesheet" href="blackjackstylesheet.css">
+<link type="text/css" rel="stylesheet" href="stylesheets/blackjackstylesheet.css">
 <script>
 //THE PLAYER
 var player = {
@@ -17,7 +17,8 @@ var player = {
 		deck:new Array,
 		Count:0,
 		Value:0
-	}
+	},
+	CardPosition:1
 };
 //THE DEALER
 var dealer = {
@@ -27,7 +28,8 @@ var dealer = {
 		Value:0
 	},
 	Hit: dealerDealCard(),
-	Hold: dealerHold()
+	Hold: dealerHold(),
+	CardPosition:1
 };
 var turn = 1;
 var playing = true;
@@ -143,7 +145,7 @@ function dealerHold(){
 function playerDealCard(deck){
 	var card = deck.slice(0,2);
 	player.cards.Value += card["Value"];
-	var cardArea = document.getElementById("PlayerCard"+turn);
+	var cardArea = document.getElementById("PlayerCard"+player.CardPosition);
 	var node = document.createElement("IMG");
 	var att = document.createAttribute("src");
 	var cardImage = card["img"]+"/>";
@@ -154,7 +156,7 @@ function playerDealCard(deck){
 function dealerDealCard(card){
 	card = deck.slice(0,2);
 	dealer.cards.Value += card["Value"];
-	var cardArea = document.getElementById("DealerCard"+turn);
+	var cardArea = document.getElementById("DealerCard"+dealer.CardPosition);
 	var cardImage = card["img"]+"/>";
 	var node = document.createElement("IMG");
 	var att = document.createAttribute("src");
@@ -197,7 +199,7 @@ function writeMessage(message){
    <table border="1px" align="center" id="blackJackArea">
 		<!--DEALER AREA-->
         <tr>
-        	<td colspan="8" width="255" id="cardHeader">DEALER CARDS</td>
+        	<td colspan="8" width="255" id="cardHeader">~DEALER CARDS~</td>
         </tr>
 		<tr>
 			<td id="DealerCard1"></td>
@@ -212,7 +214,7 @@ function writeMessage(message){
 		
 		<!--PLAYER AREA-->
         <tr>
-        	<td colspan="8" id="cardHeader">PLAYER CARDS</td>
+        	<td colspan="8" id="cardHeader">~PLAYER CARDS~</td>
         </tr>
 		<tr>
 			<td id="PlayerCard1"></td>

@@ -53,7 +53,97 @@ var dealer = {
 };
 var turn = 1;
 var playing = true;
-var deck = new Array;
+//DEFINE THE DECK==================================
+var deck = [
+// ~~~~~~~~~CARDS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//`````````````````CLUBS```````````````````````````
+	c1 = {
+		img:"cards/c1.png",
+		value: function checkValue(){
+				if(player.cards.value>10){
+				this.value = 1;
+			}else{
+				this.value = 10;}}}, 
+	c2 = {img:"cards/c2.png", value: 2	},
+	c3 = {img:"cards/c3.png",value:3},
+	c4 = {img:"cards/c4.png",value: 4},
+	c5 = {img:"cards/c5.png",value: 5},
+	c6 = {img:"cards/c6.png",value: 6},
+	c7 = {img:"cards/c7.png",value: 7},
+	c8 = {img:"cards/c8.png",value: 8},
+	c9 = {img:"cards/c9.png",value:9},
+	c10 = {img:"cards/c10.png",value:10},
+	c11 = {img:"cards/c11.png",value:10},
+	c12 = {img:"cards/c12.png",value:10},
+	c13 = {img:"cards/c13.png",value:10	},
+//```````````````DIAMONDS```````````````````````````
+	d1 = {
+		img:"cards/1.png",
+		value: function checkValue(){
+				if(player.cards.value>10){
+				this.value = 1;
+			}else{
+				this.value = 10;
+			 }
+		}},
+	d2 = {img:"cards/d2.png",value: 2},
+	d3 = {img:"cards/d3.png",value:3},
+	d4 = {img:"cards/d4.png",value: 4},
+	d5 = {img:"cards/d5.png",value: 5},
+	d6 = {img:"cards/d6.png",value: 6},
+	d7 = {img:"cards/d7.png",value: 7},
+	d8 = {img:"cards/8.png",value: 8},
+	d9 = {img:"cards/d9.png",value:9},
+	d10 = {img:"cards/d10.png",value:10},
+	d11 = {img:"cards/d11.png",value:10},
+	d12 = {img:"cards/d12.png",value:10},
+	d13 = {img:"cards/d13.png",value:10	},
+//``````````````````````````````SPADES``````````````````````````
+	s1 = {
+		img:"cards/s1.png",
+		value: function checkValue(){
+				if(player.cards.value>10){
+				this.value = 1;
+			}else{
+				this.value = 10;
+			 }
+		}},
+	s2 = {img:"cards/s2.png",value: 2},
+	s3 = {img:"cards/s3.png",value:3},
+	s4 = {img:"cards/s4.png",value: 4},
+	s5 = {img:"cards/s5.png",value: 5},
+	s6 = {img:"cards/s6.png",value: 6},
+	s7 = {img:"cards/s7.png",value: 7},
+	s8 = {img:"cards/s8.png",value: 8},
+	s9 = {img:"cards/s9.png",value:9},
+	s10 = {img:"cards/s10.png",value:10},
+	s11 = {img:"cards/s11.png",value:10},
+	s12 = {img:"cards/s12.png",value:10},
+	s13 = {img:"cards/s13.png",value:10},
+//`````````````````````````````````````````````````HEARTS````````````````````````````
+	h1 = {
+		img:"cards/1.png",
+		value: function checkValue(){
+				if(player.cards.value>10){
+				this.value = 1;
+			}else{
+				this.value = 10;
+			 }
+		}},
+	h2 = {img:"cards/h2.png",value: 2},
+	h3 = {img:"cards/h3.png",value:3},
+	h4 = {img:"cards/h4.png",value: 4},
+	h5 = {img:"cards/h5.png",value: 5},
+	h6 = {img:"cards/h6.png",value: 6},
+	h7 = {img:"cards/h7.png",value: 7},
+	h8 = {img:"cards/h8.png",value: 8},
+	h9 = {img:"cards/h9.png",value:9},
+	h10 = {img:"cards/h10.png",value:10},
+	h11 = {img:"cards/h11.png",value:10},
+	h12 = {img:"cards/h12.png",value:10},
+	h13 = {img:"cards/h13.png",value:10}
+//==============================END OF CARDS ===============================
+];
 
 //CREATE A DECK
 function shuffle(deck){
@@ -77,10 +167,47 @@ function shuffle(deck){
 </head>
 
 <body>
-
+   <table border="1px" align="center" id="blackJackArea">
+		<!--DEALER AREA-->
+        <tr>
+        	<td colspan="8" width="255" id="cardHeader">DEALER CARDS</td>
+        </tr>
+		<tr>
+			<td id="DealerCard1"></td>
+			<td id="DealerCard2"></td>
+			<td id="DealerCard3"></td>
+			<td id="DealerCard4"></td>
+			<td id="DealerCard5"></td>
+            <td id="DealerCard6"></td>
+            <td id="DealerCard7"></td>
+            <td id="DealerCard8"></td>
+		</tr>
+		
+		<!--PLAYER AREA-->
+        <tr>
+        	<td colspan="8" id="cardHeader">PLAYER CARDS</td>
+        </tr>
+		<tr>
+			<td id="PlayerCard1"></td>
+			<td id="PlayerCard2"></td>
+			<td id="PlayerCard3"></td>
+			<td id="PlayerCard4"></td>
+			<td id="PlayerCard5"></td>
+            <td id="PlayerCard6"></td>
+            <td id="PlayerCard7"></td>
+            <td id="PlayerCard8"></td>
+		</tr>
+        
+        <!--CONTROL AREA-->
+        <tr>
+        	<td id="control" colspan="8"> <button id="hit" onClick=dealCard() type="button">Hit</button> <button id="hold" onClick=hold() type="button">Hold</button></td>
+        </tr>
+   </table>
 
    <script>
-
+   
+	console.log(deck[0]);
+	document.write(deck[0]);
 
    </script>
 </body>
