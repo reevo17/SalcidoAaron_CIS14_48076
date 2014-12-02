@@ -7,7 +7,7 @@
 <script>
 //THE PLAYER
 var player = {
-	Hit: playerDealCard(),
+	Hit: playerDealCard([],player),
 	Hold: function playerhold(){
 		var playing = false;
 		document.getElementById(Hit).disabled;
@@ -27,12 +27,134 @@ var dealer = {
 		Count:0,
 		Value:0
 	},
-	Hit: dealerDealCard(),
+	Hit: dealerDealCard([]),
 	Hold: dealerHold(),
 	CardPosition:1
 };
 var turn = 1;
 var playing = true;
+
+
+//CREATE A DECK
+function shuffle(deck){
+	var currentIndex = deck.length, temporaryValue, randomIndex ;
+
+  	// While there remain elements to shuffle...
+  	while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = deck[currentIndex];
+    deck[currentIndex] = deck[randomIndex];
+    deck[randomIndex] = temporaryValue;
+ 	 }
+  return deck;
+};
+
+
+//HOLD 
+function dealerHold(){
+		console.log("Dealer is holding");
+}
+//HIT ~~~APPEND ATTEMPT~~~~~~
+function playerDealCard(deck,player){
+	var card = deck.splice(0,1);
+	console.log(card);
+	player.cards.Value += card["Value"];
+	var cardArea = document.getElementById("PlayerCard"+player.CardPosition);
+	var node = document.createElement("IMG");
+	var att = document.createAttribute("src");
+	var cardImage = card["img"]+"/>";
+	att.value=cardImage;
+	node.setAttribute(att);
+};
+//FOR WHEN THE DEALER HITS
+function dealerDealCard(card){
+	card = deck.splice(0,1);
+	dealer.cards.Value += card["Value"];
+	var cardArea = document.getElementById("DealerCard"+dealer.CardPosition);
+	var cardImage = card["img"]+"/>";
+	var node = document.createElement("IMG");
+	var att = document.createAttribute("src");
+	var cardImage = player.cards.deck[0].img+"/>";
+	att.value=cardImage;
+	node.setAttribute(att);
+};
+function getCookie(cname){
+	var name = cname;
+	var ca = document.cookie.split(";");
+	for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+//WRITE MESSAGE TO THE MESSAGE AREA ID
+function writeMessage(message){
+	document.getElementById("messageArea").innerHTML=message;
+}
+</script>
+</head>
+<body id="BlackJackBody">-
+<header>
+		<img src="images/logo.png" width="134" height="54"/>
+    	<ul class="nav">
+       	  <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li id="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
+		</ul>
+</header>
+<script>
+	writeMessage(turn);
+</script>
+   <div class="messageArea">
+   		
+   </div>
+   <table border="1px" align="center" id="blackJackArea">
+		<!--DEALER AREA-->
+        <tr>
+        	<td colspan="8" width="255" id="cardHeader">~DEALER CARDS~</td>
+        </tr>
+		<tr>
+			<td id="DealerCard1"></td>
+			<td id="DealerCard2"></td>
+			<td id="DealerCard3"></td>
+			<td id="DealerCard4"></td>
+			<td id="DealerCard5"></td>
+            <td id="DealerCard6"></td>
+            <td id="DealerCard7"></td>
+            <td id="DealerCard8"></td>
+		</tr>
+		
+		<!--PLAYER AREA-->
+        <tr>
+        	<td colspan="8" id="cardHeader">~PLAYER CARDS~</td>
+        </tr>
+		<tr>
+			<td id="PlayerCard1"></td>
+			<td id="PlayerCard2"></td>
+			<td id="PlayerCard3"></td>
+			<td id="PlayerCard4"></td>
+			<td id="PlayerCard5"></td>
+            <td id="PlayerCard6"></td>
+            <td id="PlayerCard7"></td>
+            <td id="PlayerCard8"></td>
+		</tr>
+        
+        <!--CONTROL AREA-->
+        <tr>
+        	<td id="control" colspan="8"> <button id="hit" onClick=dealCard() type="button">Hit</button> <button id="hold" onClick=hold() type="button">Hold</button></td>
+        </tr>
+   </table>
+   <div id="messageArea">
+		Welcome to Blackjack!
+   </div>
+	<script>
 //DEFINE THE DECK==================================
 var deck = [
 // ~~~~~~~~~CARDS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -117,138 +239,14 @@ var deck = [
 //==============================END OF CARDS ===============================
 ];
 
-//CREATE A DECK
-function shuffle(deck){
-	var currentIndex = deck.length, temporaryValue, randomIndex ;
-
-  	// While there remain elements to shuffle...
-  	while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = deck[currentIndex];
-    deck[currentIndex] = deck[randomIndex];
-    deck[randomIndex] = temporaryValue;
- 	 }
-  return deck;
-};
-
-
-//HOLD 
-function dealerHold(){
-		console.log("Dealer is holding");
-}
-//HIT ~~~APPEND ATTEMPT~~~~~~
-function playerDealCard(deck){
-	var card = deck.slice(0,2);
-	player.cards.Value += card["Value"];
-	var cardArea = document.getElementById("PlayerCard"+player.CardPosition);
-	var node = document.createElement("IMG");
-	var att = document.createAttribute("src");
-	var cardImage = card["img"]+"/>";
-	att.value=cardImage;
-	node.setAttribute(att);
-};
-//FOR WHEN THE DEALER HITS
-function dealerDealCard(card){
-	card = deck.slice(0,2);
-	dealer.cards.Value += card["Value"];
-	var cardArea = document.getElementById("DealerCard"+dealer.CardPosition);
-	var cardImage = card["img"]+"/>";
-	var node = document.createElement("IMG");
-	var att = document.createAttribute("src");
-	var cardImage = player.cards.deck[0].img+"/>";
-	att.value=cardImage;
-	node.setAttribute(att);
-};
-function getCookie(cname){
-	var name = cname;
-	var ca = document.cookie.split(";");
-	for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
-    }
-    return "";
-}
-//WRITE MESSAGE TO THE MESSAGE AREA ID
-function writeMessage(message){
-	document.getElementById("messageArea").innerHTML=message;
-}
-</script>
-</head>
-<body id="BlackJackBody">-
-<header>
-		<img src="images/logo.png" width="134" height="54"/>
-    	<ul class="nav">
-       	  <li><a href="index.html">Home</a></li>
-            <li><a href="games.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li id="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
-		</ul>
-</header>
-<script>
-	writeMessage(turn);
-</script>
-   <div class="messageArea">
-   		
-   </div>
-   <table border="1px" align="center" id="blackJackArea">
-		<!--DEALER AREA-->
-        <tr>
-        	<td colspan="8" width="255" id="cardHeader">~DEALER CARDS~</td>
-        </tr>
-		<tr>
-			<td id="DealerCard1"></td>
-			<td id="DealerCard2"></td>
-			<td id="DealerCard3"></td>
-			<td id="DealerCard4"></td>
-			<td id="DealerCard5"></td>
-            <td id="DealerCard6"></td>
-            <td id="DealerCard7"></td>
-            <td id="DealerCard8"></td>
-		</tr>
-		
-		<!--PLAYER AREA-->
-        <tr>
-        	<td colspan="8" id="cardHeader">~PLAYER CARDS~</td>
-        </tr>
-		<tr>
-			<td id="PlayerCard1"></td>
-			<td id="PlayerCard2"></td>
-			<td id="PlayerCard3"></td>
-			<td id="PlayerCard4"></td>
-			<td id="PlayerCard5"></td>
-            <td id="PlayerCard6"></td>
-            <td id="PlayerCard7"></td>
-            <td id="PlayerCard8"></td>
-		</tr>
-        
-        <!--CONTROL AREA-->
-        <tr>
-        	<td id="control" colspan="8"> <button id="hit" onClick=dealCard() type="button">Hit</button> <button id="hold" onClick=hold() type="button">Hold</button></td>
-        </tr>
-   </table>
-   <div id="messageArea">
-		Welcome to Blackjack!
-   </div>
-	<script>
-
-
 //RUNS WHEN PAGE LOADS
-function loaded() {
+function loaded(deck) {
 	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
-}
-	window.onload = loaded();
-
-
+	var turn = 1;
 	while(turn<6){
-
+		console.log("hi");
 		console.log(turn);
-		
+		console.log(deck);
 		shuffle(deck);
 		player.Hit(deck[0]);
 		dealer.Hit(deck[0]);
@@ -264,7 +262,14 @@ function loaded() {
 				console.log("player has won");
 				turn++;
 			}
+			
 	}
+	
+	}
+	window.onload = loaded(deck);
+
+
+	
    </script>
 </body>
 </html>
