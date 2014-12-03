@@ -7,75 +7,44 @@
 <script>
 //THE PLAYER
 function Player(){
-	this.Hit: function(card){
+	this.cards={
+		Count:0,
+		Value:0
+	};
+	this.CardPosition=1;
+	this.Hit = function(card){
 		var ndeck = deck.splice(0,1);
 		var card = ndeck[0];
-		console.log("Players "+player.CardPosition+" card is "+card);
-		this.cards.Value += card["Value"];
-		var cardArea = document.getElementById("PlayerCard"+player.CardPosition);
-		var node = document.createElement("IMG");
-		var att = document.createAttribute("src");
-		var cardImage = card["img"]+"/>";
-		att.value=cardImage;
-		node.setAttribute(att);
+		console.log("Players "+this.CardPosition+" card is "+card);
+		this.cards.value += card.Value;
+		var cardArea = document.getElementById("PlayerCard"+this.CardPosition).innerHTML="<img src='"+card.img+"'/>";
 		player.CardPosition++;
-	},
-	this.Hold: function(){
+	};
+	this.Hold= function(){
 		var playing = false;
 		document.getElementById(Hit).disabled;
 		document.getElementById(Hold).disabled;
-},
-	this.cards:{
-		deck:new Array,
-		Count:0,
-		Value:0
-	},
-	this.CardPosition:1
-};
+	};
+}
 //THE DEALER
-function dealer(){
-	cards:{
+function Dealer(){
+	this.cards={
 		deck:new Array,
 		Count:0,
 		Value:0
 	},
-	this.Hit: function(card){
+	this.Hit=function(card){
 		card = deck.splice(0,1);
-		this.cards.Value += card["Value"];
-		var cardArea = document.getElementById("DealerCard"+dealer.CardPosition);
-		var cardImage = card["img"]+"/>";
-		var node = document.createElement("IMG");
-		var att = document.createAttribute("src");
-		var cardImage = player.cards.deck[0].img+"/>";
-		att.value=cardImage;
-		node.setAttribute(att);
-},
-	this.Hold: function(){
+		this.cards.value += card.Value;
+		var cardArea = document.getElementById("DealerCard"+this.CardPosition).innerHTML="<img src="+card.img+"/>";
+		this.CardPosition++;
+	},
+	this.Hold= function(){
 		console.log("Dealer is holding");
 	},
-	this.CardPosition:1
-};
+	this.CardPosition=1
+}
 var playing = true;
-
-
-//CREATE A DECK
-function shuffle(deck){
-	var currentIndex = deck.length, temporaryValue, randomIndex ;
-
-  	// While there remain elements to shuffle...
-  	while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = deck[currentIndex];
-    deck[currentIndex] = deck[randomIndex];
-    deck[randomIndex] = temporaryValue;
- 	 }
-  return deck;
-};
 
 function getCookie(cname){
 	var name = cname;
@@ -152,10 +121,7 @@ var deck = [
 //`````````````````CLUBS```````````````````````````
 	c1 = {
 		img:"cards/c1.png",
-		value: function checkValue(){
-				if(player.cards.value>10){
-				this.value = 1;
-			}else{ this.value = 10;}}},
+		value: 1},
 	c2 = {img:"cards/c2.png", value: 2},
 	c3 = {img:"cards/c3.png",value:3},
 	c4 = {img:"cards/c4.png",value:4},
@@ -191,10 +157,7 @@ var deck = [
 //``````````````````````````````SPADES``````````````````````````
 	s1 = {
 		img:"cards/s1.png",
-		value: function checkValue(){
-				if(player.cards.value>10){
-				this.value = 1;
-			}else{this.value = 10;}}},
+		value:1},
 	s2 = {img:"cards/s2.png",value:2},
 	s3 = {img:"cards/s3.png",value:3},
 	s4 = {img:"cards/s4.png",value:4},
@@ -229,37 +192,48 @@ var deck = [
 	h13 = {img:"cards/h13.png",value:10}
 //==============================END OF CARDS ===============================
 ];
-
+var player = new Player;
+var dealer = new Dealer
+var choice = "";
+	do{
+		choice=prompt("Deal? y or n");
+	}while(choice!="y");
+	
+	if(choice =="y"){
+	game()
+	}else { 
+	alert("Then we shall not deal...");
+	}
 //RUNS WHEN PAGE LOADS
-function loaded(deck) {
-	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
+function game(deck) {
+//	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
 	var turn = 1;
 	while(turn<6){
 		console.log("hi");
 		console.log(turn);
 		console.log(deck);
-		shuffle(deck);
-		player.Hit(deck[0], player);
-		dealer.Hit(deck[0], dealer);
-		writeMessage("Your cards are worth "+player.cards.Value);
+//		shuffle(deck);
+		player.Hit(deck);
+//		dealer.Hit(deck[0]);
+		player.Hit(deck);
+//		dealer.Hit(deck[0]);
+		console.log(player.cards.Value);
+//		writeMessage("Your cards are worth "+player.cards.Value); 
 		writeMessage("<br>Hit or Hold");
-			if(player.cards.Value>21){
-				//DEALER WINS
-				console.log("Dealer has won");
-				turn++;
-			}
-			if(dealer.cards.Value>21){
-				//PLAYER WINS
-				console.log("player has won");
-				turn++;
-			}
+		if(player.cards.Value>21){
+			//DEALER WINS
+			console.log("Dealer has won");
 			turn++;
 		}
+		if(dealer.cards.Value>21){
+			//PLAYER WINS
+			console.log("player has won");
+			turn++;
+		}
+		turn++;
 	}
-	window.onload = loaded(deck);
-
-
-	
-   </script>
+}
+	window.onload = game(deck);
+</script>
 </body>
 </html>
