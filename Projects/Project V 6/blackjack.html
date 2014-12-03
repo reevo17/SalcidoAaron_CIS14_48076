@@ -39,7 +39,6 @@ var dealer = {
 	},
 	Hit: function dealerDealCard(card){
 		card = deck.splice(0,1);
-		card = deck.splice(0,1);
 		dealer.cards.Value += card["Value"];
 		var cardArea = document.getElementById("DealerCard"+dealer.CardPosition);
 		var cardImage = card["img"]+"/>";
@@ -105,9 +104,6 @@ function writeMessage(message){
             <li id="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
 		</ul>
 </header>
-   <div class="messageArea">
-   		
-   </div>
    <table border="1px" align="center" id="blackJackArea">
 		<!--DEALER AREA-->
         <tr>
@@ -244,8 +240,8 @@ function loaded(deck) {
 		console.log(turn);
 		console.log(deck);
 		shuffle(deck);
-		player.Hit(deck[0]);
-		dealer.Hit(deck[0]);
+		player.Hit(deck[0], player);
+		dealer.Hit(deck[0], dealer);
 		writeMessage("Your cards are worth "+player.cards.Value);
 		writeMessage("<br>Hit or Hold");
 			if(player.cards.Value>21){
@@ -258,6 +254,7 @@ function loaded(deck) {
 				console.log("player has won");
 				turn++;
 			}
+			turn++;
 		}
 	}
 	window.onload = loaded(deck);
