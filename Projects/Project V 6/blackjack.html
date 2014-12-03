@@ -6,40 +6,42 @@
 <link type="text/css" rel="stylesheet" href="stylesheets/blackjackstylesheet.css">
 <script>
 //THE PLAYER
-var player = {
-	Hit: function playerDealCard(deck,player){
-		var card = deck.splice(0,1);
-		console.log(card);
-		player.cards.Value += card["Value"];
+function Player(){
+	this.Hit: function(card){
+		var ndeck = deck.splice(0,1);
+		var card = ndeck[0];
+		console.log("Players "+player.CardPosition+" card is "+card);
+		this.cards.Value += card["Value"];
 		var cardArea = document.getElementById("PlayerCard"+player.CardPosition);
 		var node = document.createElement("IMG");
 		var att = document.createAttribute("src");
 		var cardImage = card["img"]+"/>";
 		att.value=cardImage;
 		node.setAttribute(att);
+		player.CardPosition++;
 	},
-	Hold: function playerhold(){
+	this.Hold: function(){
 		var playing = false;
 		document.getElementById(Hit).disabled;
 		document.getElementById(Hold).disabled;
 },
-	cards:{
+	this.cards:{
 		deck:new Array,
 		Count:0,
 		Value:0
 	},
-	CardPosition:1
+	this.CardPosition:1
 };
 //THE DEALER
-var dealer = {
+function dealer(){
 	cards:{
 		deck:new Array,
 		Count:0,
 		Value:0
 	},
-	Hit: function dealerDealCard(card){
+	this.Hit: function(card){
 		card = deck.splice(0,1);
-		dealer.cards.Value += card["Value"];
+		this.cards.Value += card["Value"];
 		var cardArea = document.getElementById("DealerCard"+dealer.CardPosition);
 		var cardImage = card["img"]+"/>";
 		var node = document.createElement("IMG");
@@ -48,8 +50,10 @@ var dealer = {
 		att.value=cardImage;
 		node.setAttribute(att);
 },
-	Hold: dealerHold(),
-	CardPosition:1
+	this.Hold: function(){
+		console.log("Dealer is holding");
+	},
+	this.CardPosition:1
 };
 var playing = true;
 
@@ -73,11 +77,6 @@ function shuffle(deck){
   return deck;
 };
 
-
-//HOLD 
-function dealerHold(){
-		console.log("Dealer is holding");
-}
 function getCookie(cname){
 	var name = cname;
 	var ca = document.cookie.split(";");
@@ -94,7 +93,7 @@ function writeMessage(message){
 }
 </script>
 </head>
-<body id="BlackJackBody">-
+<body id="BlackJackBody">
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
     	<ul class="nav">

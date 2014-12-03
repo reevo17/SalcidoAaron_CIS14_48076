@@ -1,0 +1,21 @@
+function Player(){
+	this.hit=this.dohit();
+}
+
+Player.prototype.dohit=function(){
+	//logic of hit function
+}
+
+
+function Card(){
+	this.face
+}
+function Deck(){
+	this.cards=new Array(52);
+	for(var num=0;num<52;num++){
+		this.cards[num]=new Card(num);
+	}
+}
+
+var p1 = new Player;
+p1.hit();
