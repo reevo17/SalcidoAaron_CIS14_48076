@@ -26,12 +26,14 @@ function Player(){
 					player.CardPosition++;
 			}else{
 			console.log("Players cards go over 8 slots");
+			player.CardPosition = 1;
 			}
 		var node = document.createElement("LI");                 // Create a <li> node
 		var textnode = document.createTextNode("Your card value: "+player.cards.Value);         // Create a text node
 		node.appendChild(textnode);                              // Append the text to <li>
 		document.getElementById("messageArea").appendChild(node);
 		breakLine();
+		checkValues(player, dealer, deck, playing);
 	};
 	this.Hold= function(){
 		var playing = false;
@@ -61,6 +63,7 @@ function Dealer(){
 		var textnode = document.createTextNode("Dealers card value: "+dealer.cards.Value); // Create a text node
 		node.appendChild(textnode);                             						  // Append the text to <li>
 		document.getElementById("messageArea").appendChild(node);
+		checkValues(player, dealer, deck, playing);
 	}
 	this.Hold= function(){
 		console.log("Dealer is holding");
@@ -228,38 +231,76 @@ function writeMessage(message){
 		</ul>
    </div>
 	<script>
-function clean(player, dealer, deck){
+var turn = 1;
+var nDeck = shuffle(7, deck);
+var player = new Player;
+var dealer = new Dealer
+var choice = "";
+
+	function clean(player, dealer, deck){
 	document.getElementById("messageArea").innerHTML="End of round...new Round Starting!";
 	player.cards.Value = 0;
 	player.CardPosition = 1;
 	dealer.cards.Value = 0;
 	dealer.CardPosition = 1;
-	var x = document.getElementById("PlayerCards");
-	var y = document.getElementById("DealerCards");
-	
-}
-var nDeck = shuffle(7, deck);
-var player = new Player;
-var dealer = new Dealer
-var choice = "";
-	do{
-		choice=prompt("Deal? y or n");
-	}while(choice!="y");
-	
-	if(choice =="y"){
-		game()
-	}else { 
-	alert("Then we shall not deal...");
+	playing = true;
+	var i = 1;
+	while(i<9){
+		document.getElementById("PlayerCard"+i).innerHTML=" ";
+		document.getElementById("DealerCard"+i).innerHTML=" ";
+		i++
 	}
+	return playing;
+}
+//CHECK VALUES!!
+function checkValues(player, dealer, deck, playing){
+	if(playing == false&&dealer.cards.Value>21){
+		//PLAYER WINS
+		console.log("Player held and the player has won");
+		turn++;
+		alert("YOU WIN!!");
+		clean(player, dealer, deck);
+	}
+	if(playing == false&&dealer.cards.Value<player.cards.Value){
+			console.log("The dealer has less cards");
+	}
+	//PLAYER BUST
+	if(player.cards.Value>21){
+		//DEALER WINS
+		console.log("You BUST! Dealer has won");
+		turn++;
+		alert("Dealer has won, better luck next time sucka!");
+		clean(player, dealer, deck);
+	}
+	if(dealer.cards.Value>21){
+		//PLAYER WINS
+		console.log("Dealer BUST! Player has won");
+		turn++;
+		alert("YOU WIN!! (Only because the dealer busted though...)");
+		clean(player, dealer, deck);
+	}
+	if (playing == false){
+		if(player.cards.Value>21){
+			//DEALER WINS
+			console.log("You BUST and the Dealer has won");
+			turn++;
+			alert("Dealer has won, better luck next time sucka!");
+			clean(player, dealer, deck);
+		}
+			
+	}
+}
 //RUNS WHEN PAGE LOADS
 function game(nDeck) {
 	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
-	var turn = 1;
+
 	while(turn<6){
 		writeMessage("-----------------THE SCRIPT HAS STARTED-----------------");
 		console.log("Turn # is"+turn);
 		player.Hit(nDeck);
+		console.log("Players first card is worth "+player.cards.Value);
 		dealer.Hit(nDeck);
+		console.log("Dealers first card is worth "+dealer.cards.Value);
 		player.Hit(nDeck);
 		dealer.Hit(nDeck);
 		writeMessage("Will you Hit Or Hold?");
@@ -267,42 +308,18 @@ function game(nDeck) {
 		dealer.Hit(nDeck);
 		player.Hit(nDeck);
 		console.log("Player cards are valued at:"+player.cards.Value);
-		if (playing == false){
-			if(player.cards.Value>21){
-			//DEALER WINS
-			console.log("You held and Dealer has won");
-			turn++;
-			alert("Dealer has won, better luck next time sucka!");
-			//CLEAR BOARD FUNCTION GOES HERE
-			}
-			if(dealer.cards.Value>21){
-			//PLAYER WINS
-			console.log("You held and the player has won");
-			turn++;
-			alert("YOU WIN!!");
-			//CLEAR BOARD FUNCTION GOES HERE
-			}
-			if(dealer.cards.Value<player.cards.Value){
-				console.log("The dealer has less cards");
-			}
-		}
-	if(player.cards.Value>21){
-			//DEALER WINS
-			console.log("Dealer has won");
-			turn++;
-			alert("Dealer has won, better luck next time sucka!");
-			//CLEAR BOARD FUNCTION GOES HERE
-			}
-			if(dealer.cards.Value>21){
-			//PLAYER WINS
-			console.log("player has won");
-			turn++;
-			alert("YOU WIN!!");
-			//CLEAR BOARD FUNCTION GOES HERE
-			}
+		console.log("Dealer cards are valued at:"+dealer.cards.Value);
 	}
-	
 }
+	do{
+		choice=prompt("Deal? y or n");
+	}while(choice!="y");
+	
+	if(choice =="y"){
+		game(nDeck)
+	}else {
+	alert("Then we shall not deal...");
+	}
 </script>
 </body>
 </html>
