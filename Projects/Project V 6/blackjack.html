@@ -34,6 +34,7 @@ function Player(){
 		document.getElementById("messageArea").appendChild(node);
 		breakLine();
 		checkValues(player, dealer, deck, playing);
+		console.log("Players "+(player.CardPosition-1)+" card is worth "+card.value+". Total: "+player.cards.Value);
 	};
 	this.Hold= function(){
 		var playing = false;
@@ -64,6 +65,7 @@ function Dealer(){
 		node.appendChild(textnode);                             						  // Append the text to <li>
 		document.getElementById("messageArea").appendChild(node);
 		checkValues(player, dealer, deck, playing);
+		console.log("Dealers "+(dealer.CardPosition-1)+" card is worth "+card.value+". Total: "+dealer.cards.Value);
 	}
 	this.Hold= function(){
 		console.log("Dealer is holding");
@@ -293,22 +295,17 @@ function checkValues(player, dealer, deck, playing){
 //RUNS WHEN PAGE LOADS
 function game(nDeck) {
 	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
-
 	while(turn<6){
 		writeMessage("-----------------THE SCRIPT HAS STARTED-----------------");
 		console.log("Turn # is"+turn);
-		player.Hit(nDeck);
-		console.log("Players first card is worth "+player.cards.Value);
-		dealer.Hit(nDeck);
-		console.log("Dealers first card is worth "+dealer.cards.Value);
-		player.Hit(nDeck);
+		setTimeout(player.Hit(nDeck),3000);
+		setTimeout(dealer.Hit(nDeck),3000);
+		setTimeout(player.Hit(nDeck),3000);
 		dealer.Hit(nDeck);
 		writeMessage("Will you Hit Or Hold?");
-		player.Hit(nDeck);
+		setTimeout(player.Hit(nDeck),3000);
 		dealer.Hit(nDeck);
 		player.Hit(nDeck);
-		console.log("Player cards are valued at:"+player.cards.Value);
-		console.log("Dealer cards are valued at:"+dealer.cards.Value);
 	}
 }
 	do{
