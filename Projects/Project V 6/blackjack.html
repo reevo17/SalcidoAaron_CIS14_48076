@@ -9,7 +9,7 @@ function breakLine(){
 	var br = document.createElement("BR");
 	document.getElementById("messageArea").appendChild(br);
 	}
-	
+
 //THE PLAYER
 function Player(){
 	this.cards={
@@ -21,13 +21,8 @@ function Player(){
 		var ndeck = deck.splice(0,1);
 		var card = ndeck[0];
 		player.cards.Value += card.value;
-			if(player.CardPosition<=8){
-			document.getElementById("PlayerCard"+player.CardPosition).innerHTML="<img src='"+card.img+"'/>";
-					player.CardPosition++;
-			}else{
-			console.log("Players cards go over 8 slots");
-			player.CardPosition = 1;
-			}
+		document.getElementById("PlayerCard"+player.CardPosition).innerHTML="<img src='"+card.img+"'/>";
+		player.CardPosition++;
 		var node = document.createElement("LI");                 // Create a <li> node
 		var textnode = document.createTextNode("Your card value: "+player.cards.Value);         // Create a text node
 		node.appendChild(textnode);                              // Append the text to <li>
@@ -256,9 +251,20 @@ var choice = "";
 }
 //CHECK VALUES!!
 function checkValues(player, dealer, deck, playing){
+	if(player.cards.Value == 21){
+		//PLAYER WINS
+		console.log("Player got exactly 21 cards!");
+		console.log("Total was "+player.cards.Value);
+		console.log("Dealer had "+dealer.cards.Value);
+		turn++;
+		alert("YOU WIN!! How did you get 21 exactly? Have you been cheating??");
+		clean(player, dealer, deck);
+	}
 	if(playing == false&&dealer.cards.Value>21){
 		//PLAYER WINS
 		console.log("Player held and the player has won");
+		console.log("Total was "+player.cards.Value);
+		console.log("Dealer had "+dealer.cards.Value);
 		turn++;
 		alert("YOU WIN!!");
 		clean(player, dealer, deck);
@@ -270,6 +276,8 @@ function checkValues(player, dealer, deck, playing){
 	if(player.cards.Value>21){
 		//DEALER WINS
 		console.log("You BUST! Dealer has won");
+		console.log("Total was "+player.cards.Value);
+		console.log("Dealer had "+dealer.cards.Value);
 		turn++;
 		alert("Dealer has won, better luck next time sucka!");
 		clean(player, dealer, deck);
@@ -277,6 +285,8 @@ function checkValues(player, dealer, deck, playing){
 	if(dealer.cards.Value>21){
 		//PLAYER WINS
 		console.log("Dealer BUST! Player has won");
+		console.log("Total was "+player.cards.Value);
+		console.log("Dealer had "+dealer.cards.Value);
 		turn++;
 		alert("YOU WIN!! (Only because the dealer busted though...)");
 		clean(player, dealer, deck);
@@ -285,6 +295,8 @@ function checkValues(player, dealer, deck, playing){
 		if(player.cards.Value>21){
 			//DEALER WINS
 			console.log("You BUST and the Dealer has won");
+			console.log("Total was "+player.cards.Value);
+			console.log("Dealer had "+dealer.cards.Value);
 			turn++;
 			alert("Dealer has won, better luck next time sucka!");
 			clean(player, dealer, deck);
@@ -298,12 +310,12 @@ function game(nDeck) {
 	while(turn<6){
 		writeMessage("-----------------THE SCRIPT HAS STARTED-----------------");
 		console.log("Turn # is"+turn);
-		setTimeout(player.Hit(nDeck),3000);
-		setTimeout(dealer.Hit(nDeck),3000);
-		setTimeout(player.Hit(nDeck),3000);
+		player.Hit(nDeck);
+		dealer.Hit(nDeck);
+		player.Hit(nDeck);
 		dealer.Hit(nDeck);
 		writeMessage("Will you Hit Or Hold?");
-		setTimeout(player.Hit(nDeck),3000);
+		player.Hit(nDeck);
 		dealer.Hit(nDeck);
 		player.Hit(nDeck);
 	}
