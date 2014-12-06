@@ -23,15 +23,17 @@
     	}
     	return "";
 	}
+	checkCookie(cookie){
 
-//	function ceckLogin(cookie){
-//			if(){};
-//	}
 </script>
 </head>
 
 <body>
-
+<script>
+	
+	getCookie("user");
+		
+	</script>
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
     	<ul class="nav">
@@ -50,7 +52,7 @@
 <aside>
 
   <div style="margin-top:30px; font-size:15px">
-        	All of your log-in information is safefly secured in your local storage, easily accessable by hackers, but who cares about that anyways right?
+        	All of your log-in information is safely secured in your local storage, easily accessable by hackers, but who cares about that anyways right?
    </div>
 </aside>
 
@@ -59,7 +61,7 @@
 	<form name="loginform" action="login.html" method="get" id="loginform" onsubmit="checkLogin()">
 				<input name="username" type="text" /><div id="headerlogin">Username</div><br>
 				<input name="password" type="password" /><div id="headerlogin">Password</div><br>
-				<input type="submit" text="Submit" value="Submit"/>
+				<input type="submit" text="Submit" onClick=checkCookie(); value="Submit"/>
 			</form>
 </div>
 

@@ -38,7 +38,7 @@ function getCookie(cname){
 }
 // Check Cookie - modify for specific field
 function checkCookie() {
-	var username=getCookie("username");
+	var username=getCookie("user");
 		if (username!="") {
 		alert("Welcome again " + username);
 	}else{
@@ -56,12 +56,12 @@ function checkCookie() {
 function checkLogin(){
 	var check = getCookie("loggedIn");
 	if(check == false)	{
-		document.getElementById("ln").style.display="none";
-		document.getElementById('ln1').style.display ="inline";
+		document.getElementsByClassName("ln").style.display="none";
+		document.getElementsByClassName("ln1").style.display ="inline";
 	
 	} else {
-		document.getElementById("ln").style.display='inline';
-		document.getElementById('ln1').style.display ='none';
+		document.getElementsByClassName("ln").style.display='inline';
+		document.getElementsByClassName("ln1").style.display ='none';
 	}
 }
 
@@ -73,10 +73,10 @@ function checkLogin(){
        	  <li><a href="index.html">Home</a></li>
             <li><a href="games.html">Products</a></li>
             <li><a href="about.html">About</a></li>
-            <li id="ln1"><a href="login.html">Login</a></li>
-            <li id="ln1"><a href="register.html">Register</a></li>
-            <li id="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
-            <li id="ln"><a href="logout.html">Log Out</a></li>
+            <li class="ln1"><a href="login.html">Login</a></li>
+            <li class="ln1"><a href="register.html">Register</a></li>
+            <li class="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
+            <li class="ln"><a href="logout.html">Log Out</a></li>
             
 		</ul>
 <div id="RegisterCompleteDisplay">
@@ -92,11 +92,10 @@ var email = $_GET.email.value;
 var ttl = 1;
 var exdays = 1;
 //SET AND GET COOKIE
-setCookie("loginInfo", ttl, exdays);
-document.write(getCookie("loginInfo"));
-//call get cookie function
-
-
+setCookie("user", ttl, exdays);
+document.write(getCookie("user"));
+var userCookie = getCookie("user");
+document.write(userCookie);
 
 </script>
 </div>
