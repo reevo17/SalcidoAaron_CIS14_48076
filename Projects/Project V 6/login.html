@@ -10,14 +10,20 @@
 	function checkLogin(){
 		var retrievedObject = localStorage.getItem('LoggedIn');
 		if(retrievedObject.loggedIn == true){
-			//ENTER CODE HERE TO EDIT CSS!!!
+			document.getElementsByClass("ln1").display="none";
+			document.getElementsByCLass("ln").display="inline";
+		}else{
+			document.getElementsByClass("ln1").display="inline";
+			document.getElementsByCLass("ln").display="none";
 		}
 	}
 </script>
 </head>
 <body>
+	<script>
 	//CHECK IF LOGGED IN
 	
+	</script>
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
     	<ul class="nav">
