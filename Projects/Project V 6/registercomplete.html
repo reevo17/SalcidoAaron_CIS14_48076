@@ -19,35 +19,12 @@
 		}
 		return $_GET;
 	}
-//FUNCTION SET COOKIE
-function setCookie(cname, cvalue, exdays){
-	var d = new Date();
-    d.setTime(d.getTime() + (1*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-function getCookie(cname){
-	var name = cname;
-	var ca = document.cookie.split(";");
-	for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
-    }
-    return "";
-}
-// Check Cookie - modify for specific field
-function checkCookie() {
-	var username=getCookie("user");
-		if (username!="") {
-		alert("Welcome again " + username);
-	}else{
-		username = prompt("Please enter your name:", "");
-		if (username != "" && username != null) {
-						setCookie("username", username, 365);
+	function checkLogin(){
+		var user = localStorage.getItem("user");
+		if(user.loggedIn == true){
+			//CHANGE DISPLAY OF HEADER
 		}
 	}
-}
 </script>
 </head>
 
@@ -64,8 +41,6 @@ function checkLogin(){
 		document.getElementsByClassName("ln1").style.display ='none';
 	}
 }
-
-
 </script>
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
@@ -79,25 +54,28 @@ function checkLogin(){
             <li class="ln"><a href="logout.html">Log Out</a></li>
             
 		</ul>
-<div id="RegisterCompleteDisplay">
+</header>
+	<div id="RegisterCompleteDisplay"> 
+		
+	</div>
 <script>
-//	create variable to hold url object ($_GET)
-
-var url = document.location.href;
-var $_GET = getForm(url);
-// STRINGIFY
-var str = JSON.stringify($_GET).replace("%40", "@");
-//create a cookiename variable
-var email = $_GET.email.value;
-var ttl = 1;
-var exdays = 1;
-//SET AND GET COOKIE
-setCookie("user", ttl, exdays);
-document.write(getCookie("user"));
-var userCookie = getCookie("user");
-document.write(userCookie);
-
+	var url = document.location.href;
+	$_GET = getForm(url);
+	console.log($_GET);
+	localStorage.setItem("user", JSON.stringify($_GET));
+	var User = localStorage.getItem("user");
+	console.log(User);
+	User = JSON.parse(User);
+	console.log(User);
+	var x = document.getElementById("RegisterCompleteDisplay");
+	x.innerHTML="Your Username : "+User.username+"<br> Your Password : "+User.password+"<br> Your email : "+User.email.replace("%40","@");
 </script>
 </div>
+<div style="text-align:center; font-size:20px; font-family:"Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif; >
+	<br><br>
+	CONGRATULATIONS!
+	<br>
+	You are now a registered user at REEVO INC! 
+	You can now visit out <a href="login.html">Login</a> page to access Game Trials and the Shopping Cart!!
 </body>
 </html>

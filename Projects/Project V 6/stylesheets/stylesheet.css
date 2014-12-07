@@ -234,6 +234,7 @@ td{
 	display: block;
 	margin-top: auto;
 	margin-right: auto;
+	margin-right: auto;
 	margin-bottom: auto;
 	margin-left: auto;
 }
@@ -252,7 +253,11 @@ td{
 }
 #RegisterCompleteDisplay{
 	text-align:center;
-	
+	margin-top:30px;
+	font-size:30px;
+	font-family:"Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	border: 1px solid #0024D0;
+	box-shadow: -10px 3px 52px 2px #0024D0;
 }
 #gameimg{
 	width:250px;
