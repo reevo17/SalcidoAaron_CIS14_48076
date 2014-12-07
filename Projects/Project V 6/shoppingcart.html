@@ -7,15 +7,18 @@
 <link type="text/javascript" href="scripts/login.js">
 <link type="text/javascript" href="scripts/shopping.js">
 <script>
-var check = getCookie("loggedIn");
-if(check == false){
-	var blackJackTrial = document.getElementById("bj");
-	blackJackTrial.innerHTML="<p><center>Only members who are logged in may play the Blackjack Game Trial!</center></p>";
-}
+	function checkLogin(){
+		var user = localStorage.getItem("user");
+		if(user.loggedIn == true){
+			//CHANGE DISPLAY OF HEADER
+		}
+	}
 </script>
 </head>
 <body>
-
+<script>
+	checkLogin();
+</script>
 <header>
 		<img src="logo.png" width="134" height="54"/>
     	<ul class="nav">

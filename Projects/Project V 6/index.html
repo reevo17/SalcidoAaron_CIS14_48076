@@ -6,13 +6,18 @@
 <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
 <link type="text/javascript" href="scripts/shopping.js">
 <script>
-	
+		function checkLogin(){
+		var user = localStorage.getItem("user");
+		if(user.loggedIn == true){
+			//CHANGE DISPLAY OF HEADER
+		}
+	}
 </script>
 </head>
 
 <body>
 <script>
-	
+	checkLogin();
 </script>
 <header>
 		<img src="images/logo.png" width="134" height="54"/>

@@ -6,9 +6,20 @@
 <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
 <link type="text/javascript" href="login.js">
 <link type="text/javascript" href="shopping.js">
+<script>
+		function checkLogin(){
+		var user = localStorage.getItem("user");
+		if(user.loggedIn == true){
+			//CHANGE DISPLAY OF HEADER
+		}
+	}
+</script>
 </head>
 
 <body>
+<script>
+	checkLogin();
+</script>
 
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
@@ -23,9 +34,6 @@
             
 		</ul>
 </header>
-
-
-
 <div class="formdiv">
 	<form name="loginform" action="login.html" method="get" id="loginform">
 				<input name="username" type="text" /><div id="headerlogin">Admin Username</div><br>

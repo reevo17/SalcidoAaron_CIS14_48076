@@ -6,11 +6,12 @@
 <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
 <link type="text/javascript" href="scripts/shopping.js">
 <script>
-function checkLogin();
-if(loggedIn == false){
-	var blackJackTrial = document.getElementById("bj");
-	blackJackTrial.innerHTML="<p><center>Only members who are logged in may play the Blackjack Game Trial!</center></p>";
-}
+	function checkLogin(){
+		var user = localStorage.getItem("user");
+		if(user.loggedIn == true){
+			//CHANGE DISPLAY OF HEADER
+		}
+	}
 </script>
 </head>
 
