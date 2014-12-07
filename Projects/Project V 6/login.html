@@ -7,9 +7,27 @@
 <link type="text/javascript" href="login.js">
 <link type="text/javascript" href="shopping.js">
 <script>
-	var retrievedObject = localStorage.getItem("LoggedIn");
-	function checkLogin(retrievedObject){
-		if(retrievedObject.loggedIn == "true"){
+	if(localStorage.getItem("LoggedIn"!== null)){
+		var Obj = JSON.parse(localStorage.getItem("LoggedIn"));
+	} else{
+		var Obj = "Not logged in yet!";
+	}
+	var user = JSON.parse(localStorage.getItem("user"));
+	//LOGIN FUNCTION!
+	function login(user){
+		console.log(document.forms["loginform"]["username"].value);
+		if(document.forms["loginform"]["username"].value == user.username&&document.form["loginform"]["password"] == user.password){
+			localStorage.setItem("LoggedIn",{loggedIn:"true"});
+			console.log("Logged In! Function Ran!");
+			alert("Welcome "+user.username);
+			return true;
+		} else{
+		console.log("Function occured, not logged in though...");
+		return false;
+		}
+	}
+	function checkLogin(Obj){
+		if(Obj.loggedIn == "true"){
 			document.getElementsByClass("ln1").display="none";
 			document.getElementsByCLass("ln").display="inline";
 		}else{
@@ -17,15 +35,11 @@
 			document.getElementsByCLass("ln").display="none";
 		}
 	}
-	function setLogin(){
-		//console.log("SET LOCAL STORAGE");
-	}
 </script>
 </head>
 <body>
 	<script>
-	checkLogin();
-	
+	console.log(user.username);
 	</script>
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
@@ -51,16 +65,20 @@
 
 
 <div class="formdiv">
-	<form name="loginform" action="login.html" method="get" id="loginform" onsubmit="checkLogin()">
+	<form name="loginform" action="login.html" method="get" id="loginform" onsubmit="login(user)">
 				<input name="username" type="text" /><div id="headerlogin">Username</div><br>
 				<input name="password" type="password" /><div id="headerlogin">Password</div><br>
-				<input type="submit" text="Submit" onClick=setLogin(); value="Submit"/>
+				<input type="submit" text="Submit" onClick="login(user)"; value="Submit"/>
 			</form>
 </div>
 <div style="padding:20px;font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, sans-serif; text-align:center;">
 	Enter your log in information above.<br>
 	Logging in/Creating an Account gives you access to features such as The Shopping Cart and Game Trials!
 </div>
+<script>
+	console.log(user);
+	console.log(Obj);
+</script>	
 <div>
 	<img src="http://i.imgur.com/XRzaECO.jpg" class="loginImg"/>
 </div>

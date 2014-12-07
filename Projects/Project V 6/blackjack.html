@@ -68,8 +68,7 @@ function Dealer(){
 	this.CardPosition=1
 }
 var deck = [
-//`````````````````CLUBS```````````````````````````
-	
+//`````````````````CLUBS``````````````````````````
 	c1 = {img:"cards/1.png",value:1},
 	c2 = {img:"cards/2.png",value:2},
 	c3 = {img:"cards/3.png",value:3},
@@ -127,8 +126,6 @@ var deck = [
 	h13 = {img:"cards/52.png",value:10}
 //==============================END OF CARDS ===============================
 ];
-
-
 Deckshuffle=function(nTimes, deck){
 	for(var fan=1;fan<=nTimes;fan++){
 		for(var num=deck.length-1;num>=1;num--){
@@ -142,17 +139,6 @@ Deckshuffle=function(nTimes, deck){
 }
 
 var playing = true;
-
-function getCookie(cname){
-	var name = cname;
-	var ca = document.cookie.split(";");
-	for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
-    }
-    return "";
-}
 //SHUFFLE
 function shuffle(nTimes, deck){
 	for(var fan=1;fan<=nTimes;fan++){
@@ -165,7 +151,6 @@ function shuffle(nTimes, deck){
 		}
 	}
 }
-
 //WRITE MESSAGE TO THE MESSAGE AREA ID
 function writeMessage(message){
 		var node = document.createElement("LI");                 // Create a <li> node

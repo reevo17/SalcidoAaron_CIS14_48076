@@ -10,13 +10,11 @@
 	function validate_Username(){
 			var Arr = document.forms["input"]["username"].value.match(/^[A-Za-z]+$/g);
 			if(Arr != null){
-				
 				return true;
 			}else{
 				alert("Invalid Username Field");
 				return false;
 			}
-	
 		}
 //VALIDATE EMAIL ADDRESS
 		function validate_Email(){
@@ -49,9 +47,6 @@
 				return false;
 			}
 		}
-		
-		
-		
 //VALIDATE ENTIRE FORM!
 	function validate_Form(){
 		if(!validate_Username())return false;
@@ -62,7 +57,6 @@
 	}	
 </script>
 </head>
-
 <body id="Register">
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
@@ -77,7 +71,6 @@
             
 		</ul>
 </header>
-
 <div>
 	<p style="font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, sans-serif; font-size:21px; text-align:center;">
     	Enter information to create an account with Reevo Inc! All of your information is <br>
