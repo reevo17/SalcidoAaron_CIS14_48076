@@ -112,11 +112,21 @@ function Player(){
 		console.log("Playing = "+this.Playing);
 	};
 	this.Hold= function(){
-		this.Playing = false;
-		document.getElementById("Hit").disabled="true";
-		document.getElementById("Hold").disabled="true";
-	};
-}
+		if(dealer.cards.Value<player.cards.Value){
+			//PLAYER WINS
+			alert("You won after holding!");
+			console.log("The dealer has less cards");
+			clean(player, dealer, deck);
+			turn++
+		}else if(dealer.cards.Value>player.cards.Value){
+			//DEALER WINS!
+			console.log("Player held and won!");
+			clean(player, dealer, deck);
+			alert("The dealer won after you held!");
+			turn++
+		}
+	}
+};
 function breakLine(){
 	var br = document.createElement("BR");
 	document.getElementById("messageArea").appendChild(br);
@@ -266,19 +276,6 @@ function checkValues(player, dealer, nDeck){
 		alert("YOU WIN!! How did you get 21 exactly? Have you been cheating??");
 		clean(player, dealer, deck);
 	}
-	if(player.Playing == false){
-		if(dealer.cards.Value<player.cards.Value){
-			//PLAYER WINS
-			alert("You won after holding!");
-			console.log("The dealer has less cards");
-			turn++
-		} else if(dealer.cards.Value>player.cards.Value){
-		//DEALER WINS!
-		console.log("Player held and won!");
-		alert("The dealer won after you held!");
-		turn++
-		}
-	}
 
 	//PLAYER BUST
 	if(player.cards.Value>21){
@@ -315,8 +312,8 @@ function game(nDeck) {
 	
 	if(choice =="y"){
 		game(nDeck)
-	}else {
-	alert("Then we shall not deal...");
+	}else if(choice == "n"){
+		alert("Then we shall not deal...");
 	}
 </script>
 </body>
