@@ -177,7 +177,7 @@ tr{
 #control{
 	colspan: 8;
 	width: auto;
-	height: 30px;
+	height: 20px;
 }
 #hit{
 	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
@@ -196,4 +196,7 @@ tr{
 	border-top-width: 5px;
 	height: 20px;
 }#BlackJackBody #blackJackArea {
+}
+tr{
+	height:105px;
 }
