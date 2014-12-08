@@ -5,8 +5,6 @@
 <title>Blackjack Trial</title>
 <link type="text/css" rel="stylesheet" href="stylesheets/blackjackstylesheet.css">
 <script>
-var playing = true;
-var dplaying = true;
 var deck = [
 //`````````````````CLUBS``````````````````````````
 	c1 = {img:"cards/1.png",value:1},
@@ -90,6 +88,71 @@ function shuffle(nTimes, deck){
 	}
 }
 //WRITE MESSAGE TO THE MESSAGE AREA ID
+	//THE PLAYER
+function Player(){
+	this.cards={
+		Count:0,
+		Value:0
+	};
+	this.CardPosition=1;
+	this.Playing = true;
+	this.Hit = function(card){
+		var ndeck = deck.splice(0,1);
+		var card = ndeck[0];
+		player.cards.Value += card.value;
+		document.getElementById("PlayerCard"+player.CardPosition).innerHTML="<img src='"+card.img+"'/>";
+		player.CardPosition++;
+		var node = document.createElement("LI");                 // Create a <li> node
+		var textnode = document.createTextNode("Your card value: "+player.cards.Value);         // Create a text node
+		node.appendChild(textnode);                              // Append the text to <li>
+		document.getElementById("messageArea").appendChild(node);
+		breakLine();
+		checkValues(player, dealer, deck);
+		console.log("Players "+(player.CardPosition-1)+" card is worth "+card.value+". Total: "+player.cards.Value);
+		console.log("Playing = "+this.Playing);
+	};
+	this.Hold= function(){
+		this.Playing = false;
+		document.getElementById("Hit").disabled="true";
+		document.getElementById("Hold").disabled="true";
+	};
+}
+function breakLine(){
+	var br = document.createElement("BR");
+	document.getElementById("messageArea").appendChild(br);
+	}
+//THE DEALER
+function Dealer(){
+	this.cards={
+		deck:new Array,
+		Count:0,
+		Value:0
+	}
+	this.Playing = true;
+	this.CardPosition=1;
+	this.Hit = function(card){
+		var ndeck = deck.splice(0,1);
+		var card = ndeck[0];
+		dealer.cards.Value += card.value;
+			if(dealer.CardPosition<=8){
+			document.getElementById("DealerCard"+dealer.CardPosition).innerHTML="<img src='"+card.img+"'/>";
+			dealer.CardPosition++;
+			}else{
+			console.log("Dealer cards go over 8 slots");
+			}
+		var node = document.createElement("LI");                 							// Create a <li> node
+		var textnode = document.createTextNode("Dealers card value: "+dealer.cards.Value); // Create a text node
+		node.appendChild(textnode);                             						  // Append the text to <li>
+		document.getElementById("messageArea").appendChild(node);
+		checkValues(player, dealer, deck);
+		console.log("Dealers "+(dealer.CardPosition-1)+" card is worth "+card.value+". Total: "+dealer.cards.Value);
+	}
+	this.Hold= function(){
+		console.log("Dealer is holding");
+		this.Playing = false;
+	}
+	this.CardPosition=1
+}
 function writeMessage(message){
 		var node = document.createElement("LI");                 // Create a <li> node
 		document.getElementById("messageArea").appendChild(node);
@@ -152,70 +215,7 @@ function writeMessage(message){
 		</ul>
    </div>
 	<script>
-	//THE PLAYER
-function Player(playing){
-	this.cards={
-		Count:0,
-		Value:0
-	};
-	this.CardPosition=1;
-	this.Hit = function(card){
-		var ndeck = deck.splice(0,1);
-		var card = ndeck[0];
-		player.cards.Value += card.value;
-		document.getElementById("PlayerCard"+player.CardPosition).innerHTML="<img src='"+card.img+"'/>";
-		player.CardPosition++;
-		var node = document.createElement("LI");                 // Create a <li> node
-		var textnode = document.createTextNode("Your card value: "+player.cards.Value);         // Create a text node
-		node.appendChild(textnode);                              // Append the text to <li>
-		document.getElementById("messageArea").appendChild(node);
-		breakLine();
-		checkValues(player, dealer, deck, playing);
-		console.log("Players "+(player.CardPosition-1)+" card is worth "+card.value+". Total: "+player.cards.Value);
-		console.log("Playing = "+playing);
-	};
-	this.Hold= function(playing){
-		playing = false;
-		document.getElementById("Hit").disabled="true";
-		document.getElementById("Hold").disabled="true";
-		return playing;
-	};
-	return playing;
-}
-function breakLine(){
-	var br = document.createElement("BR");
-	document.getElementById("messageArea").appendChild(br);
-	}
-//THE DEALER
-function Dealer(dplaying){
-	this.cards={
-		deck:new Array,
-		Count:0,
-		Value:0
-	}
-	this.CardPosition=1;
-	this.Hit = function(card){
-		var ndeck = deck.splice(0,1);
-		var card = ndeck[0];
-		dealer.cards.Value += card.value;
-			if(dealer.CardPosition<=8){
-			document.getElementById("DealerCard"+dealer.CardPosition).innerHTML="<img src='"+card.img+"'/>";
-			dealer.CardPosition++;
-			}else{
-			console.log("Dealer cards go over 8 slots");
-			}
-		var node = document.createElement("LI");                 							// Create a <li> node
-		var textnode = document.createTextNode("Dealers card value: "+dealer.cards.Value); // Create a text node
-		node.appendChild(textnode);                             						  // Append the text to <li>
-		document.getElementById("messageArea").appendChild(node);
-		checkValues(player, dealer, deck, playing);
-		console.log("Dealers "+(dealer.CardPosition-1)+" card is worth "+card.value+". Total: "+dealer.cards.Value);
-	}
-	this.Hold= function(){
-		console.log("Dealer is holding");
-	}
-	this.CardPosition=1
-}
+//console.log(player.Playing + dealer.Playing);
 var turn = 1;
 var nDeck = shuffle(7, deck);
 var player = new Player;
@@ -230,15 +230,15 @@ function newGame(player,dealer,nDeck){
 	writeMessage("Will you Hit Or Hold?");
 }
 //CLEAN UP
-	function clean(player, dealer, deck, playing, dplaying){
+	function clean(player, dealer, deck, turn){
 
 	document.getElementById("messageArea").innerHTML="End of round...new Round Starting!";
 	player.cards.Value = 0;
 	player.CardPosition = 1;
+	player.Playing = true;
 	dealer.cards.Value = 0;
 	dealer.CardPosition = 1;
-	playing = true;
-	dplaying = true;
+	dealer.Playing = true;
 	var i = 1;
 	while(i<9){
 		document.getElementById("PlayerCard"+i).innerHTML=" ";
@@ -246,26 +246,17 @@ function newGame(player,dealer,nDeck){
 		i++
 	}
 	newGame(player,dealer,nDeck);
-		if(turn>5){
-		document.getElementById("Hit").disabled="true";
-		document.getElementById("Hold").disabled="true";
-		playing = false;
-		document.getElementById("MessageArea").innerHTML="Thanks for playing!";
+	if(turn>20){
+		alert("THANKS FOR PLAYING!");
 	}
-	return playing;
 }
 
 
 //CHECK VALUES!!
-function checkValues(player, dealer, nDeck, playing, dplaying){
-	if(dealer.cards.Value<=16&& dplaying == true){
-		setTimeout(function myFunction(){dealer.Hit(nDeck)},3500);
-	}
-	if(dealer.cards.Value>16){
-		console.log("Dealer is holding");
-		writeMessage("Dealer is holding");
-		dplaying = false;
-	}
+function checkValues(player, dealer, nDeck){
+	//if(dealer.cards.Value<15){
+	//	dealer.Hit(nDeck);
+	//}
 	if(player.cards.Value == 21){
 		//PLAYER WINS
 		console.log("Player got exactly 21 cards!");
@@ -275,7 +266,7 @@ function checkValues(player, dealer, nDeck, playing, dplaying){
 		alert("YOU WIN!! How did you get 21 exactly? Have you been cheating??");
 		clean(player, dealer, deck);
 	}
-	if(playing == false){
+	if(player.Playing == false){
 		if(dealer.cards.Value<player.cards.Value){
 			//PLAYER WINS
 			alert("You won after holding!");
@@ -308,29 +299,15 @@ function checkValues(player, dealer, nDeck, playing, dplaying){
 		alert("YOU WIN!! (Only because the dealer busted though...)");
 		clean(player, dealer, deck);
 	}
-	if (playing == false){
-		if(player.cards.Value>21){
-			//DEALER WINS
-			console.log("You BUST and the Dealer has won");
-			console.log("Total was "+player.cards.Value);
-			console.log("Dealer had "+dealer.cards.Value);
-			turn++;
-			alert("Dealer has won, better luck next time sucka!");
-			clean(player, dealer, deck);
-		}
-			
-	}
+	console.log("Dealer is playing = "+dealer.Playing);
 }
+
 //RUNS WHEN PAGE LOADS
 function game(nDeck) {
-	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
+	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, when you throw your money at us, we will give you the full game which includes features such as HI DEFINITION GRAPHICS AND DYNAMIC AI THAT WE HAVE NO IDEA WHO TO PROGRAM!!! Please enjoy! :) ~A.S 'Reevo'" );
 		writeMessage("-----------------THE SCRIPT HAS STARTED-----------------");
 		console.log("Turn # is"+turn);
-		player.Hit(nDeck);
-		dealer.Hit(nDeck);
-		player.Hit(nDeck);
-		dealer.Hit(nDeck);
-		
+		newGame(player, dealer, nDeck);
 	}
 	do{
 		choice=prompt("Deal? y or n");
