@@ -5,6 +5,8 @@
 <title>Blackjack Trial</title>
 <link type="text/css" rel="stylesheet" href="stylesheets/blackjackstylesheet.css">
 <script>
+var playing = true;
+var dplaying = true;
 var deck = [
 //`````````````````CLUBS``````````````````````````
 	c1 = {img:"cards/1.png",value:1},
@@ -150,8 +152,6 @@ function writeMessage(message){
 		</ul>
    </div>
 	<script>
-var playing = true;
-var dplaying = true;
 	//THE PLAYER
 function Player(playing){
 	this.cards={
@@ -288,7 +288,7 @@ function checkValues(player, dealer, nDeck, playing, dplaying){
 		turn++
 		}
 	}
-	
+
 	//PLAYER BUST
 	if(player.cards.Value>21){
 		//DEALER WINS
