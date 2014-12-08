@@ -5,68 +5,6 @@
 <title>Blackjack Trial</title>
 <link type="text/css" rel="stylesheet" href="stylesheets/blackjackstylesheet.css">
 <script>
-function breakLine(){
-	var br = document.createElement("BR");
-	document.getElementById("messageArea").appendChild(br);
-	}
-
-//THE PLAYER
-function Player(){
-	this.cards={
-		Count:0,
-		Value:0
-	};
-	this.CardPosition=1;
-	this.Hit = function(card){
-		var ndeck = deck.splice(0,1);
-		var card = ndeck[0];
-		player.cards.Value += card.value;
-		document.getElementById("PlayerCard"+player.CardPosition).innerHTML="<img src='"+card.img+"'/>";
-		player.CardPosition++;
-		var node = document.createElement("LI");                 // Create a <li> node
-		var textnode = document.createTextNode("Your card value: "+player.cards.Value);         // Create a text node
-		node.appendChild(textnode);                              // Append the text to <li>
-		document.getElementById("messageArea").appendChild(node);
-		breakLine();
-		checkValues(player, dealer, deck, playing);
-		console.log("Players "+(player.CardPosition-1)+" card is worth "+card.value+". Total: "+player.cards.Value);
-	};
-	this.Hold= function(){
-		var playing = false;
-		document.getElementById(Hit).disabled;
-		document.getElementById(Hold).disabled;
-	};
-}
-//THE DEALER
-function Dealer(){
-	this.cards={
-		deck:new Array,
-		Count:0,
-		Value:0
-	}
-	this.CardPosition=1;
-	this.Hit = function(card){
-		var ndeck = deck.splice(0,1);
-		var card = ndeck[0];
-		dealer.cards.Value += card.value;
-			if(dealer.CardPosition<=8){
-			document.getElementById("DealerCard"+dealer.CardPosition).innerHTML="<img src='"+card.img+"'/>";
-			dealer.CardPosition++;
-			}else{
-			console.log("Dealer cards go over 8 slots");
-			}
-		var node = document.createElement("LI");                 							// Create a <li> node
-		var textnode = document.createTextNode("Dealers card value: "+dealer.cards.Value); // Create a text node
-		node.appendChild(textnode);                             						  // Append the text to <li>
-		document.getElementById("messageArea").appendChild(node);
-		checkValues(player, dealer, deck, playing);
-		console.log("Dealers "+(dealer.CardPosition-1)+" card is worth "+card.value+". Total: "+dealer.cards.Value);
-	}
-	this.Hold= function(){
-		console.log("Dealer is holding");
-	}
-	this.CardPosition=1
-}
 var deck = [
 //`````````````````CLUBS``````````````````````````
 	c1 = {img:"cards/1.png",value:1},
@@ -137,8 +75,6 @@ Deckshuffle=function(nTimes, deck){
 		}
 	}
 }
-
-var playing = true;
 //SHUFFLE
 function shuffle(nTimes, deck){
 	for(var fan=1;fan<=nTimes;fan++){
@@ -205,7 +141,7 @@ function writeMessage(message){
         
         <!--CONTROL AREA-->
         <tr>
-        	<td id="control" colspan="8"> <button id="hit" onClick=player.Hit() type="button">Hit</button> <button id="player.Hold" onClick=hold() type="button">Hold</button></td>
+        	<td id="control" colspan="8"> <button id="Hit" onClick="player.Hit()" type="button">Hit</button> <button id="Hold" onClick="player.Hold()" type="button">Hold</button></td>
         </tr>
    </table>
    <div id="messageArea">
@@ -214,29 +150,122 @@ function writeMessage(message){
 		</ul>
    </div>
 	<script>
+var playing = true;
+var dplaying = true;
+	//THE PLAYER
+function Player(playing){
+	this.cards={
+		Count:0,
+		Value:0
+	};
+	this.CardPosition=1;
+	this.Hit = function(card){
+		var ndeck = deck.splice(0,1);
+		var card = ndeck[0];
+		player.cards.Value += card.value;
+		document.getElementById("PlayerCard"+player.CardPosition).innerHTML="<img src='"+card.img+"'/>";
+		player.CardPosition++;
+		var node = document.createElement("LI");                 // Create a <li> node
+		var textnode = document.createTextNode("Your card value: "+player.cards.Value);         // Create a text node
+		node.appendChild(textnode);                              // Append the text to <li>
+		document.getElementById("messageArea").appendChild(node);
+		breakLine();
+		checkValues(player, dealer, deck, playing);
+		console.log("Players "+(player.CardPosition-1)+" card is worth "+card.value+". Total: "+player.cards.Value);
+		console.log("Playing = "+playing);
+	};
+	this.Hold= function(playing){
+		playing = false;
+		document.getElementById("Hit").disabled="true";
+		document.getElementById("Hold").disabled="true";
+		return playing;
+	};
+	return playing;
+}
+function breakLine(){
+	var br = document.createElement("BR");
+	document.getElementById("messageArea").appendChild(br);
+	}
+//THE DEALER
+function Dealer(dplaying){
+	this.cards={
+		deck:new Array,
+		Count:0,
+		Value:0
+	}
+	this.CardPosition=1;
+	this.Hit = function(card){
+		var ndeck = deck.splice(0,1);
+		var card = ndeck[0];
+		dealer.cards.Value += card.value;
+			if(dealer.CardPosition<=8){
+			document.getElementById("DealerCard"+dealer.CardPosition).innerHTML="<img src='"+card.img+"'/>";
+			dealer.CardPosition++;
+			}else{
+			console.log("Dealer cards go over 8 slots");
+			}
+		var node = document.createElement("LI");                 							// Create a <li> node
+		var textnode = document.createTextNode("Dealers card value: "+dealer.cards.Value); // Create a text node
+		node.appendChild(textnode);                             						  // Append the text to <li>
+		document.getElementById("messageArea").appendChild(node);
+		checkValues(player, dealer, deck, playing);
+		console.log("Dealers "+(dealer.CardPosition-1)+" card is worth "+card.value+". Total: "+dealer.cards.Value);
+	}
+	this.Hold= function(){
+		console.log("Dealer is holding");
+	}
+	this.CardPosition=1
+}
 var turn = 1;
 var nDeck = shuffle(7, deck);
 var player = new Player;
 var dealer = new Dealer
 var choice = "";
+//NEW GAME!!
+function newGame(player,dealer,nDeck){
+	player.Hit(nDeck);
+	dealer.Hit(nDeck);
+	player.Hit(nDeck);
+	dealer.Hit(nDeck);
+	writeMessage("Will you Hit Or Hold?");
+}
+//CLEAN UP
+	function clean(player, dealer, deck, playing, dplaying){
 
-	function clean(player, dealer, deck){
 	document.getElementById("messageArea").innerHTML="End of round...new Round Starting!";
 	player.cards.Value = 0;
 	player.CardPosition = 1;
 	dealer.cards.Value = 0;
 	dealer.CardPosition = 1;
 	playing = true;
+	dplaying = true;
 	var i = 1;
 	while(i<9){
 		document.getElementById("PlayerCard"+i).innerHTML=" ";
 		document.getElementById("DealerCard"+i).innerHTML=" ";
 		i++
 	}
+	newGame(player,dealer,nDeck);
+		if(turn>5){
+		document.getElementById("Hit").disabled="true";
+		document.getElementById("Hold").disabled="true";
+		playing = false;
+		document.getElementById("MessageArea").innerHTML="Thanks for playing!";
+	}
 	return playing;
 }
+
+
 //CHECK VALUES!!
-function checkValues(player, dealer, deck, playing){
+function checkValues(player, dealer, nDeck, playing, dplaying){
+	if(dealer.cards.Value<=16&& dplaying == true){
+		setTimeout(function myFunction(){dealer.Hit(nDeck)},3500);
+	}
+	if(dealer.cards.Value>16){
+		console.log("Dealer is holding");
+		writeMessage("Dealer is holding");
+		dplaying = false;
+	}
 	if(player.cards.Value == 21){
 		//PLAYER WINS
 		console.log("Player got exactly 21 cards!");
@@ -246,18 +275,20 @@ function checkValues(player, dealer, deck, playing){
 		alert("YOU WIN!! How did you get 21 exactly? Have you been cheating??");
 		clean(player, dealer, deck);
 	}
-	if(playing == false&&dealer.cards.Value>21){
-		//PLAYER WINS
-		console.log("Player held and the player has won");
-		console.log("Total was "+player.cards.Value);
-		console.log("Dealer had "+dealer.cards.Value);
-		turn++;
-		alert("YOU WIN!!");
-		clean(player, dealer, deck);
-	}
-	if(playing == false&&dealer.cards.Value<player.cards.Value){
+	if(playing == false){
+		if(dealer.cards.Value<player.cards.Value){
+			//PLAYER WINS
+			alert("You won after holding!");
 			console.log("The dealer has less cards");
+			turn++
+		} else if(dealer.cards.Value>player.cards.Value){
+		//DEALER WINS!
+		console.log("Player held and won!");
+		alert("The dealer won after you held!");
+		turn++
+		}
 	}
+	
 	//PLAYER BUST
 	if(player.cards.Value>21){
 		//DEALER WINS
@@ -293,19 +324,14 @@ function checkValues(player, dealer, deck, playing){
 //RUNS WHEN PAGE LOADS
 function game(nDeck) {
 	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, you can play the game a total of 5 times before prompted to purchase the game. Please enjoy! :) ~A.S 'Reevo'" );
-	while(turn<6){
 		writeMessage("-----------------THE SCRIPT HAS STARTED-----------------");
 		console.log("Turn # is"+turn);
 		player.Hit(nDeck);
 		dealer.Hit(nDeck);
 		player.Hit(nDeck);
 		dealer.Hit(nDeck);
-		writeMessage("Will you Hit Or Hold?");
-		player.Hit(nDeck);
-		dealer.Hit(nDeck);
-		player.Hit(nDeck);
+		
 	}
-}
 	do{
 		choice=prompt("Deal? y or n");
 	}while(choice!="y");

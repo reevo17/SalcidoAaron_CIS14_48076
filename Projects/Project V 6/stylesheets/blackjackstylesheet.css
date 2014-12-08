@@ -51,8 +51,8 @@ header ul li{
 button{
 	display: inline;
 	color: blue;
-	height: 80px;
-	width: 100px;
+	height: 50px;
+	width: 75px;
 	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
 }
 #ln{
@@ -177,7 +177,7 @@ tr{
 #control{
 	colspan: 8;
 	width: auto;
-	height: 45px;
+	height: 30px;
 }
 #hit{
 	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
