@@ -2,7 +2,7 @@
 /* CSS Document */
 #blackbjackbody{
 	background-color:black;	
-}
+}ss
 
 body{
 	background-image: -webkit-linear-gradient(253deg,rgba(58,54,54,1.00) 4.66%,rgba(189,177,177,1.00) 25.40%,rgba(225,222,222,1.00) 37.31%,rgba(215,215,215,1.00) 53.89%,rgba(180,183,195,1.00) 68.39%,rgba(89,110,187,1.00) 84.97%,rgba(6,41,251,1.00) 99.48%);
@@ -286,5 +286,8 @@ td{
 	width:50%;
 }
 #functions {
+	display: none;
+}
+.admin #items {
 	display: none;
 }
