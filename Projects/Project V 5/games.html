@@ -3,46 +3,93 @@
 <head>
 <meta charset="utf-8">
 <title>Reevo Inc Games</title>
-<link type="text/css" rel="stylesheet" href="stylesheet.css">
+<link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
 <link type="text/javascript" href="scripts/shopping.js">
-<script>
-checkLogin();
-if(loggedIn == false){
-	var blackJackTrial = document.getElementById("bj");
-	blackJackTrial.innerHTML="<p><center>Only members who are logged in may play the Blackjack Game Trial!</center></p>";
-}
-function setItemCookie(cname, cvalue, exdays){
-	var d = new Date();
-    d.setTime(d.getTime() + (1*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-function getCookie(cname){
-	var name = cname;
-	var ca = document.cookie.split(";");
-	for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+<script>	
+	var admin = localStorage.getItem("admin");
+	var Obj =localStorage.getItem("LoggedIn");
+	function logOut(){
+		localStorage.removeItem("LoggedIn");
+		location.reload();
+	}
+	//CHECK IF LOGGED IN
+	function checkLogin(){
+		if(Obj == "true"){
+			var x = document.getElementsByClassName("ln1");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			var y = document.getElementsByClassName("ln");
+			for (t = 0; t < y.length; t++) {
+				y[t].style.display = "inline";
+			}
+		}else{
+			var x = document.getElementsByClassName("ln1");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "inline";
+			}
+			var y = document.getElementsByClassName("ln");
+			for (t = 0; t < y.length; t++) {
+				y[t].style.display = "none";
+			}
+		}
+	}
+var shoppingCart ={
+	total : 0,
+	items : [],
+	add : function(itemCost){
+		this.total += (itemCost || 0);
+       this.lastTransactionAmount = itemCost;
+    },
+	scan : function(item){
+        switch (item){
+            case "connectFour": 
+				this.add(45); 
+				alert("Connect Four was added to your Cart. Total: $"+shoppingCart.total);
+				shoppingCart.items.push("Connect Four");
+				console.log(shoppingCart);
+				break;
+            case "BlackJack": 
+				this.add(50);
+				shoppingCart.items.push("Black Jack");
+				alert("Black Jack was added to your Cart. Total: $"+shoppingCart.total);
+				console.log(shoppingCart);
+				break;
+            case "BattleShip": 
+				this.add(175); 
+				shoppingCart.items.push("Battle Ship");
+				alert("Battle Ship was added to your Cart! Total: $"+shoppingCart.total);
+				console.log(shoppingCart);
+				break;
+        }
+        return true;
+	},
+	voidLastTransaction : function(){
+        this.total -= this.lastTransactionAmount;
+        this.lastTransactionAmount = 0;
     }
-     return "";
+}
+window.onbeforeunload = function(){
+	alert("Shopping Cart Saved! Total: "+shoppingCart.total);
+	localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
 }
 </script>
 </head>
-
 <body>
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
     	<ul class="nav">
        	  <li><a href="index.html">Home</a></li>
             <li><a href="games.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li id="ln1"><a href="login.html">Login</a></li><li id="ln1"><a href="register.html">Register</a></li>
-            <li id="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
-            <li id="ln"><a href="logout.html">Log Out</a></li>
+            <li class="ln1"><a href="login.html">Login</a></li>
+            <li class="ln1"><a href="register.html">Register</a></li>
+            <button  class="ln" onClick="logOut()">Log Out</button>
             
 		</ul>
 </header>
+<script>
+	checkLogin();
+</script>
 
 <!--TABLE TO HOLD THE GAMES-->
 <table style="border-radius:5px;">
@@ -58,36 +105,34 @@ function getCookie(cname){
         	<td>
 				<center>Connect 4<br><small>Price: <em>$45</em></small><br>
 				<img src="images/connect4.jpg"/>
-				<button onClick=shoppingCart.add(connectFour)>Add Item To Cart</button>
+				<button onClick=shoppingCart.scan("connectFour")>Add Item To Cart</button>
+				<button disabled="true">TRIAL NOT AVAILABLE</button>
 				</center>
 			</td>
 			<!--BLACKJACK CONTAINER-->
             <td>
 				<center>Blackjack<br><small>Price: <em>$50</em></small>
 				<img id="gameimg" src="images/blackjack.jpg"/>
-				<button onClick=shoppingCart.add("Black Jack")>Add Item To Cart</button><br><button id="ln" onClick="blackjack.html">Play Game Trial</button>
+				<button onClick=shoppingCart.scan("BlackJack")>Add Item To Cart</button><br>
+				<form class="ln" action="blackjack.html">
+					<input class="ln" type="submit" value="PLAY GAME TRIAL!">
+				</form>
 				<br><div id="bj"></div></center>
 			</td>
 			<td>
 				<center>Battleship<br><small>Price: <em>$175</em></small>
 				<img src="images/battleship.jpg" id="gameimg"/>
-				<button  onClick=shoppingCart.add("Battle Ship")>Add Item To Cart</button>
+				<button  onClick=shoppingCart.scan("BattleShip")>Add Item To Cart</button>
+				<button disabled="true">TRIAL NOT AVAILABLE</button>
 				</center>
 			</td>
 			
         </tr>
     </tbody>   
+
 </table>
-<script>
-	var check = getCookie("loggedIn");
-	console.log(check);
-	if (check == null){
-		document.getElementById("ln").style.display="none";
-		document.getElementById('ln1').style.display ="inline";
-	} else {
-		document.getElementById("ln").style.display="inline";
-		document.getElementById('ln1').style.display ="none";
-	}
-</script>
+	<div>
+		<center><button onClick=location.replace("checkout.html")>CHECK OUT</button></center>
+	<div>
 </body>
 </html>
