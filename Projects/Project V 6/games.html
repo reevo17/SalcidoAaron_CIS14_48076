@@ -84,7 +84,6 @@ window.onbeforeunload = function(){
             <li><a href="about.html">About</a></li>
             <li class="ln1"><a href="login.html">Login</a></li>
             <li class="ln1"><a href="register.html">Register</a></li>
-            <li class="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
             <button  class="ln" onClick="logOut()">Log Out</button>
             
 		</ul>
@@ -108,6 +107,7 @@ window.onbeforeunload = function(){
 				<center>Connect 4<br><small>Price: <em>$45</em></small><br>
 				<img src="images/connect4.jpg"/>
 				<button onClick=shoppingCart.scan("connectFour")>Add Item To Cart</button>
+				<button disabled="true">TRIAL NOT AVAILABLE</button>
 				</center>
 			</td>
 			<!--BLACKJACK CONTAINER-->
@@ -116,7 +116,7 @@ window.onbeforeunload = function(){
 				<img id="gameimg" src="images/blackjack.jpg"/>
 				<button onClick=shoppingCart.scan("BlackJack")>Add Item To Cart</button><br>
 				<form class="ln" action="blackjack.html">
-					<input type="submit" value="PLAY GAME TRIAL!">
+					<input class="ln" type="submit" value="PLAY GAME TRIAL!">
 				</form>
 				<br><div id="bj"></div></center>
 			</td>
@@ -124,11 +124,16 @@ window.onbeforeunload = function(){
 				<center>Battleship<br><small>Price: <em>$175</em></small>
 				<img src="images/battleship.jpg" id="gameimg"/>
 				<button  onClick=shoppingCart.scan("BattleShip")>Add Item To Cart</button>
+				<button disabled="true">TRIAL NOT AVAILABLE</button>
 				</center>
 			</td>
 			
         </tr>
     </tbody>   
+
 </table>
+	<div>
+		<center><button onClick=location.replace("checkout.html")>CHECK OUT</button></center>
+	<div>
 </body>
 </html>

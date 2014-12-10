@@ -269,3 +269,19 @@ td{
 #mesageArea{
 	color:white;
 }
+#shoppingitems {
+	margin:auto;
+	margin-top:35px;
+	padding:10px;
+	font-family:"Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-size:40px;
+	box-shadow: -10px 3px 30px 1px #0024D0;
+	width:40%;
+}
+#total{
+	margin:auto;
+	margin-top:40px;
+	font-family:"Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	box-shadow: -10px 3px 30px 1px #0024D0;
+	width:50%;
+}
