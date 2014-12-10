@@ -2,14 +2,17 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>ADMIN ACCESS</title>
+<title>Reevo Inc Home</title>
 <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
-<link type="text/javascript" href="login.js">
-<link type="text/javascript" href="shopping.js">
+<link type="text/javascript" href="scripts/shopping.js">
 <script>
-	var passKey = "67912-GTTRV-88917-REEVO-133334";
+	var Obj = localStorage.getItem("LoggedIn");
+	var user = JSON.parse(localStorage.getItem("user"));
 	var admin = localStorage.getItem("admin");
-	var Obj =localStorage.getItem("LoggedIn");
+	function logOut(){
+		localStorage.removeItem("LoggedIn");
+		location.reload();
+	}
 	//CHECK IF LOGGED IN
 	function checkLogin(){
 		if(Obj == "true"){
@@ -32,6 +35,13 @@
 			}
 		}
 	}
+	function logOut(){
+		localStorage.removeItem("LoggedIn");
+		location.reload();
+	}
+	function adminLogOut(){
+		localStorage.removeItem("admin");
+	}
 	//CHECK IF ADMIN IS LOGGED IN
 	function checkAdmin(){
 		var x = document.getElementsByClassName("admin");
@@ -45,47 +55,64 @@
 			}
 		}
 	}
-	function adminLogin(){
-		if(document.getElementById("key").value == passKey){
-			localStorage.setItem("admin","true");
-			alert("Welcome Admin!");
-		}else{
-			Alert("Improper Admin Access Key! Be sure to type in the access code from your verification email!");
-		}
-	}
+	
+
 </script>
 </head>
+
 <body>
+
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
     	<ul class="nav">
        	  <li><a href="index.html">Home</a></li>
             <li><a href="games.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
             <li class="ln1"><a href="login.html">Login</a></li>
             <li class="ln1"><a href="register.html">Register</a></li>
             <button  class="ln" onClick="logOut()">Log Out</button>
+			<li class="admin"><a href="admintools.html">ADMIN TOOLS</a></li>
             
 		</ul>
 </header>
 <script>
-	console.log(Obj);
-	console.log(admin);
 	checkLogin();
-	checkAdmin(admin);
+	console.log(Obj);
+	console.log(user);
+	console.log(admin);
 </script>
-<div class="formdiv">
-	<form name="loginform" method="get" id="loginform">
-				<input name="accesskey" type="text" id="key" /><div id="headerlogin">Access Key</div><br>
-				<input type="submit" text="Submit" value="Submit"/>
-			</form>
-</div>
+<aside>
 
-<div style="padding:20px;font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, sans-serif; text-align:center;">
-Enter your log in information above.<br>
-Enter the access key included with the confirmation email sent out from Administration
+  <div>
+        Sitemap:
+		<ul>
+			<li><a href="blackjack.html">BLACKJACK GAME</a></li>
+			<br>
+			<li><a href="index.html">INDEX</a></li>
+			<li><a href="games.html">PRODUCTS</a></li>
+			<li><a href="checkout.html">CHECKOUT PAGE</a></li>
+			<br>
+			<li><a href="register.html">REGISTER</li><li>
+			<a href="registercomplete.html">REGISTER COMPLETE LANDING</li>
+			<br>
+			<li><a href="admin login">ADMIN LOGIN</li>
+		</ul>
+   </div>
+</aside>
+
+<div id="indexmain">
+	<p id="updates">
+		<ul>
+			<li><a href="http://www.codecademy.com/Reevo17">CODE ACADEMY</a></li>
+			<li><a href="https://github.com/reevo17/SalcidoAaron_CIS14_48076">VIEW REPOSITORY</a></li>
+				<ul>
+					<li><a href="https://github.com/reevo17/SalcidoAaron_CIS14_48076/tree/master/Projects/Project%20V%206">VIEW SOURCE CODE PROJECT V6</a></li>
+				</ul>
+	</p>
+	
 </div>
 <div>
-	<img src="http://i.imgur.com/XRzaECO.jpg" class="loginImg"/>
+	<button onClick="adminLogOut">LOG OUT OF ADMIN ACCESS</button>
 </div>
 </body>
 </html>
