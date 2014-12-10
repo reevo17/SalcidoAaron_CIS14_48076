@@ -56,12 +56,17 @@
 			}
 		}
 	}
-	
+	function showFunctions(){
+		document.getElementById("functions").style.display="block";	
+	}
+	function hideFunctions(){
+		document.getElementById("functions").style.display="none";	
+	}
 
 </script>
 </head>
 
-<body>
+<body class="admin">
 
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
@@ -93,10 +98,10 @@
 			<li><a href="games.html">PRODUCTS</a></li>
 			<li><a href="checkout.html">CHECKOUT PAGE</a></li>
 			<br>
-			<li><a href="register.html">REGISTER</li><li>
-			<a href="registercomplete.html">REGISTER COMPLETE LANDING</li>
-			<br>
-			<li><a href="admin login">ADMIN LOGIN</li>
+			<li><a href="register.html">REGISTER</a></li>
+            <li><a href="registercomplete.html">REGISTER COMPLETE LANDING</li>	<br>
+			<li><a href="adminlogin.html">ADMIN LOGIN</a></li>
+            <li><a href="admintools.html">ADMIN TOOLS</a></li>
 		</ul>
    </div>
 </aside>
@@ -117,6 +122,51 @@
 			<li><a href="https://github.com/bethrobson/Head-First-JavaScript-Programming">BOOK SCRIPTS BY CHAPTER</a></li>
 	</p>
 	
+</div>
+<p> <button   onClick="showFunctions()">SHOW FUNCTIONS</button></p>
+<div id="functions">
+		function checkLogin(){<br>
+		if(Obj == "true"){<br>
+			var x = document.getElementsByClassName("ln1");<br>
+			for (i = 0; i < x.length; i++) {<br>
+				x[i].style.display = "none";<br>
+			}<br>
+			var y = document.getElementsByClassName("ln");<br>
+			for (t = 0; t < y.length; t++) {<br>
+				y[t].style.display = "inline";<br>
+			}<br>
+		}else{<br>
+			var x = document.getElementsByClassName("ln1");<br>
+			for (i = 0; i < x.length; i++) {<br>
+				x[i].style.display = "inline";<br>
+			}<br>
+			var y = document.getElementsByClassName("ln");<br>
+			for (t = 0; t < y.length; t++) {<br>
+				y[t].style.display = "none";<br>
+			}<br>
+		}<br>
+	}<br>
+	function logOut(){<br>
+		localStorage.removeItem("LoggedIn");<br>
+		location.reload();<br>
+	}
+	//CHECK IF ADMIN IS LOGGED IN<br>
+	function checkAdmin(){<br>
+		var x = document.getElementById("admin");<br>
+		if(admin == "true"){<br>
+				x.style.display = "block";<br>
+		}else{<br>
+				x.style.display = "none";<br>
+			}<br>
+		}<br>
+        	function showFunctions(){<br>
+		document.getElementById("functions").style.display="block";	<br>
+	}<br>
+	function hideFunctions(){<br>
+		document.getElementById("functions").style.display="none";	<br>
+	}
+<br>
+	<button onClick="hideFunctions()">HIDE FUNCTIONS</button>
 </div>
 <div>
 	<button onClick="adminLogOut()">LOG OUT OF ADMIN ACCESS</button>
