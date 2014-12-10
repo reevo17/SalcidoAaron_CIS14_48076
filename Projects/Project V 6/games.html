@@ -34,9 +34,47 @@
 			}
 		}
 	}
+var shoppingCart ={
+	total : 0,
+	items : [],
+	add : function(itemCost){
+		this.total += (itemCost || 0);
+       this.lastTransactionAmount = itemCost;
+    },
+	scan : function(item){
+        switch (item){
+            case "connectFour": 
+				this.add(45); 
+				alert("Connect Four was added to your Cart. Total: $"+shoppingCart.total);
+				shoppingCart.items.push("Connect Four");
+				console.log(shoppingCart);
+				break;
+            case "BlackJack": 
+				this.add(50);
+				shoppingCart.items.push("Black Jack");
+				alert("Black Jack was added to your Cart. Total: $"+shoppingCart.total);
+				console.log(shoppingCart);
+				break;
+            case "BattleShip": 
+				this.add(175); 
+				shoppingCart.items.push("Battle Ship");
+				alert("Battle Ship was added to your Cart! Total: $"+shoppingCart.total);
+				console.log(shoppingCart);
+				break;
+        }
+        return true;
+	},
+	voidLastTransaction : function(){
+        this.total -= this.lastTransactionAmount;
+        this.lastTransactionAmount = 0;
+    }
+}
+window.onbeforeunload = function(){
+	alert("Shopping Cart Saved! Total: "+shoppingCart.total);
+	localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+}
 </script>
 </head>
-
 <body>
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
@@ -69,14 +107,14 @@
         	<td>
 				<center>Connect 4<br><small>Price: <em>$45</em></small><br>
 				<img src="images/connect4.jpg"/>
-				<button onClick=shoppingCart.add(connectFour)>Add Item To Cart</button>
+				<button onClick=shoppingCart.scan("connectFour")>Add Item To Cart</button>
 				</center>
 			</td>
 			<!--BLACKJACK CONTAINER-->
             <td>
 				<center>Blackjack<br><small>Price: <em>$50</em></small>
 				<img id="gameimg" src="images/blackjack.jpg"/>
-				<button onClick=shoppingCart.add("Black Jack")>Add Item To Cart</button><br>
+				<button onClick=shoppingCart.scan("BlackJack")>Add Item To Cart</button><br>
 				<form class="ln" action="blackjack.html">
 					<input type="submit" value="PLAY GAME TRIAL!">
 				</form>
@@ -85,7 +123,7 @@
 			<td>
 				<center>Battleship<br><small>Price: <em>$175</em></small>
 				<img src="images/battleship.jpg" id="gameimg"/>
-				<button  onClick=shoppingCart.add("Battle Ship")>Add Item To Cart</button>
+				<button  onClick=shoppingCart.scan("BattleShip")>Add Item To Cart</button>
 				</center>
 			</td>
 			
