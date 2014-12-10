@@ -57,7 +57,9 @@
 	function displayItems(){
 		for(i =0; i < cart.items.length; i++){
 			var text = document.createTextNode(cart.items[i]);
+			var element = document.createElement("BR");
 			document.getElementById("shoppingitems").appendChild(text);
+			document.getElementById("shoppingitems").appendChild(element);
 		}
 		var t = document.createTextNode("Your Total: $"+cart.total);
 		document.getElementById("total").appendChild(t);
