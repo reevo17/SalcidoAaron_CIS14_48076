@@ -60,6 +60,10 @@
 		return false;
 		}
 	}
+	function logOut(){
+		localStorage.removeItem("LoggedIn");
+		location.reload();
+	}
 </script>
 </head>
 <body>
@@ -78,6 +82,7 @@
 </header>
 	<script>
 	checkLogin();
+	checkAdmin();
 	console.log(user.username);
 	console.log(user.password);
 	console.log(user);

@@ -45,6 +45,10 @@
 			}
 		}
 	}
+	function logOut(){
+		localStorage.removeItem("LoggedIn");
+		location.reload();
+	}
 	function adminLogin(){
 		if(document.getElementById("key").value == passKey){
 			localStorage.setItem("admin","true");
@@ -63,7 +67,8 @@
             <li><a href="games.html">Products</a></li>
             <li class="ln1"><a href="login.html">Login</a></li>
             <li class="ln1"><a href="register.html">Register</a></li>
-            <button  class="ln" onClick="logOut()">Log Out</button>
+            <button  class="ln" onClick="logOut()">Log Out</button>	
+			<li id="admin"><a href="admintools.html">ADMIN TOOLS</a></li>
             
 		</ul>
 </header>
@@ -71,10 +76,10 @@
 	console.log(Obj);
 	console.log(admin);
 	checkLogin();
-	checkAdmin(admin);
+	checkAdmin();
 </script>
 <div class="formdiv">
-	<form name="loginform" method="get" id="loginform">
+	<form name="loginform" method="get" id="loginform" onsubmit="adminLogin()">
 				<input name="accesskey" type="text" id="key" /><div id="headerlogin">Access Key</div><br>
 				<input type="submit" text="Submit" value="Submit"/>
 			</form>

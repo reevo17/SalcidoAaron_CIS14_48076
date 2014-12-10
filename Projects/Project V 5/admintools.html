@@ -41,6 +41,7 @@
 	}
 	function adminLogOut(){
 		localStorage.removeItem("admin");
+		location.reload();
 	}
 	//CHECK IF ADMIN IS LOGGED IN
 	function checkAdmin(){
@@ -67,7 +68,6 @@
     	<ul class="nav">
        	  <li><a href="index.html">Home</a></li>
             <li><a href="games.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
             <li class="ln1"><a href="login.html">Login</a></li>
             <li class="ln1"><a href="register.html">Register</a></li>
             <button  class="ln" onClick="logOut()">Log Out</button>
@@ -77,6 +77,7 @@
 </header>
 <script>
 	checkLogin();
+	checkAdmin();
 	console.log(Obj);
 	console.log(user);
 	console.log(admin);
@@ -106,13 +107,19 @@
 			<li><a href="http://www.codecademy.com/Reevo17">CODE ACADEMY</a></li>
 			<li><a href="https://github.com/reevo17/SalcidoAaron_CIS14_48076">VIEW REPOSITORY</a></li>
 				<ul>
-					<li><a href="https://github.com/reevo17/SalcidoAaron_CIS14_48076/tree/master/Projects/Project%20V%206">VIEW SOURCE CODE PROJECT V6</a></li>
+					<li><a href="https://github.com/reevo17/SalcidoAaron_CIS14_48076/tree/master/Projects/Project%20V%206">VIEW SOURCE CODE PROJECT V5</a></li>
+					<li><a href="https://github.com/reevo17/SalcidoAaron_CIS14_48076/tree/master/Projects/Project%20V%204">VIEW SOURCE CODE PROJECT V4</a></li>
+					<li><a href="https://github.com/reevo17/SalcidoAaron_CIS14_48076/tree/master/Projects/Project%20V%203">VIEW SOURCE CODE PROJECT V3</a></li>
+					<li><a href="https://github.com/reevo17/SalcidoAaron_CIS14_48076/tree/master/Projects/Project%20V%202">VIEW SOURCE CODE PROJECT V2</a></li>
+					<li><a href="https://github.com/reevo17/SalcidoAaron_CIS14_48076/tree/master/Projects/Project%20V%201">VIEW SOURCE CODE PROJECT V1</a></li>
+					<li><a href="https://github.com/reevo17/SalcidoAaron_CIS14_48076/tree/master/Pieces">PIECES USED IN MAKING SITE</a></li>
 				</ul>
+			<li><a href="https://github.com/bethrobson/Head-First-JavaScript-Programming">BOOK SCRIPTS BY CHAPTER</a></li>
 	</p>
 	
 </div>
 <div>
-	<button onClick="adminLogOut">LOG OUT OF ADMIN ACCESS</button>
+	<button onClick="adminLogOut()">LOG OUT OF ADMIN ACCESS</button>
 </div>
 </body>
 </html>

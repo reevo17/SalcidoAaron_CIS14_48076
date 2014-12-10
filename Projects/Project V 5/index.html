@@ -41,17 +41,13 @@
 	}
 	//CHECK IF ADMIN IS LOGGED IN
 	function checkAdmin(){
-		var x = document.getElementsByClassName("admin");
+		var x = document.getElementById("admin");
 		if(admin == "true"){
-			for (i = 0; i < x.length; i++) {
-				x[i].style.display = "block";
-			}
+				x.style.display = "block";
 		}else{
-			for (i = 0; i < x.length; i++) {
-				x[i].style.display = "none";
+				x.style.display = "none";
 			}
 		}
-	}
 	
 
 </script>
@@ -68,12 +64,13 @@
             <li class="ln1"><a href="login.html">Login</a></li>
             <li class="ln1"><a href="register.html">Register</a></li>
             <button  class="ln" onClick="logOut()">Log Out</button>
-			<li class="admin"><a href="admintools.html">ADMIN TOOLS</a></li>
+			<li id="admin"><a href="admintools.html">ADMIN TOOLS</a></li>
             
 		</ul>
 </header>
 <script>
 	checkLogin();
+	checkAdmin();
 	console.log(Obj);
 	console.log(user);
 	console.log(admin);

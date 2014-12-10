@@ -34,6 +34,10 @@
 			}
 		}
 	}
+	function logOut(){
+		localStorage.removeItem("LoggedIn");
+		location.reload();
+	}
 var shoppingCart ={
 	total : 0,
 	items : [],
