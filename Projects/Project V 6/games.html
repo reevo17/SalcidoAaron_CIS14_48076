@@ -5,11 +5,33 @@
 <title>Reevo Inc Games</title>
 <link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
 <link type="text/javascript" href="scripts/shopping.js">
-<script>
+<script>	
+	var admin = localStorage.getItem("admin");
+	var Obj =localStorage.getItem("LoggedIn");
+	function logOut(){
+		localStorage.removeItem("LoggedIn");
+		location.reload();
+	}
+	//CHECK IF LOGGED IN
 	function checkLogin(){
-		var user = localStorage.getItem("user");
-		if(user.loggedIn == true){
-			//CHANGE DISPLAY OF HEADER
+		if(Obj == "true"){
+			var x = document.getElementsByClassName("ln1");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			var y = document.getElementsByClassName("ln");
+			for (t = 0; t < y.length; t++) {
+				y[t].style.display = "inline";
+			}
+		}else{
+			var x = document.getElementsByClassName("ln1");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "inline";
+			}
+			var y = document.getElementsByClassName("ln");
+			for (t = 0; t < y.length; t++) {
+				y[t].style.display = "none";
+			}
 		}
 	}
 </script>
@@ -22,12 +44,16 @@
        	  <li><a href="index.html">Home</a></li>
             <li><a href="games.html">Products</a></li>
             <li><a href="about.html">About</a></li>
-            <li class="ln1"><a href="login.html">Login</a></li><li id="ln1"><a href="register.html">Register</a></li>
+            <li class="ln1"><a href="login.html">Login</a></li>
+            <li class="ln1"><a href="register.html">Register</a></li>
             <li class="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
-            <li class="ln"><a href="logout.html">Log Out</a></li>
+            <button  class="ln" onClick="logOut()">Log Out</button>
             
 		</ul>
 </header>
+<script>
+	checkLogin();
+</script>
 
 <!--TABLE TO HOLD THE GAMES-->
 <table style="border-radius:5px;">
@@ -50,7 +76,8 @@
             <td>
 				<center>Blackjack<br><small>Price: <em>$50</em></small>
 				<img id="gameimg" src="images/blackjack.jpg"/>
-				<button onClick=shoppingCart.add("Black Jack")>Add Item To Cart</button><br><button class="ln" onClick="blackjack.html">Play Game Trial</button>
+				<button onClick=shoppingCart.add("Black Jack")>Add Item To Cart</button><br>
+				<button class="ln" onClick="(blackjack.html)">Play Game Trial</button>
 				<br><div id="bj"></div></center>
 			</td>
 			<td>
