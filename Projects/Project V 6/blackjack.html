@@ -5,6 +5,8 @@
 <title>Blackjack Trial</title>
 <link type="text/css" rel="stylesheet" href="stylesheets/blackjackstylesheet.css">
 <script>
+	var wins = 0;
+	var turn = 1;
 	var admin = localStorage.getItem("admin");
 	var Obj =localStorage.getItem("LoggedIn");
 	//CHECK IF LOGGED IN
@@ -27,6 +29,8 @@
 			for (t = 0; t < y.length; t++) {
 				y[t].style.display = "none";
 			}
+			alert("You must be logged in to play Game Trials! Please log in and come back.");
+			window.location.replace("login.html");
 		}
 	}
 	//CHECK IF ADMIN IS LOGGED IN
@@ -150,7 +154,6 @@ function Player(){
 		breakLine();
 		checkValues(player, dealer, deck);
 		console.log("Players "+(player.CardPosition-1)+" card is worth "+card.value+". Total: "+player.cards.Value);
-		console.log("Playing = "+this.Playing);
 	};
 	this.Hold= function(){
 		if(dealer.cards.Value<player.cards.Value){
@@ -159,6 +162,7 @@ function Player(){
 			console.log("The dealer has less cards");
 			clean(player, dealer, deck);
 			turn++
+			wins++;
 		}else if(dealer.cards.Value>player.cards.Value){
 			//DEALER WINS!
 			console.log("Player held and won!");
@@ -195,7 +199,7 @@ function Dealer(){
 			if(dealer.CardPosition<=8){
 			document.getElementById("DealerCard"+dealer.CardPosition).innerHTML="<img src='"+card.img+"'/>";
 			dealer.CardPosition++;
-			}else{.
+			}else{
 			console.log("Dealer cards go over 8 slots");
 			}
 		var node = document.createElement("LI");                 							// Create a <li> node
@@ -282,8 +286,6 @@ function buttonHit(player, nDeck){
 		</ul>
    </div>
 	<script>
-//console.log(player.Playing + dealer.Playing);
-var turn = 1;
 var nDeck = shuffle(7, deck);
 var player = new Player;
 var dealer = new Dealer
@@ -301,27 +303,23 @@ function newGame(player,dealer,nDeck){
 }
 //CLEAN UP
 	function clean(player, dealer, deck, turn){
-	document.getElementById("messageArea").innerHTML="End of round...new Round Starting!";
-	player.cards.Value = 0;
-	player.CardPosition = 1;
-	player.Playing = true;
-	dealer.cards.Value = 0;
-	dealer.CardPosition = 1;
-	dealer.Playing = true;
-	var i = 1;
-	while(i<9){
-		document.getElementById("PlayerCard"+i).innerHTML=" ";
-		document.getElementById("DealerCard"+i).innerHTML=" ";
-		i++
-	}
+		document.getElementById("messageArea").innerHTML=("End of round...new Round Starting!<br>Wins: "+wins);
+		player.cards.Value = 0;
+		player.CardPosition = 1;
+		player.Playing = true;
+		dealer.cards.Value = 0;
+		dealer.CardPosition = 1;
+		dealer.Playing = true;
+		var i = 1;
+		while(i<9){
+			document.getElementById("PlayerCard"+i).innerHTML=" ";
+			document.getElementById("DealerCard"+i).innerHTML=" ";
+			i++
+		}
 	newGame(player,dealer,nDeck);
 	}
-}
 //CHECK VALUES!!
 function checkValues(player, dealer, nDeck){
-	//if(dealer.cards.Value<15){
-	//	dealer.Hit(nDeck);
-	//}
 	if(player.cards.Value == 21){
 		//PLAYER WINS
 		console.log("Player got exactly 21 cards!");
@@ -330,6 +328,7 @@ function checkValues(player, dealer, nDeck){
 		turn++;
 		alert("YOU WIN!! How did you get 21 exactly? Have you been cheating??");
 		clean(player, dealer, deck);
+		wins++;
 	}
 
 	//PLAYER BUST
@@ -350,6 +349,7 @@ function checkValues(player, dealer, nDeck){
 		turn++;
 		alert("YOU WIN!! (Only because the dealer busted though...)");
 		clean(player, dealer, deck);
+		wins++;
 	}
 	//console.log("Dealer is playing = "+dealer.Playing);
 }

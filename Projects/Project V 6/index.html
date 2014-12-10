@@ -35,6 +35,10 @@
 			}
 		}
 	}
+	function logOut(){
+		localStorage.removeItem("LoggedIn");
+		location.reload();
+	}
 	//CHECK IF ADMIN IS LOGGED IN
 	function checkAdmin(){
 		var x = document.getElementsByClassName("admin");

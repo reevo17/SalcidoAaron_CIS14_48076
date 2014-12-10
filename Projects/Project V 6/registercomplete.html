@@ -43,6 +43,7 @@
 				x[i].style.display = "none";
 			}
 		}
+	}
 	var Obj =localStorage.getItem("LoggedIn");
 	var admin = localStorage.getItem("admin");
 	function getForm(url){
@@ -62,17 +63,7 @@
 
 <body id="registerComplete">
 <script>
-function checkLogin(){
-	var check = getCookie("loggedIn");
-	if(check == false)	{
-		document.getElementsByClassName("ln").style.display="none";
-		document.getElementsByClassName("ln1").style.display ="inline";
-	
-	} else {
-		document.getElementsByClassName("ln").style.display='inline';
-		document.getElementsByClassName("ln1").style.display ='none';
-	}
-}
+
 </script>
 <header>
 		<img src="images/logo.png" width="134" height="54"/>
@@ -83,20 +74,22 @@ function checkLogin(){
             <li class="ln1"><a href="login.html">Login</a></li>
             <li class="ln1"><a href="register.html">Register</a></li>
             <li class="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
-            <button  class="ln" onClick="logOut()">Log Out</button>
             
 		</ul>
 </header>
+<script>
+	checkLogin();
+</script>
 	<div id="RegisterCompleteDisplay"> 
 		
 	</div>
 <script>
 	var url = document.location.href;
 	$_GET = getForm(url);
-	console.log($_GET);
+	console.log("The Unparsed Object:" +$_GET);
 	localStorage.setItem("user", JSON.stringify($_GET));
 	var User = localStorage.getItem("user");
-	console.log(User);
+	console.log("The Parsed Object"+User);
 	User = JSON.parse(User);
 	console.log(User);
 	var x = document.getElementById("RegisterCompleteDisplay");
