@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Reevo Inc. Login</title>
+<link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
+<script type="text/javascript" src="scripts/login.js"></script>
+<script>
+
+</script>
+</head>
+<body>
+
+<header>
+		<img src="images/logo.png" width="134" height="54"/>
+    	<ul class="nav">
+       	  <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+            <li class="ln1"><a href="login.html">Login</a></li>
+            <li class="ln1"><a href="register.html">Register</a></li></li>
+            <button  class="ln" onClick="logOut()">Log Out</button>
+		</ul>
+</header>
+	<script>
+	checkLogin();
+	checkAdmin();
+	console.log(user.username);
+	console.log(user.password);
+	console.log(user);
+	console.log(Obj);
+	</script>
+<aside>
+
+  <div style="margin-top:30px; font-size:15px">
+        	All of your log-in information is safely secured in your local storage, easily accessable by hackers, but who cares about that anyways right?
+   </div>
+</aside>
+
+
+<div class="formdiv">
+	<form name="loginform" id="loginform" onsubmit="return login()">
+				<input name="username" type="text" id="LoginUser" /><div id="headerlogin">Username</div><br>
+				<input name="password" type="password" id="LoginPassword"/><div id="headerlogin">Password</div><br>
+				<input type="submit" value="Submit"/>
+			</form>
+</div>
+<div style="padding:20px;font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, sans-serif; text-align:center;">
+	Enter your log in information above.<br>
+	Logging in/Creating an Account gives you access to features such as The Shopping Cart and Game Trials!
+</div>
+<script>
+
+</script>	
+<div>
+	<img src="http://i.imgur.com/XRzaECO.jpg" class="loginImg"/>
+</div>
+<div id="admin">
+	<center><a href="adminlogin.html"/><button>Admin</button></a><center>
+</div>
+</body>
+</html>

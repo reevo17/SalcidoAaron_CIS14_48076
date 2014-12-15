@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Reevo Inc Games</title>
+<link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
+<link type="text/javascript" href="scripts/shopping.js">
+<script>	
+
+var shoppingCart ={
+	total : 0,
+	items : [],
+	add : function(itemCost){
+		this.total += (itemCost || 0);
+       this.lastTransactionAmount = itemCost;
+    },
+	scan : function(item){
+        switch (item){
+            case "connectFour": 
+				this.add(45); 
+				alert("Connect Four was added to your Cart. Total: $"+shoppingCart.total);
+				shoppingCart.items.push("Connect Four");
+				console.log(shoppingCart);
+				break;
+            case "BlackJack": 
+				this.add(50);
+				shoppingCart.items.push("Black Jack");
+				alert("Black Jack was added to your Cart. Total: $"+shoppingCart.total);
+				console.log(shoppingCart);
+				break;
+            case "BattleShip": 
+				this.add(175); 
+				shoppingCart.items.push("Battle Ship");
+				alert("Battle Ship was added to your Cart! Total: $"+shoppingCart.total);
+				console.log(shoppingCart);
+				break;
+        }
+        return true;
+	},
+	voidLastTransaction : function(){
+        this.total -= this.lastTransactionAmount;
+        this.lastTransactionAmount = 0;
+    }
+}
+window.onbeforeunload = function(){
+	alert("Shopping Cart Saved! Total: "+shoppingCart.total);
+	localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+}
+</script>
+</head>
+<body>
+<header>
+		<img src="images/logo.png" width="134" height="54"/>
+    	<ul class="nav">
+       	  <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+            <li class="ln1"><a href="login.html">Login</a></li>
+            <li class="ln1"><a href="register.html">Register</a></li>
+            <button  class="ln" onClick="logOut()">Log Out</button>
+            
+		</ul>
+</header>
+<script>
+	checkLogin();
+</script>
+
+<!--TABLE TO HOLD THE GAMES-->
+<table style="border-radius:5px;">
+<!--HEAD-->
+	<thead>
+	<tr>
+    	<td colspan="3"><center>GAMES</center></td>
+    </tr>
+    </thead>
+<!--GAMES GO HERE-->
+    <tbody>
+    	<tr>
+        	<td>
+				<center>Connect 4<br><small>Price: <em>$45</em></small><br>
+				<img src="images/connect4.jpg"/>
+				<button onClick=shoppingCart.scan("connectFour")>Add Item To Cart</button>
+				<button disabled="true">TRIAL NOT AVAILABLE</button>
+				</center>
+			</td>
+			<!--BLACKJACK CONTAINER-->
+            <td>
+				<center>Blackjack<br><small>Price: <em>$50</em></small>
+				<img id="gameimg" src="images/blackjack.jpg"/>
+				<button onClick=shoppingCart.scan("BlackJack")>Add Item To Cart</button><br>
+				<form class="ln" action="blackjack.html">
+					<input class="ln" type="submit" value="PLAY GAME TRIAL!">
+				</form>
+				<br><div id="bj"></div></center>
+			</td>
+			<td>
+				<center>Battleship<br><small>Price: <em>$175</em></small>
+				<img src="images/battleship.jpg" id="gameimg"/>
+				<button  onClick=shoppingCart.scan("BattleShip")>Add Item To Cart</button>
+				<button disabled="true">TRIAL NOT AVAILABLE</button>
+				</center>
+			</td>
+			
+        </tr>
+    </tbody>   
+
+</table>
+	<div>
+		<center><button onClick=location.replace("checkout.html")>CHECK OUT</button></center>
+	<div>
+</body>
+</html>

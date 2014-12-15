@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ADMIN ACCESS</title>
+<link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
+<link type="text/javascript" href="login.js">
+<link type="text/javascript" href="shopping.js">
+<script>
+	var passKey = "67912-GTTRV-88917-REEVO-133334";
+	var admin = localStorage.getItem("admin");
+	var Obj =localStorage.getItem("LoggedIn");
+	//CHECK IF LOGGED IN
+	function checkLogin(){
+		if(Obj == "true"){
+			var x = document.getElementsByClassName("ln1");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			var y = document.getElementsByClassName("ln");
+			for (t = 0; t < y.length; t++) {
+				y[t].style.display = "inline";
+			}
+		}else{
+			var x = document.getElementsByClassName("ln1");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "inline";
+			}
+			var y = document.getElementsByClassName("ln");
+			for (t = 0; t < y.length; t++) {
+				y[t].style.display = "none";
+			}
+		}
+	}
+	//CHECK IF ADMIN IS LOGGED IN
+	function checkAdmin(){
+		var x = document.getElementsByClassName("admin");
+		if(admin == "true"){
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "block";
+			}
+		}else{
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+		}
+	}
+	function logOut(){
+		localStorage.removeItem("LoggedIn");
+		location.reload();
+	}
+	function adminLogin(){
+		if(document.getElementById("key").value == passKey){
+			localStorage.setItem("admin","true");
+			alert("Welcome Admin!");
+		}else{
+			Alert("Improper Admin Access Key! Be sure to type in the access code from your verification email!");
+		}
+	}
+</script>
+</head>
+<body>
+<header>
+		<img src="images/logo.png" width="134" height="54"/>
+    	<ul class="nav">
+       	  <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+            <li class="ln1"><a href="login.html">Login</a></li>
+            <li class="ln1"><a href="register.html">Register</a></li>
+            <button  class="ln" onClick="logOut()">Log Out</button>	
+			<li id="admin"><a href="admintools.html">ADMIN TOOLS</a></li>
+            
+		</ul>
+</header>
+<script>
+	console.log(Obj);
+	console.log(admin);
+	checkLogin();
+	checkAdmin();
+</script>
+<div class="formdiv">
+	<form name="loginform" method="get" id="loginform" onsubmit="adminLogin()">
+				<input name="accesskey" type="text" id="key" /><div id="headerlogin">Access Key</div><br>
+				<input type="submit" text="Submit" value="Submit"/>
+			</form>
+</div>
+
+<div style="padding:20px;font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, sans-serif; text-align:center;">
+Enter your log in information above.<br>
+Enter the access key included with the confirmation email sent out from Administration
+</div>
+<div>
+	<img src="http://i.imgur.com/XRzaECO.jpg" class="loginImg"/>
+</div>
+</body>
+</html>

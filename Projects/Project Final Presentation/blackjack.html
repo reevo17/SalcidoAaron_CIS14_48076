@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Blackjack Trial</title>
+<link type="text/css" rel="stylesheet" href="stylesheets/blackjackstylesheet.css">
+<script src="scripts/blackjack.js"></script>
+<script src="scripts/login.js"></script>
+<script>
+
+</script>
+</head>
+<body id="BlackJackBody">
+<header>
+		<img src="images/logo.png" width="134" height="54"/>
+    	<ul class="nav">
+       	  <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+			<li><a href="games.html">Games</a></li>
+		</ul>
+</header>
+<script>
+	checkLogin();
+	checkAdmin();
+</script>
+   <table border="1px" align="center" id="blackJackArea">
+		<!--DEALER AREA-->
+        <tr>
+        	<td colspan="8" width="255" id="cardHeader">~DEALER CARDS~</td>
+        </tr>
+		<tr>
+			<td id="DealerCard1"></td>
+			<td id="DealerCard2"></td>
+			<td id="DealerCard3"></td>
+			<td id="DealerCard4"></td>
+			<td id="DealerCard5"></td>
+            <td id="DealerCard6"></td>
+            <td id="DealerCard7"></td>
+            <td id="DealerCard8"></td>
+		</tr>
+		
+		<!--PLAYER AREA-->
+        <tr>
+        	<td colspan="8" id="cardHeader">~PLAYER CARDS~</td>
+        </tr>
+		<tr>
+			<td id="PlayerCard1"></td>
+			<td id="PlayerCard2"></td>
+			<td id="PlayerCard3"></td>
+			<td id="PlayerCard4"></td>
+			<td id="PlayerCard5"></td>
+            <td id="PlayerCard6"></td>
+            <td id="PlayerCard7"></td>
+            <td id="PlayerCard8"></td>
+		</tr>
+        
+        <!--CONTROL AREA-->
+        <tr>
+        	<td id="control" colspan="8"> 
+				<button id="Hit" onClick="buttonHit(player, nDeck)" type="button">Hit</button> 
+				<button id="Hold" onClick="player.Hold()" type="button">Hold</button>
+			</td>
+        </tr>
+   </table>
+   <div id="messageArea">
+		<ul>
+			<li>Welcome to Blackjack!</li>
+		</ul>
+   </div>
+	<script>
+var nDeck = shuffle(7, deck);
+var player = new Player;
+var dealer = new Dealer
+var choice = "";
+//NEW GAME!!
+function newGame(player,dealer,nDeck){
+	player.Hit(nDeck);
+	dealer.Hit(nDeck);
+	player.Hit(nDeck);
+	dealer.Hit(nDeck);
+	writeMessage("Will you Hit Or Hold?");
+	if(dealer.cards.Value<15){
+		dealer.Hit(nDeck);
+	}
+}
+//CLEAN UP
+	function clean(player, dealer, deck, turn){
+		document.getElementById("messageArea").innerHTML=("End of round...new Round Starting!<br>Wins: "+wins);
+		player.cards.Value = 0;
+		player.CardPosition = 1;
+		player.Playing = true;
+		dealer.cards.Value = 0;
+		dealer.CardPosition = 1;
+		dealer.Playing = true;
+		var i = 1;
+		while(i<9){
+			document.getElementById("PlayerCard"+i).innerHTML=" ";
+			document.getElementById("DealerCard"+i).innerHTML=" ";
+			i++
+		}
+	newGame(player,dealer,nDeck);
+	}
+//CHECK VALUES!!
+function checkValues(player, dealer, nDeck){
+	if(player.cards.Value == 21){
+		//PLAYER WINS
+		console.log("Player got exactly 21 cards!");
+		console.log("Total was "+player.cards.Value);
+		console.log("Dealer had "+dealer.cards.Value);
+		turn++;
+		alert("YOU WIN!! How did you get 21 exactly? Have you been cheating??");
+		clean(player, dealer, deck);
+		wins++;
+	}
+
+	//PLAYER BUST
+	if(player.cards.Value>21){
+		//DEALER WINS
+		console.log("You BUST! Dealer has won");
+		console.log("Total was "+player.cards.Value);
+		console.log("Dealer had "+dealer.cards.Value);
+		turn++;
+		alert("Dealer has won, better luck next time sucka!");
+		clean(player, dealer, deck);
+	}
+	if(dealer.cards.Value>21){
+		//PLAYER WINS
+		console.log("Dealer BUST! Player has won");
+		console.log("Total was "+player.cards.Value);
+		console.log("Dealer had "+dealer.cards.Value);
+		turn++;
+		alert("YOU WIN!! (Only because the dealer busted though...)");
+		clean(player, dealer, deck);
+		wins++;
+	}
+	//console.log("Dealer is playing = "+dealer.Playing);
+}
+
+//RUNS WHEN PAGE LOADS
+function game(nDeck) {
+	alert( "THIS IS A TRIAL!Thank you trying out our BlackJack Deluks computer game! This is a game trial, when you throw your money at us, we will give you the full game which includes features such as HI DEFINITION GRAPHICS AND DYNAMIC AI THAT WE HAVE NO IDEA HOW TO PROGRAM!!! Please enjoy! :) ~A.S 'Reevo'" );
+		writeMessage("-----------------GOOD LUCK!-----------------");
+		console.log("Turn # is"+turn);
+		newGame(player, dealer, nDeck);
+	}
+		choice=prompt("Deal? Yes/No").toUpperCase();
+	if(choice == "YES"){
+				game(nDeck)
+	} else if(choice == "NO"){
+		alert("Then we shall not deal...");
+	} else{
+		alert("Please enter a valid response");
+	}
+</script>
+</body>
+</html>

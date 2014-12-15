@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Register Completed!</title>
+<link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css">
+<link type="text/javascript" href="shopping.js">
+<script>
+//FUNCTION GET FORM
+	var admin = localStorage.getItem("admin");
+	var Obj =localStorage.getItem("LoggedIn");
+	//CHECK IF LOGGED IN
+	function checkLogin(){
+		if(Obj == "true"){
+			var x = document.getElementsByClassName("ln1");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			var y = document.getElementsByClassName("ln");
+			for (t = 0; t < y.length; t++) {
+				y[t].style.display = "inline";
+			}
+		}else{
+			var x = document.getElementsByClassName("ln1");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "inline";
+			}
+			var y = document.getElementsByClassName("ln");
+			for (t = 0; t < y.length; t++) {
+				y[t].style.display = "none";
+			}
+		}
+	}
+	//CHECK IF ADMIN IS LOGGED IN
+	function checkAdmin(){
+		var x = document.getElementsByClassName("admin");
+		if(admin == "true"){
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "block";
+			}
+		}else{
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+		}
+	}
+	var Obj =localStorage.getItem("LoggedIn");
+	var admin = localStorage.getItem("admin");
+	function getForm(url){
+		var info=url.split("?");
+		var nameValuePairs=info[1].split("&");
+		var $_GET = new Object;
+		for(var i=0;i<nameValuePairs.length;i++){
+			var map=nameValuePairs[i].split("=");
+			var name=map[0];
+			var value=map[1];
+			$_GET[name]=value;
+		}
+		return $_GET;
+	}
+</script>
+</head>
+
+<body id="registerComplete">
+<script>
+
+</script>
+<header>
+		<img src="images/logo.png" width="134" height="54"/>
+    	<ul class="nav">
+       	  <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+            <li class="ln1"><a href="login.html">Login</a></li>
+            <li class="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
+            
+		</ul>
+</header>
+<script>
+	checkLogin();
+	checkAdmin();
+</script>
+	<div id="RegisterCompleteDisplay"> 
+		
+	</div>
+<script>
+	var url = document.location.href;
+	$_GET = getForm(url);
+	console.log("The Unparsed Object:" +$_GET);
+	localStorage.setItem("user", JSON.stringify($_GET));
+	var User = localStorage.getItem("user");
+	console.log("The Parsed Object"+User);
+	User = JSON.parse(User);
+	console.log(User);
+	var x = document.getElementById("RegisterCompleteDisplay");
+	x.innerHTML="Your Username : "+User.username+"<br> Your Password : "+User.password+"<br> Your email : "+User.email.replace("%40","@");
+</script>
+</div>
+<div style="text-align:center; font-size:20px; font-family:"Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif; >
+	<br><br>
+	CONGRATULATIONS!
+	<br>
+	You are now a registered user at REEVO INC! 
+	You can now visit out <a href="login.html">Login</a> page to see some MAGIC!!
+</body>
+</html>

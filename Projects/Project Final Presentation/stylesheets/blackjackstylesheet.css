@@ -1,0 +1,202 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	color: white;
+	border-bottom-color: #6DCDFC;
+	height: auto;
+}
+#blackbjackbody{
+	background-color:black;	
+}
+a{
+	text-decoration: none;
+	color: #110082;
+}
+aside div{
+	margin-top:10px;
+	font-family:Arial, Gotham, "Helvetica Neue", Helvetica, sans-serif;
+	font-size:10px;
+	float:left;
+	width:120px;
+	padding-left:8px;
+	border:2px solid black;
+}
+header{
+	background-image: -webkit-linear-gradient(270deg,rgba(255,255,255,1.00) 68.91%,rgba(191,180,180,1.00) 96.89%,rgba(88,88,88,1.00) 100%,rgba(0,0,0,1.00) 100%);
+	background-image: -moz-linear-gradient(270deg,rgba(255,255,255,1.00) 68.91%,rgba(191,180,180,1.00) 96.89%,rgba(88,88,88,1.00) 100%,rgba(0,0,0,1.00) 100%);
+	background-image: -o-linear-gradient(270deg,rgba(255,255,255,1.00) 68.91%,rgba(191,180,180,1.00) 96.89%,rgba(88,88,88,1.00) 100%,rgba(0,0,0,1.00) 100%);
+	background-image: linear-gradient(180deg,rgba(255,255,255,1.00) 68.91%,rgba(191,180,180,1.00) 96.89%,rgba(88,88,88,1.00) 100%,rgba(0,0,0,1.00) 100%);
+	text-align: center;
+	width: 100%;
+	border-radius:20px;
+		
+}
+header ul li{
+	display: inline;
+	padding: 5px;
+	text-decoration: none;
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+	min-width: 0px;
+}
+
+.nav{
+	text-align:center;
+	margin-left: auto;
+	margin-right:auto;
+	display:inline;	
+	padding:5px;
+	text-decoration:none;
+	font-family:Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+}
+button{
+	display: inline;
+	color: blue;
+	height: 50px;
+	width: 75px;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+}
+#ln{
+	display:none;
+}
+#ln1{
+	display:inline;
+}
+table{
+	border: 2px solid #6DCDFC;
+	width: 650px;
+	border-collapse: collapse;
+	height: 650px;
+	text-align: center;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	
+}
+tr{
+	border: solid 1px black;	
+}
+#BlackJackBody {
+	background-color: #000000;
+}
+#blackJackArea tr #cardHeader {
+	border-color: #6DCDFC;
+	width: auto;
+	color: #BFECFF;
+}
+#DealerCard{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#DealerCard1{
+	width: 100px;
+	height: 90px;
+	padding:5px;
+}
+#DealerCard2{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#DealerCard3{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#DealerCard4{
+		width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#DealerCard5{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#DealerCard6{
+	width: 100px;
+	height: 90px;
+	padding: 10px;
+}
+#DealerCard7{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#PlayerCard8{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#PlayerCard1{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#PlayerCard2{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#PlayerCard3{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#PlayerCard4{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#PlayerCard5{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#PlayerCard6{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#PlayerCard7{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#PlayerCard8{
+	width: 100px;
+	height: 90px;
+	padding: 5px;
+}
+#BlackJackBody #messageArea {
+}
+#blackJackArea{
+	width:840;	
+}
+#control{
+	colspan: 8;
+	width: auto;
+	height: 20px;
+}
+#hit{
+	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-size:35px
+}
+#hold{
+	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-size:35px;
+}
+#cardHeader{
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+	font-size: 25px;
+	border-top-color: #00BDFE;
+	border-bottom-color: #00BDFE;
+	border-bottom-width: 5x;
+	border-top-width: 5px;
+	height: 20px;
+}#BlackJackBody #blackJackArea {
+}
+tr{
+	height:105px;
+}
